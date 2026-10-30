@@ -1,0 +1,596 @@
+{
+  "title": "Sample Bank: World Geography",
+  "questions": [
+    {
+      "id": "GEO-Q01",
+      "topic": "Capitals",
+      "question": "What is the capital of Australia?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sydney"
+        },
+        {
+          "label": "B",
+          "text": "Melbourne"
+        },
+        {
+          "label": "C",
+          "text": "Canberra"
+        },
+        {
+          "label": "D",
+          "text": "Perth"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q02",
+      "topic": "Capitals",
+      "question": "What is the capital of Canada?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Toronto"
+        },
+        {
+          "label": "B",
+          "text": "Ottawa"
+        },
+        {
+          "label": "C",
+          "text": "Vancouver"
+        },
+        {
+          "label": "D",
+          "text": "Montreal"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "GEO-Q03",
+      "topic": "Capitals",
+      "question": "What is the capital of Japan?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Osaka"
+        },
+        {
+          "label": "B",
+          "text": "Kyoto"
+        },
+        {
+          "label": "C",
+          "text": "Tokyo"
+        },
+        {
+          "label": "D",
+          "text": "Yokohama"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q04",
+      "topic": "Capitals",
+      "question": "What is the capital of Brazil?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rio de Janeiro"
+        },
+        {
+          "label": "B",
+          "text": "Brasilia"
+        },
+        {
+          "label": "C",
+          "text": "Sao Paulo"
+        },
+        {
+          "label": "D",
+          "text": "Salvador"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Brasilia replaced Rio de Janeiro as capital in 1960."
+    },
+    {
+      "id": "GEO-Q05",
+      "topic": "Capitals",
+      "question": "Istanbul is the capital of Turkey.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The capital is Ankara."
+    },
+    {
+      "id": "GEO-Q06",
+      "topic": "Capitals",
+      "question": "Which city is the capital of New Zealand?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Auckland"
+        },
+        {
+          "label": "B",
+          "text": "Christchurch"
+        },
+        {
+          "label": "C",
+          "text": "Wellington"
+        },
+        {
+          "label": "D",
+          "text": "Hamilton"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q07",
+      "topic": "Physical geography",
+      "question": "Which is the largest ocean?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Atlantic"
+        },
+        {
+          "label": "B",
+          "text": "Indian"
+        },
+        {
+          "label": "C",
+          "text": "Arctic"
+        },
+        {
+          "label": "D",
+          "text": "Pacific"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "GEO-Q08",
+      "topic": "Physical geography",
+      "question": "What is the highest mountain above sea level?",
+      "options": [
+        {
+          "label": "A",
+          "text": "K2"
+        },
+        {
+          "label": "B",
+          "text": "Mount Everest"
+        },
+        {
+          "label": "C",
+          "text": "Kangchenjunga"
+        },
+        {
+          "label": "D",
+          "text": "Mont Blanc"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "GEO-Q09",
+      "topic": "Physical geography",
+      "question": "Which is the largest hot desert in the world?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sahara"
+        },
+        {
+          "label": "B",
+          "text": "Gobi"
+        },
+        {
+          "label": "C",
+          "text": "Kalahari"
+        },
+        {
+          "label": "D",
+          "text": "Arabian"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Antarctica is the largest desert overall, but it is a cold desert."
+    },
+    {
+      "id": "GEO-Q10",
+      "topic": "Physical geography",
+      "question": "Which river flows through Baghdad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Euphrates"
+        },
+        {
+          "label": "B",
+          "text": "Tigris"
+        },
+        {
+          "label": "C",
+          "text": "Jordan"
+        },
+        {
+          "label": "D",
+          "text": "Nile"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "GEO-Q11",
+      "topic": "Physical geography",
+      "question": "The Dead Sea lies below sea level.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Its shore is more than 400 m below sea level."
+    },
+    {
+      "id": "GEO-Q12",
+      "topic": "Physical geography",
+      "question": "Which of these is NOT a continent?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Africa"
+        },
+        {
+          "label": "B",
+          "text": "Greenland"
+        },
+        {
+          "label": "C",
+          "text": "Antarctica"
+        },
+        {
+          "label": "D",
+          "text": "Europe"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Greenland is an island, part of North America."
+    },
+    {
+      "id": "GEO-Q13",
+      "topic": "Physical geography",
+      "question": "Which line of latitude divides the Earth into the Northern and Southern Hemispheres?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tropic of Cancer"
+        },
+        {
+          "label": "B",
+          "text": "Prime Meridian"
+        },
+        {
+          "label": "C",
+          "text": "Equator"
+        },
+        {
+          "label": "D",
+          "text": "Tropic of Capricorn"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q14",
+      "topic": "Countries",
+      "question": "Which country has the largest land area?",
+      "options": [
+        {
+          "label": "A",
+          "text": "China"
+        },
+        {
+          "label": "B",
+          "text": "Canada"
+        },
+        {
+          "label": "C",
+          "text": "United States"
+        },
+        {
+          "label": "D",
+          "text": "Russia"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "GEO-Q15",
+      "topic": "Countries",
+      "question": "Which country has the most people?",
+      "options": [
+        {
+          "label": "A",
+          "text": "India"
+        },
+        {
+          "label": "B",
+          "text": "China"
+        },
+        {
+          "label": "C",
+          "text": "United States"
+        },
+        {
+          "label": "D",
+          "text": "Indonesia"
+        }
+      ],
+      "answer": "A",
+      "explanation": "India passed China in 2023 according to UN estimates."
+    },
+    {
+      "id": "GEO-Q16",
+      "topic": "Countries",
+      "question": "Which of these countries are landlocked? (Select all that apply)",
+      "options": [
+        {
+          "label": "A",
+          "text": "Switzerland"
+        },
+        {
+          "label": "B",
+          "text": "Portugal"
+        },
+        {
+          "label": "C",
+          "text": "Bolivia"
+        },
+        {
+          "label": "D",
+          "text": "Chile"
+        }
+      ],
+      "answer": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "GEO-Q17",
+      "topic": "Countries",
+      "question": "Singapore is separated from Malaysia by which strait?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Strait of Malacca"
+        },
+        {
+          "label": "B",
+          "text": "Johor Strait"
+        },
+        {
+          "label": "C",
+          "text": "Sunda Strait"
+        },
+        {
+          "label": "D",
+          "text": "Strait of Hormuz"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "GEO-Q18",
+      "topic": "Countries",
+      "question": "Egypt is in both Africa and Asia.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The Sinai Peninsula is in Asia."
+    },
+    {
+      "id": "GEO-Q19",
+      "topic": "Countries",
+      "question": "Which country is home to the city of Marrakesh?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Algeria"
+        },
+        {
+          "label": "B",
+          "text": "Tunisia"
+        },
+        {
+          "label": "C",
+          "text": "Morocco"
+        },
+        {
+          "label": "D",
+          "text": "Egypt"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q20",
+      "topic": "Maps and climate",
+      "question": "What does a contour line on a map join?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Places of equal rainfall"
+        },
+        {
+          "label": "B",
+          "text": "Places of equal height"
+        },
+        {
+          "label": "C",
+          "text": "Places of equal temperature"
+        },
+        {
+          "label": "D",
+          "text": "Places of equal pressure"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Isobars join equal pressure and isotherms equal temperature."
+    },
+    {
+      "id": "GEO-Q21",
+      "topic": "Maps and climate",
+      "question": "Which climate zone has the highest average temperatures all year?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Polar"
+        },
+        {
+          "label": "B",
+          "text": "Temperate"
+        },
+        {
+          "label": "C",
+          "text": "Tropical"
+        },
+        {
+          "label": "D",
+          "text": "Continental"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q22",
+      "topic": "Maps and climate",
+      "question": "How many time zones does mainland China officially use?",
+      "options": [
+        {
+          "label": "A",
+          "text": "One"
+        },
+        {
+          "label": "B",
+          "text": "Three"
+        },
+        {
+          "label": "C",
+          "text": "Five"
+        },
+        {
+          "label": "D",
+          "text": "Seven"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "GEO-Q23",
+      "topic": "Maps and climate",
+      "question": "Which line has a longitude of 0 degrees?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Equator"
+        },
+        {
+          "label": "B",
+          "text": "International Date Line"
+        },
+        {
+          "label": "C",
+          "text": "Prime Meridian"
+        },
+        {
+          "label": "D",
+          "text": "Tropic of Cancer"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "GEO-Q24",
+      "topic": "Maps and climate",
+      "question": "On a 1:50,000 map, how far is 2 cm on the map in real life?",
+      "options": [
+        {
+          "label": "A",
+          "text": "100 m"
+        },
+        {
+          "label": "B",
+          "text": "500 m"
+        },
+        {
+          "label": "C",
+          "text": "1 km"
+        },
+        {
+          "label": "D",
+          "text": "10 km"
+        }
+      ],
+      "answer": "C",
+      "explanation": "2 cm x 50,000 = 100,000 cm = 1 km."
+    },
+    {
+      "id": "GEO-Q25",
+      "topic": "Maps and climate",
+      "question": "Which is the smallest country in the world by area?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Monaco"
+        },
+        {
+          "label": "B",
+          "text": "Vatican City"
+        },
+        {
+          "label": "C",
+          "text": "San Marino"
+        },
+        {
+          "label": "D",
+          "text": "Liechtenstein"
+        }
+      ],
+      "answer": "A",
+      "review_flag": "Example of a flagged question: the source gives Monaco, but Vatican City (0.44 square km) is smaller.",
+      "likely_answer": "B"
+    }
+  ],
+  "reference_markdown": "## Map skills\n\n- Contour lines: equal height.\n- Isobars: equal pressure.\n- Isotherms: equal temperature.\n- Scale: map distance x scale = real distance.\n\n## Lines on the globe\n\n| Line | Value |\n|---|---|\n| Equator | 0 degrees latitude |\n| Prime Meridian | 0 degrees longitude |\n| International Date Line | about 180 degrees longitude |\n"
+}

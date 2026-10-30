@@ -1,0 +1,112 @@
+{
+  "title": "Course name: Question Bank",
+  "questions": [
+    {
+      "id": "Q001",
+      "part": "Midterm practice",
+      "topic": "Topic name",
+      "question": "Question text?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Option A"
+        },
+        {
+          "label": "B",
+          "text": "Option B"
+        },
+        {
+          "label": "C",
+          "text": "Option C"
+        },
+        {
+          "label": "D",
+          "text": "Option D"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Optional: why B is right."
+    },
+    {
+      "id": "Q002",
+      "topic": "Topic name",
+      "question": "A true/false statement.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "Q003",
+      "topic": "Topic name",
+      "question": "Select all that apply.",
+      "options": [
+        {
+          "label": "A",
+          "text": "..."
+        },
+        {
+          "label": "B",
+          "text": "..."
+        },
+        {
+          "label": "C",
+          "text": "..."
+        }
+      ],
+      "answer": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "Q004",
+      "topic": "Topic name",
+      "question": "Question that refers to code or a table below.",
+      "context": "```sql\nSELECT * FROM t;\n```",
+      "options": [
+        {
+          "label": "A",
+          "text": "..."
+        },
+        {
+          "label": "B",
+          "text": "..."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "Q005",
+      "topic": "Topic name",
+      "question": "A short-answer question.",
+      "answer": "The expected answer as text"
+    },
+    {
+      "id": "Q006",
+      "topic": "Topic name",
+      "question": "A question whose source answer you doubt.",
+      "options": [
+        {
+          "label": "A",
+          "text": "..."
+        },
+        {
+          "label": "B",
+          "text": "..."
+        }
+      ],
+      "answer": "A",
+      "review_flag": "Why the source answer looks wrong.",
+      "likely_answer": "B"
+    }
+  ],
+  "reference_markdown": "## Notes\n\n- Optional cheatsheet in Markdown."
+}

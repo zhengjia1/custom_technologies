@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exam Autosolver</title>
+<style>
+
+:root {
+  --canvas: #f9fbfd; --page: #ffffff; --ink: #1f1f1f; --muted: #5f6368; --line: #dadce0; --soft: #e8eaed;
+  --blue: #0b57d0; --blue-soft: #d3e3fd; --toolbar: #edf2fa; --code: #f1f3f4; --warn: #b3261e;
+  --kw: #0b57d0; --str: #188038; --num: #b06000; --fn: #1f1f1f;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--canvas); color: var(--ink); }
+body { font: 15px/1.55 Arial, "Helvetica Neue", Helvetica, sans-serif; }
+button { font: inherit; }
+
+/* top bar */
+.topbar { position: sticky; top: 0; z-index: 5; background: var(--canvas); padding: 8px 16px 6px; }
+.titlerow { display: flex; align-items: center; gap: 10px; }
+.docicon { width: 26px; height: 34px; flex-shrink: 0; }
+.doctitle { font-size: 18px; line-height: 1.2; padding: 2px 6px; border: 1px solid transparent; border-radius: 4px; }
+.doctitle:hover { border-color: var(--line); }
+.menus { display: flex; gap: 2px; margin-left: -2px; flex-wrap: wrap; }
+.menus button { background: none; border: 0; padding: 2px 7px; font-size: 14px; color: var(--ink); border-radius: 4px; cursor: pointer; }
+.menus button:hover { background: var(--soft); }
+.menus button[aria-current="true"] { background: var(--blue-soft); }
+.titlemeta { margin-left: auto; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.toolbar { margin-top: 8px; background: var(--toolbar); border-radius: 24px; padding: 6px 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 40px; }
+.tsep { width: 1px; height: 20px; background: #c4c7c5; margin: 0 4px; }
+.tbtn { background: none; border: 0; border-radius: 4px; padding: 4px 9px; font-size: 14px; color: var(--ink); cursor: pointer; }
+.tbtn:hover { background: #dfe3eb; }
+.tbtn.primary { background: var(--blue); color: #fff; border-radius: 18px; padding: 5px 16px; font-weight: 500; }
+.tbtn.primary:hover { background: #0842a0; }
+.tlabel { font-size: 13px; color: var(--muted); }
+.seg { display: inline-flex; border-radius: 4px; overflow: hidden; }
+.seg button { background: none; border: 0; padding: 4px 9px; font-size: 13px; color: var(--muted); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--blue-soft); color: var(--ink); }
+.tsearch { flex: 1; min-width: 160px; border: 0; background: #fff; border-radius: 16px; padding: 6px 14px; font: inherit; font-size: 14px; color: var(--ink); }
+.tsearch:focus { outline: 2px solid var(--blue); }
+
+/* layout */
+.shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 0; padding: 18px 16px 80px; max-width: 1180px; margin: 0 auto; }
+.side { position: sticky; top: 110px; align-self: start; max-height: calc(100vh - 130px); overflow: auto; padding-right: 12px; }
+.side h4 { margin: 4px 0 8px 8px; font-size: 14px; font-weight: 500; color: var(--ink); }
+.tablist { list-style: none; margin: 0; padding: 0; }
+.tablist > li > button { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: none; border: 0; border-radius: 18px; padding: 7px 12px; cursor: pointer; color: var(--ink); font-size: 14px; }
+.tablist > li > button:hover { background: var(--soft); }
+.tablist > li > button[aria-selected="true"] { background: var(--blue-soft); font-weight: 500; }
+.tabglyph { width: 16px; height: 16px; flex-shrink: 0; }
+.outline { list-style: none; margin: 2px 0 8px 0; padding: 0 0 0 38px; }
+.outline button { background: none; border: 0; padding: 3px 4px; font-size: 13px; color: var(--muted); cursor: pointer; text-align: left; line-height: 1.35; }
+.outline button:hover { color: var(--blue); }
+.page { min-width: 0; background: var(--page); border: 1px solid #e1e3e1; box-shadow: 0 1px 3px rgba(60,64,67,.12); max-width: 816px; width: 100%; margin: 0 auto; padding: 72px 84px 96px; min-height: 1056px; }
+@media (max-width: 920px) {
+  .shell { grid-template-columns: minmax(0, 1fr); padding: 12px 0 60px; }
+  .side { display: none; }
+  .page { padding: 36px 16px 64px; border-left: 0; border-right: 0; min-height: 0; }
+  .titlemeta { display: none; }
+}
+
+/* document typography (Docs defaults) */
+.title { font-size: 34px; font-weight: 400; margin: 0 0 4px; line-height: 1.2; }
+.subtitle { font-size: 17px; color: var(--muted); margin: 0 0 22px; }
+h1 { font-size: 26px; font-weight: 400; margin: 30px 0 10px; line-height: 1.25; }
+h2 { font-size: 21px; font-weight: 400; margin: 26px 0 8px; line-height: 1.3; }
+h3 { font-size: 18px; font-weight: 400; color: #434343; margin: 18px 0 6px; }
+p { margin: 0 0 10px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; color: var(--muted); }
+.hidden { display: none !important; }
+code, pre, .mono { font-family: "Roboto Mono", Consolas, "Courier New", monospace; }
+
+/* question box */
+textarea#q { width: 100%; min-height: 92px; resize: vertical; border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; font: inherit; color: var(--ink); background: #fff; }
+textarea#q:focus { outline: 2px solid var(--blue); outline-offset: -1px; border-color: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+.chip { max-width: 100%; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; font-size: 13px; color: var(--ink); cursor: pointer; }
+.chip:hover { background: var(--soft); }
+
+/* code block (Docs building block look) */
+.codebox { position: relative; margin: 6px 0 10px; }
+pre { margin: 0; background: var(--code); border-radius: 8px; padding: 14px 70px 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.6; white-space: pre; }
+.copy { position: absolute; top: 8px; right: 8px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 2px 10px; font-size: 12px; cursor: pointer; color: var(--ink); }
+.copy:hover { background: var(--soft); }
+.kw { color: var(--kw); font-weight: 700; } .str { color: var(--str); } .num { color: var(--num); } .fn { color: var(--fn); font-weight: 700; }
+.cm { color: var(--muted); font-style: italic; }
+
+.badge { display: inline-block; font-size: 12px; font-weight: 400; vertical-align: middle; padding: 2px 10px; border-radius: 12px; background: var(--blue-soft); color: #041e49; margin-left: 8px; }
+.badge.low { background: #fce8e6; color: var(--warn); }
+ul.notes { margin: 6px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+.ignored { font-size: 14px; color: var(--warn); margin-top: 6px; }
+
+/* Docs-style tables */
+table.doc { border-collapse: collapse; width: 100%; font-size: 14px; margin: 6px 0 10px; }
+table.doc td, table.doc th { border: 1px solid #000; padding: 5px 8px; vertical-align: top; text-align: left; }
+table.doc th { font-weight: 700; }
+table.doc td:first-child { width: 150px; }
+table.res { border-collapse: collapse; font-size: 12.5px; margin-top: 6px; width: 100%; }
+table.res th, table.res td { border: 1px solid #000; padding: 3px 7px; text-align: left; }
+table.res th { font-weight: 700; background: #f3f3f3; }
+.tablewrap { overflow-x: auto; }
+
+details { margin: 0 0 6px; border-bottom: 1px solid var(--soft); }
+details > summary { cursor: pointer; padding: 7px 0; list-style: none; display: flex; gap: 10px; align-items: baseline; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before { content: "\25B8"; color: var(--muted); flex-shrink: 0; width: 10px; }
+details[open] > summary::before { content: "\25BE"; }
+.qn { color: var(--blue); flex-shrink: 0; white-space: nowrap; min-width: 64px; }
+.score { margin-left: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
+.dbody { padding: 0 0 12px 20px; }
+.empty { color: var(--muted); }
+
+/* cheatsheet */
+.cheat .note { font-size: 14px; color: var(--muted); margin: -2px 0 10px; }
+.cheat .mysql { font-size: 14px; margin: 0 0 12px; padding-left: 0; }
+.cheat .mysql b { color: var(--warn); font-weight: 700; }
+
+/* schema */
+.schema { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 4px 20px; }
+.schema h3 { font-family: "Roboto Mono", Consolas, monospace; font-size: 15px; color: var(--ink); margin: 12px 0 4px; }
+.schema ul, .traps { margin: 0; padding-left: 20px; }
+.schema li { font-size: 13.5px; }
+.traps li { margin-bottom: 6px; }
+
+/* ---------- additions ---------- */
+.ansbox { border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 6px; padding: 12px 16px; margin: 8px 0 12px; }
+.ansbox.check { border-left-color: #b06000; }
+.ansbox.none { border-left-color: var(--warn); }
+.bigans { font-size: 20px; line-height: 1.35; margin: 2px 0 6px; }
+.bigans b { color: var(--blue); }
+.badge.warnb { background: #fef7e0; color: #7a4a00; }
+.warnbox { background: #fef7e0; border-radius: 6px; padding: 8px 12px; margin: 8px 0; font-size: 14px; }
+.warnbox.red { background: #fce8e6; }
+.warnbox.blue { background: #e8f0fe; }
+.opts { list-style: none; margin: 6px 0 8px; padding: 0; }
+.opts li { padding: 3px 8px; border-radius: 4px; font-size: 14px; }
+.opts li.right { background: #e6f4ea; font-weight: 700; }
+.opts li.sug { background: #fef7e0; }
+.opts .ol { display: inline-block; width: 22px; color: var(--muted); font-weight: 400; }
+.stemtxt { white-space: pre-wrap; overflow-wrap: anywhere; }
+.stemtxt pre, .ctx pre { white-space: pre; padding: 8px 12px; margin: 6px 0; font-size: 12px; }
+.ctx { margin: 6px 0; }
+mark { background: #fff0b3; color: inherit; padding: 0 1px; border-radius: 2px; }
+.cardans { display: block; font-size: 13.5px; margin-top: 3px; color: #137333; }
+.cardans.hid { color: var(--muted); }
+.cardans.doubt { color: var(--warn); }
+.reveal { background: none; border: 1px solid var(--line); border-radius: 12px; padding: 0 8px; font-size: 12px; cursor: pointer; color: var(--ink); margin-left: 4px; }
+.meta { font-size: 12px; color: var(--muted); }
+.livehead { display: flex; align-items: baseline; gap: 10px; }
+details > summary > .sumbody { display: block; min-width: 0; flex: 1; }
+.flagdot { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 8px; background: #fce8e6; color: var(--warn); margin-left: 6px; vertical-align: 1px; }
+.flagdot.y { background: #fef7e0; color: #7a4a00; }
+.refbody ul, .refbody ol { margin: 4px 0 10px; padding-left: 22px; }
+.refbody li { margin-bottom: 3px; }
+.refbody h4 { font-size: 15px; font-weight: 700; margin: 12px 0 4px; }
+.refbody blockquote { margin: 8px 0; background: #fef7e0; border-radius: 6px; padding: 8px 12px; font-size: 14px; }
+.pairrow { margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--soft); }
+.tip li { margin-bottom: 6px; }
+.titleacts { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.titleacts .tbtn { font-size: 13px; }
+
+/* upload page */
+.drop { display: block; border: 2px dashed #a8c7fa; border-radius: 10px; background: #f8fbff; padding: 30px 20px; text-align: center; cursor: pointer; margin: 6px 0 12px; }
+.drop:hover, .drop.over { background: #e8f0fe; border-color: var(--blue); }
+.drop b { color: var(--blue); }
+.drop input { display: none; }
+.drop .small { display: block; margin-top: 6px; }
+.filechips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+.filechip { font-size: 13px; background: var(--soft); border-radius: 12px; padding: 2px 10px; }
+.filechip.bad { background: #fce8e6; color: var(--warn); }
+.btnrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+.btn { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 6px 16px; cursor: pointer; color: var(--ink); font-size: 14px; }
+.btn:hover { background: var(--soft); }
+.btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); font-weight: 500; }
+.btn.primary:hover { background: #0842a0; }
+.btn:disabled { opacity: .5; cursor: default; }
+.titlein { width: 100%; border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; font: inherit; }
+.titlein:focus { outline: 2px solid var(--blue); outline-offset: -1px; }
+table.doc.kv td:first-child { width: 170px; }
+table.doc code { font-size: 12.5px; }
+.err { background: #fce8e6; color: var(--warn); border-radius: 6px; padding: 8px 12px; margin: 8px 0; }
+@media (max-width: 920px) { .bigans { font-size: 18px; } .qn { min-width: 0; } .score { display: none; } .titleacts .tbtn { padding: 4px 6px; } table.doc.kv td:first-child { width: 110px; } }
+</style>
+</head>
+<body>
+
+<!-- ======================= UPLOAD VIEW ======================= -->
+<div id="upView">
+  <div class="topbar">
+    <div class="titlerow">
+      <svg class="docicon" viewBox="0 0 26 34" aria-hidden="true"><path d="M3 0h14l9 9v22a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3z" fill="#4285f4"/><path d="M17 0l9 9h-6a3 3 0 0 1-3-3z" fill="#a1c2fa"/><rect x="6" y="15" width="14" height="2" fill="#fff"/><rect x="6" y="19.5" width="14" height="2" fill="#fff"/><rect x="6" y="24" width="10" height="2" fill="#fff"/></svg>
+      <div><div class="doctitle">Exam Autosolver</div><div class="menus"><button aria-current="true">Upload</button></div></div>
+      <span class="titlemeta">Works offline. Nothing leaves this browser.</span>
+    </div>
+    <div class="toolbar"><span class="tlabel">Step 1: upload a question bank. Step 2: build the document.</span></div>
+  </div>
+  <div class="shell">
+    <aside class="side">
+      <h4>Document tabs</h4>
+      <ul class="tablist"><li><button aria-selected="true"><svg class="tabglyph" viewBox="0 0 16 16"><path d="M2 3h12v1.5H2zM2 7h12v1.5H2zM2 11h8v1.5H2z" fill="#444746"/></svg>Upload</button>
+        <ul class="outline"><li><button data-goto="u-file">Question bank</button></li><li><button data-goto="u-check">Check</button></li><li><button data-goto="u-format">JSON format</button></li></ul></li></ul>
+    </aside>
+    <main class="page">
+      <h1 class="title">Exam Autosolver</h1>
+      <p class="subtitle">Upload a question bank as JSON and this page turns it into a searchable answer finder. Everything runs in this browser, with no internet needed.</p>
+
+      <div id="resume" class="warnbox blue hidden"></div>
+
+      <h2 id="u-file">Question bank</h2>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".json,.md,.markdown,.txt,application/json,text/markdown,text/plain" multiple>
+        <b>Choose a JSON file</b> or drop it here
+        <span class="small">Optional: add .md or .txt files at the same time to include them as reference notes.</span>
+      </label>
+      <div class="filechips" id="fileChips"></div>
+      <div id="upErr"></div>
+
+      <div id="checkWrap" class="hidden">
+        <h2 id="u-check">Check</h2>
+        <p class="small">Make sure the fields below were picked up correctly before building.</p>
+        <table class="doc kv"><tbody id="report"></tbody></table>
+        <div id="warnList"></div>
+        <div class="btnrow">
+          <button class="btn primary" id="build">Build document</button>
+          <span class="small" id="buildNote"></span>
+        </div>
+      </div>
+
+      <h2 id="u-format">JSON format</h2>
+      <p>The file needs a list of questions. Each question needs its text and either options or an answer. Common field names from other exports are recognised too, so most files work without editing.</p>
+      <div class="codebox"><pre id="fmtExample"></pre><button class="copy" id="copyFmt">Copy</button></div>
+      <table class="doc kv"><thead><tr><th>Field</th><th>Accepted names and forms</th></tr></thead><tbody id="fmtTable"></tbody></table>
+      <div class="btnrow"><button class="btn" id="dlSample">Download sample JSON</button><button class="btn" id="trySample">Try the sample</button></div>
+    </main>
+  </div>
+</div>
+
+<!-- ======================= DOCUMENT VIEW ======================= -->
+<div id="docView" class="hidden">
+  <div class="topbar">
+    <div class="titlerow">
+      <svg class="docicon" viewBox="0 0 26 34" aria-hidden="true"><path d="M3 0h14l9 9v22a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3z" fill="#4285f4"/><path d="M17 0l9 9h-6a3 3 0 0 1-3-3z" fill="#a1c2fa"/><rect x="6" y="15" width="14" height="2" fill="#fff"/><rect x="6" y="19.5" width="14" height="2" fill="#fff"/><rect x="6" y="24" width="10" height="2" fill="#fff"/></svg>
+      <div style="min-width:0">
+        <div class="doctitle" id="docTitle">Question bank</div>
+        <div class="menus" id="menus">
+          <button data-tab="ask">Ask</button>
+          <button data-tab="bank">Question bank</button>
+          <button data-tab="ref" id="menuRef">Reference</button>
+          <button data-tab="traps">Traps</button>
+        </div>
+      </div>
+      <span class="titleacts">
+        <button class="tbtn" id="saveCopy" title="Download one HTML file with this bank built in">Save offline copy</button>
+        <button class="tbtn" id="loadOther">Load another bank</button>
+      </span>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <span data-for="ask" class="tgroup" style="display:contents">
+        <button class="tbtn primary" id="go">Find answer</button>
+        <button class="tbtn" id="copyTop">Copy answer</button>
+        <button class="tbtn" id="clear">Clear</button>
+        <span class="tsep"></span>
+        <span class="tlabel">Answers</span>
+        <span class="seg" id="showAns"><button aria-pressed="true" data-v="show">Shown</button><button aria-pressed="false" data-v="hide">Hidden</button></span>
+      </span>
+      <span data-for="bank" class="tgroup hidden" style="display:contents">
+        <input class="tsearch" id="bankSearch" placeholder="Filter the bank by words or ID">
+        <span class="tlabel" id="bankCount"></span>
+      </span>
+      <span data-for="ref" class="tgroup hidden" style="display:contents">
+        <input class="tsearch" id="refSearch" placeholder="Find in reference notes">
+      </span>
+      <span data-for="traps" class="tgroup hidden" style="display:contents">
+        <span class="tlabel" id="trapCount"></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="shell">
+    <aside class="side">
+      <h4>Document tabs</h4>
+      <ul class="tablist" id="tablist">
+        <li><button data-tab="ask"><svg class="tabglyph" viewBox="0 0 16 16"><path d="M2 3h12v1.5H2zM2 7h12v1.5H2zM2 11h8v1.5H2z" fill="#444746"/></svg>Ask</button><ul class="outline" data-outline="ask"></ul></li>
+        <li><button data-tab="bank"><svg class="tabglyph" viewBox="0 0 16 16"><path d="M2 3h12v1.5H2zM2 7h12v1.5H2zM2 11h8v1.5H2z" fill="#444746"/></svg>Question bank</button><ul class="outline" data-outline="bank"></ul></li>
+        <li id="sideRef"><button data-tab="ref"><svg class="tabglyph" viewBox="0 0 16 16"><path d="M2 3h12v1.5H2zM2 7h12v1.5H2zM2 11h8v1.5H2z" fill="#444746"/></svg>Reference</button><ul class="outline" data-outline="ref"></ul></li>
+        <li><button data-tab="traps"><svg class="tabglyph" viewBox="0 0 16 16"><path d="M2 3h12v1.5H2zM2 7h12v1.5H2zM2 11h8v1.5H2z" fill="#444746"/></svg>Traps</button><ul class="outline" data-outline="traps"></ul></li>
+      </ul>
+    </aside>
+
+    <main class="page">
+      <section id="tab-ask">
+        <h1 class="title">Ask</h1>
+        <p class="subtitle" id="askSub"></p>
+        <h2 id="h-question" style="margin-top:0">Question</h2>
+        <textarea id="q" placeholder="Type or paste a question. Add the options (A. / (a) / one per line) to get the letter in your own paper."></textarea>
+        <p class="small" style="margin-top:6px">Updates as you type. Options can be labelled (A. / (a) / a)), bulleted, or one per line after the question.</p>
+        <div class="chips" id="chips"></div>
+        <div id="out" class="hidden">
+          <h2 id="h-answer">Answer <span id="conf" class="badge"></span></h2>
+          <div id="ansbox" class="ansbox"></div>
+          <details id="readbox"><summary>How the question was read</summary><div class="dbody"><table class="doc"><tbody id="interp"></tbody></table></div></details>
+        </div>
+        <div id="livewrap" class="hidden">
+          <h2 id="h-live" class="livehead">Matching questions <span class="small" id="liveCount"></span></h2>
+          <div id="live"></div>
+        </div>
+      </section>
+
+      <section id="tab-bank" class="hidden">
+        <h1 class="title">Question bank</h1>
+        <p class="subtitle" id="bankSub"></p>
+        <div id="bankList"></div>
+      </section>
+
+      <section id="tab-ref" class="hidden cheat">
+        <h1 class="title">Reference</h1>
+        <p class="subtitle">Notes that came with the question bank.</p>
+        <div id="refBody" class="refbody"></div>
+      </section>
+
+      <section id="tab-traps" class="hidden">
+        <h1 class="title">Traps</h1>
+        <p class="subtitle">Where the bank is unreliable or easy to misread. Found automatically when the document was built.</p>
+        <div id="trapBody"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script type="application/json" id="embedded-bank"></script>
+<script>
+/* MCQ matcher. Adapted from the TBSDS helper's ADAPT module: same idea of
+   normalising synonyms, comparing token sequences with LCS similarity and
+   refusing to trust a match when the words that differ are not harmless. */
+var MCQ = (function () {
+'use strict';
+
+/* ---------- normalisation ---------- */
+var SPELL = [
+  [/normali[sz]ation/g, 'normalisation'], [/normali[sz]e/g, 'normalise'], [/denormali[sz]/g, 'denormalis'], [/de-normali[sz]/g, 'denormalis'],
+  [/visuali[sz]ation/g, 'visualisation'], [/visuali[sz]e/g, 'visualise'], [/colou?r/g, 'colour'], [/organi[sz]/g, 'organis'],
+  [/characteri[sz]/g, 'characteris'], [/categori[sz]/g, 'categoris'], [/summari[sz]/g, 'summaris'], [/minimi[sz]/g, 'minimis'], [/maximi[sz]/g, 'maximis'],
+  [/optimi[sz]/g, 'optimis'], [/recogni[sz]/g, 'recognis'], [/analy[sz]/g, 'analys'], [/model{1,2}ing/g, 'modelling'], [/labell?ed/g, 'labelled'],
+  [/data ?base/g, 'database'], [/e-?r (diagram|model)/g, 'er $1'], [/entity[- ]relationship/g, 'er'], [/\berd\b/g, 'er diagram'],
+  [/\bfirst normal form\b/g, '1nf'], [/\bsecond normal form\b/g, '2nf'], [/\bthird normal form\b/g, '3nf'], [/\bfourth normal form\b/g, '4nf'], [/\bfifth normal form\b/g, '5nf'],
+  [/\bboyce[- ]codd normal form\b/g, 'bcnf'], [/\bboyce[- ]codd\b/g, 'bcnf'], [/\b([1-5])\s*nf\b/g, '$1nf'],
+  [/\bcan ?not\b|\bcan't\b/g, 'cannot'], [/\bwon't\b/g, 'will not'], [/n't\b/g, ' not'], [/\bisn't\b/g, 'is not'], [/\baren't\b/g, 'are not'], [/\bdoesn't\b/g, 'does not'], [/\bdon't\b/g, 'do not'],
+  [/\bm:n\b|\bm-n\b|\bmany[- ]to[- ]many\b|\bn:m\b/g, 'manytomany'], [/\b1:n\b|\b1:m\b|\bone[- ]to[- ]many\b/g, 'onetomany'], [/\bmany[- ]to[- ]one\b|\bn:1\b/g, 'manytoone'], [/\b1:1\b|\bone[- ]to[- ]one\b/g, 'onetoone'],
+  [/\bprimary keys?\b/g, 'pk'], [/\bforeign keys?\b/g, 'fk'], [/\bsuper ?keys?\b/g, 'superkey'], [/\bcandidate keys?\b/g, 'candidatekey'], [/\balternate keys?\b/g, 'alternatekey'],
+  [/\bcomposite keys?\b/g, 'compositekey'], [/\bsurrogate keys?\b/g, 'surrogatekey'], [/\bsub ?types?\b/g, 'subtype'], [/\bsuper ?types?\b/g, 'supertype'],
+  [/\bmulti[- ]?valued\b/g, 'multivalued'], [/\bdata ?warehous(e|es|ing)\b/g, 'datawarehouse'], [/\bdata ?lakes?\b/g, 'datalake'], [/\bdata ?hubs?\b/g, 'datahub'], [/\bdata ?marts?\b/g, 'datamart'],
+  [/\bone\b/g, '1'], [/\btwo\b/g, '2'], [/\bthree\b/g, '3'], [/\bfour\b/g, '4'], [/\bfive\b/g, '5'], [/\bsix\b/g, '6'], [/\bonce\b/g, '1 time'], [/\btwice\b/g, '2 time'],
+  [/\bunderscores?\b/g, ' _ '], [/\bpercent(age)? signs?\b/g, ' % '], [/\bno ?sql\b/g, 'nosql'], [/\bgroup by\b/g, 'groupby'], [/\border by\b/g, 'orderby'], [/\bselect \*/g, 'select star']
+];
+var SYN = [
+  [/\b(table|tables)\b/g, 'relation'], [/\b(rows?|tuples?|records?)\b/g, 'row'], [/\b(columns?|fields?|attributes?)\b/g, 'attribute'],
+  [/\b(dbms|database management system)\b/g, 'dbms'], [/\b(chart|graph|plot)s?\b/g, 'chart'], [/\b(eliminate|eliminates|eliminated|eliminating|remove|removes|removed|removing|get rid of)\b/g, 'eliminate'],
+  [/\b(describe|describes|define|defines|defined|definition)\b/g, 'define'], [/\b(best describes|best defines|refers to|is called|is known as|means)\b/g, 'define'],
+  [/\b(correct|true|right)\b(?= statement| about| regarding)/g, 'true'], [/\b(incorrect|false|wrong)\b(?= statement| about| regarding)/g, 'false'],
+  [/\b(represents?|represented|denotes?|denoted|indicates?|indicated|signif(?:y|ies)|stands? for|shows?|shown|depicts?|depicted|symboli[sz]es?)\b/g, 'represent'],
+  [/\b(chosen|choose|picked|selected|select)\b(?= (from|as|to))/g, 'select'], [/\b(known as|called|termed|referred to as)\b/g, 'called'],
+  [/\b(main|primary|principal|chief) identifier\b/g, 'mainid'], [/\b(usual|common|commonly used|most commonly used|typical|standard)\b/g, 'usual'],
+  [/\b(guarantee|guarantees|ensure|ensures|enforce|enforces)\b/g, 'ensure'], [/\b(employees?|staff members?)\b/g, 'staff'], [/\b(figure|diagram)s?\b/g, 'diagram']
+];
+var STOP = ('a an the of and or to in on at for by with from is are was were be been being has have had do does did that which who whom whose what when where how ' +
+  'this these those it its their they them as such than then so into per up out about also any following option options statement statements question ' +
+  'best describes describe described would should could will shall may might must one ones following: e.g eg i.e ie etc please select choose answer').split(' ');
+var KEEP = 'not no except never none all only both either neither true false incorrect correct most least first second third fourth fifth last cannot many'.split(' ');
+STOP = STOP.filter(function (w) { return KEEP.indexOf(w) < 0; });
+/* words that flip the answer. Polarity words matter whenever one side has them
+   and the other does not. Contrast words matter only when one is swapped for another
+   from the same group (2NF for 3NF, ellipse for rectangle); a word that is simply
+   missing is treated as a paraphrase. */
+var POLAR = 'not no except never none false incorrect wrong cannot'.split(' ');
+var GROUPS = [
+  '1nf 2nf 3nf 4nf 5nf bcnf', 'first second third fourth fifth last',
+  'most least highest lowest maximum minimum max min greater smaller larger more less fewer higher lower largest smallest',
+  'pk fk candidatekey superkey alternatekey compositekey surrogatekey', 'supertype subtype', 'ddl dml dcl tcl dql',
+  'where having groupby orderby', 'inner left right full outer cross self', 'delete drop truncate insert update alter create commit rollback savepoint grant revoke select',
+  'onetoone onetomany manytomany manytoone', 'unary binary ternary recursive', 'conceptual logical physical internal external',
+  'atomicity consistency isolation durability', 'insertion deletion update retrieval', 'exploratory explanatory exhibition', 'representation presentation narrative',
+  'datalake datahub datawarehouse datamart database dbms', 'ascending descending', 'double single dashed', 'ellipse rectangle diamond oval circle line',
+  'derived composite multivalued simple', 'disjoint overlap', 'partial total', 'strong weak', 'parent child', '1 2 3 4 5 6 many single multiple',
+  'partial transitive multivalued functional', '_ % *', 'shared exclusive', 'backward forward', 'horizontal vertical', 'before after', 'hierarchical network relational document', 'cardinality participation degree',
+  'univariate bivariate', 'minimum maximum', 'row attribute relation', 'like in between exist', 'avg sum count min max', 'filter highlight', 'dimension measure', 'live extract'
+].map(function (g) { return g.split(' '); });
+var HARM = [].concat.apply(POLAR, GROUPS);
+/* GIDX maps a word to the contrast groups it belongs to. It starts with the
+   built-in groups and prep() adds groups learned from the bank: the one-word
+   options of a question (Atomicity / Isolation / Durability ...) are words that
+   the exam itself treats as alternatives, so swapping one for another matters. */
+var GIDX = {}, NG = 0;
+function addGroup(g) { var id = NG++; g.forEach(function (w) { (GIDX[w] = GIDX[w] || []).push(id); }); }
+GROUPS.forEach(addGroup);
+var BASE_NG = NG, BASE_GIDX = JSON.stringify(GIDX);
+function harmful(onlyU, onlyB) {
+  var out = [], seen = {};
+  POLAR.forEach(function (w) { if ((onlyU.indexOf(w) >= 0) !== (onlyB.indexOf(w) >= 0)) out.push(w); });
+  onlyU.forEach(function (u) {
+    if (!GIDX[u] || POLAR.indexOf(u) >= 0) return;
+    onlyB.forEach(function (b) {
+      if (b === u || !GIDX[b] || seen[u + '|' + b]) return;
+      if (GIDX[u].some(function (g) { return GIDX[b].indexOf(g) >= 0; })) { seen[u + '|' + b] = 1; if (out.length < 4) out.push(u + ' vs ' + b); }
+    });
+  });
+  var du = onlyU.filter(function (w) { return /^\d+(\.\d+)?$/.test(w); }), db = onlyB.filter(function (w) { return /^\d+(\.\d+)?$/.test(w); });
+  if (du.length && db.length && out.join(' ').indexOf(du[0] + ' vs') < 0) out.push(du[0] + ' vs ' + db[0]);
+  return out;
+}
+
+function stem(w) {
+  if (w.length <= 3 || /^\d/.test(w) || HARM.indexOf(w) >= 0) return w;
+  if (/ies$/.test(w) && w.length > 4) return w.slice(0, -3) + 'y';
+  if (/sses$/.test(w)) return w.slice(0, -2);
+  if (/(ss|us|is)$/.test(w)) return w;
+  if (/s$/.test(w)) w = w.slice(0, -1);
+  if (w.length > 6 && /ing$/.test(w)) w = w.slice(0, -3);
+  else if (w.length > 5 && /[^e]ed$/.test(w)) w = w.slice(0, -2);
+  return w;
+}
+function clean(s) {
+  return (' ' + String(s) + ' ').toLowerCase()
+    .replace(/[‘’`´]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-').replace(/ /g, ' ')
+    .replace(/\*+/g, ' ').replace(/_{3,}|\.{4,}/g, ' blank ');
+}
+function norm(s, keepStop) {
+  s = clean(s);
+  SPELL.forEach(function (x) { s = s.replace(x[0], x[1]); });
+  SYN.forEach(function (x) { s = s.replace(x[0], x[1]); });
+  var toks = s.match(/[a-z0-9]+(?:'[a-z]+)?|[%_<>=!]+/g) || [];
+  return toks.map(function (w) { return w.replace(/'s$/, ''); })
+    .filter(function (w) { return keepStop || STOP.indexOf(w) < 0; }).map(stem);
+}
+
+/* ---------- similarity (from ADAPT) ---------- */
+function lcs(a, b) {
+  var n = a.length, m = b.length, prev = new Array(m + 1).fill(0), cur = new Array(m + 1).fill(0);
+  for (var i = 1; i <= n; i++) { cur[0] = 0; for (var j = 1; j <= m; j++) cur[j] = a[i - 1] === b[j - 1] ? prev[j - 1] + 1 : Math.max(prev[j], cur[j - 1]); var t = prev; prev = cur; cur = t; }
+  return prev[m];
+}
+function sim(a, b) { return a.length + b.length ? 2 * lcs(a, b) / (a.length + b.length) : 0; }
+function dice(a, b) {
+  if (!a.length && !b.length) return 1;
+  var ca = {}, inter = 0; a.forEach(function (w) { ca[w] = (ca[w] || 0) + 1; });
+  b.forEach(function (w) { if (ca[w]) { ca[w]--; inter++; } });
+  return 2 * inter / (a.length + b.length);
+}
+function optText(s) { return norm(s, true).join(' '); }
+function optSim(a, b) {
+  var x = norm(a, true), y = norm(b, true);
+  if (x.join(' ') === y.join(' ')) return 1;
+  return Math.max(dice(x, y), sim(x, y));
+}
+function diffBag(a, b) { var c = {}; b.forEach(function (w) { c[w] = (c[w] || 0) + 1; }); return a.filter(function (w) { if (c[w]) { c[w]--; return false; } return true; }); }
+
+/* ---------- splitting a pasted question into stem and options ---------- */
+var LABEL = /^\s*(?:[-•*]\s*)?(?:\(([a-fA-F])\)|([a-fA-F])\s*[).:\]]|([a-fA-F])\s+-\s)\s*(.+)$/;
+function split(raw) {
+  var text = String(raw || '').replace(/\r/g, '').replace(/ /g, ' ').trim();
+  var lines = text.split('\n'), stemL = [], opts = [], m;
+  // strip a leading question number ("Q12.", "12)", "Question 3")
+  if (lines.length) lines[0] = lines[0].replace(/^\s*(?:q(?:uestion)?\s*)?\d{1,3}\s*[.):]\s+/i, '');
+  // labelled options on their own lines
+  lines.forEach(function (l) {
+    if ((m = LABEL.exec(l)) && (opts.length || stemL.join(' ').trim())) {
+      var letter = (m[1] || m[2] || m[3]).toUpperCase();
+      if (letter.charCodeAt(0) - 65 === opts.length) { opts.push([letter, m[4].trim()]); return; }
+    }
+    if (opts.length && l.trim() && !/^\s*(answer|ans)\b/i.test(l)) opts[opts.length - 1][1] += ' ' + l.trim();
+    else if (!opts.length) stemL.push(l);
+  });
+  var stem = stemL.join('\n').trim();
+  // inline options: "... ? A. foo B. bar C. baz"
+  if (!opts.length) {
+    var re = /(^|\s)(?:\(([a-fA-F])\)|([A-F])[).:]|([a-f])\))(?=\s)/g, hits = [], mm;
+    while ((mm = re.exec(text))) { re.lastIndex = mm.index + mm[0].length; hits.push({l:(mm[2] || mm[3] || mm[4]).toUpperCase(), i:mm.index + mm[1].length, e:mm.index + mm[0].length,
+      style:(mm[2] ? (mm[2] === mm[2].toUpperCase() ? 'P' : 'p') : (mm[3] ? 'D' + mm[0].trim().slice(-1) : 'q'))}); }
+    var seq = [];
+    hits.forEach(function (h) { if (h.l.charCodeAt(0) - 65 === seq.length && (!seq.length || seq[0].style === h.style)) seq.push(h); });
+    if (seq.length >= 2) {
+      stem = text.slice(0, seq[0].i).trim();
+      seq.forEach(function (h, k) { opts.push([h.l, text.slice(h.e, k + 1 < seq.length ? seq[k + 1].i : text.length).trim()]); });
+    }
+  }
+  // bulleted options (radio buttons pasted from Canvas, markdown bullets)
+  if (!opts.length) {
+    var BUL = /^\s*(?:[-•*○◯●◦▢☐□]|o(?=\s))\s+(.+)$/, bl = lines.filter(function (l) { return BUL.test(l); });
+    if (bl.length >= 2) {
+      stem = lines.filter(function (l) { return !BUL.test(l); }).join('\n').trim();
+      bl.forEach(function (l, k) { opts.push([String.fromCharCode(65 + k), BUL.exec(l)[1]]); });
+    }
+  }
+  // unlabelled options: short lines after the last line ending in ? or :
+  if (!opts.length) {
+    var ls = lines.map(function (l) { return l.trim(); }).filter(Boolean), qi = -1;
+    ls.forEach(function (l, k) { if (/[?:]\s*$|_{3,}|\.{4,}/.test(l)) qi = k; });
+    var rest = qi >= 0 ? ls.slice(qi + 1) : [];
+    if (rest.length >= 2 && rest.length <= 6 && !/```|^\s*\{\s*"/m.test(rest.join('\n')) && rest.every(function (l) { return l.length < 400; })) {
+      stem = ls.slice(0, qi + 1).join('\n');
+      rest.forEach(function (l, k) { opts.push([String.fromCharCode(65 + k), l.replace(/^[-•*o○◯]\s+/, '')]); });
+    } else if (ls.length >= 3 && /^(true|false)$/i.test(ls[ls.length - 1]) && /^(true|false)$/i.test(ls[ls.length - 2])) {
+      stem = ls.slice(0, -2).join('\n');
+      opts = [['A', ls[ls.length - 2]], ['B', ls[ls.length - 1]]];
+    }
+  }
+  stem = stem.replace(/\s*\(?(?:true\s*\/\s*false|t\s*\/\s*f)\)?\s*:?\s*$/i, '').replace(/^\s*(?:true or false|t\/f)\s*[:.-]\s*/i, '');
+  opts = opts.map(function (o) { return [o[0], o[1].replace(/\s+/g, ' ').replace(/^`|`$/g, '').trim()]; });
+  return {stem:stem, options:opts};
+}
+
+/* ---------- index ---------- */
+var B = null, DF = {}, N = 0;
+function prep(bank) {
+  GIDX = JSON.parse(BASE_GIDX); NG = BASE_NG; VOCAB = null;
+  B = bank.map(function (q) {
+    var st = norm(q.stem), opts = (q.options || []).map(function (o) { return {l:o[0], t:o[1], n:norm(o[1], true)}; });
+    var ansL = Array.isArray(q.answer) ? q.answer : (q.answer ? [q.answer] : []);
+    var ansT = ansL.map(function (l) { var o = opts.filter(function (x) { return x.l === l; })[0]; return o ? o.t : ''; }).filter(Boolean).join('; ');
+    if (!ansT) ansT = q.answerText || '';
+    var ctx = q.context ? norm(q.context) : [];
+    return {q:q, st:st, opts:opts, ansL:ansL, ans:ansT, ansN:optText(ansT), bag:st.concat(ctx, [].concat.apply([], opts.map(function (o) { return o.n; })))};
+  });
+  N = B.length; DF = {};
+  B.forEach(function (b) { uniq(b.st).forEach(function (w) { DF[w] = (DF[w] || 0) + 1; }); });
+  B.forEach(function (b) { b.v = vec(b.st); });
+  // learned contrast groups
+  var GENERIC = 'none all both true false yes no above below other option options neither either'.split(' ');
+  var learned = {};
+  B.forEach(function (b) {
+    var ws = uniq(b.opts.map(function (o) { var t = norm(o.t); return t.length === 1 ? t[0] : null; })
+      .filter(function (w) { return w && GENERIC.indexOf(w) < 0 && !/^\d+$/.test(w); }));
+    if (ws.length >= 2) { ws.sort(); learned[ws.join(' ')] = ws; }
+  });
+  Object.keys(learned).forEach(function (k) { addGroup(learned[k]); });
+  return B;
+}
+function uniq(a) { var o = []; a.forEach(function (x) { if (o.indexOf(x) < 0) o.push(x); }); return o; }
+function idf(w) { return Math.log((N + 1) / ((DF[w] || 0) + 1)) + 1; }
+function vec(t) { var v = {}, n = 0; t.forEach(function (w) { v[w] = (v[w] || 0) + idf(w); }); Object.keys(v).forEach(function (w) { n += v[w] * v[w]; }); v.__n = Math.sqrt(n) || 1; return v; }
+function cos(a, b) { var d = 0; Object.keys(a).forEach(function (w) { if (w !== '__n' && b[w]) d += a[w] * b[w]; }); return d / (a.__n * b.__n); }
+
+/* best one-to-one pairing between the user's options and a bank question's options */
+function pairOptions(userOpts, b) {
+  var cells = [];
+  userOpts.forEach(function (u, i) { b.opts.forEach(function (o, j) { cells.push({i:i, j:j, s:optSim(u[1], o.t)}); }); });
+  cells.sort(function (x, y) { return y.s - x.s; });
+  var ui = {}, bj = {}, pairs = [], tot = 0;
+  cells.forEach(function (c) { if (ui[c.i] || bj[c.j] || c.s < 0.34) return; ui[c.i] = bj[c.j] = 1; pairs.push(c); tot += c.s; });
+  return {pairs:pairs, score:tot / Math.max(userOpts.length, b.opts.length)};
+}
+
+/* ---------- solve ---------- */
+function solve(raw, opts) {
+  opts = opts || {};
+  var sp = split(raw), ust = norm(sp.stem);
+  if (!ust.length && sp.options.length) ust = norm(sp.options.map(function (o) { return o[1]; }).join(' '));
+  var uv = vec(ust), hasOpts = sp.options.length >= 2;
+  var userBag = ust.concat([].concat.apply([], sp.options.map(function (o) { return norm(o[1], true); })));
+  // retrieve: cosine on stems, plus option-bag overlap when options were given
+  var cand = B.map(function (b, i) {
+    var r = cos(uv, b.v);
+    if (hasOpts) r = 0.75 * r + 0.25 * dice(userBag, b.bag);
+    return {i:i, r:r};
+  }).sort(function (a, b) { return b.r - a.r; }).slice(0, 40);
+  cand.forEach(function (c) {
+    var b = B[c.i];
+    c.stemSim = sim(ust, b.st);
+    c.bagSim = dice(ust, b.st);
+    var s = Math.max(c.stemSim, 0.92 * c.bagSim);
+    if (hasOpts) { c.opt = pairOptions(sp.options, b); c.score = 0.62 * s + 0.38 * c.opt.score; }
+    else c.score = s;
+    var onlyU = diffBag(ust, b.st), onlyB = diffBag(b.st, ust);
+    c.onlyU = onlyU; c.onlyB = onlyB;
+    c.harm = harmful(onlyU, onlyB);
+    if (c.harm.length) c.score -= 0.08 * Math.min(c.harm.length, 3);
+  });
+  cand.sort(function (a, b) { return b.score - a.score; });
+  var top = cand[0];
+  if (!top || !ust.length) return {split:sp, level:'none', results:[], ust:ust};
+  var b = B[top.i];
+  // answer mapped onto the user's own letters
+  var mapped = null;
+  if (hasOpts && top.opt && b.ansL.length) {
+    var labs = b.opts.map(function (o) { return o.l; }), got = [];
+    b.ansL.forEach(function (l) { var aj = labs.indexOf(l); var pr = top.opt.pairs.filter(function (p) { return p.j === aj; })[0]; if (pr) got.push(pr); });
+    got.sort(function (x, y) { return sp.options[x.i][0] < sp.options[y.i][0] ? -1 : 1; });
+    if (got.length === b.ansL.length) mapped = {letter:got.map(function (p) { return sp.options[p.i][0]; }).join(', '), text:got.map(function (p) { return sp.options[p.i][1]; }).join('; '),
+      letters:got.map(function (p) { return sp.options[p.i][0]; }), sim:Math.min.apply(null, got.map(function (p) { return p.s; }))};
+  }
+  // bank question has no options (or they did not pair up): look for the answer text among the user's options
+  if (hasOpts && !mapped && b.ans) {
+    var best = null;
+    sp.options.forEach(function (o) { var v = optSim(o[1], b.ans); if (v >= 0.75 && (!best || v > best.v)) best = {o:o, v:v}; });
+    if (best) mapped = {letter:best.o[0], text:best.o[1], letters:[best.o[0]], sim:best.v};
+  }
+  // competing candidates that give a different answer
+  var differs = function (c) { return !sameAnswer(B[c.i], b); };
+  var rivals = cand.slice(1).filter(function (c) { return c.score > top.score - 0.04 && differs(c); });
+  var next = cand.slice(1).filter(differs)[0], margin = next ? top.score - next.score : 1;
+  var level;
+  var stemOk = Math.max(top.stemSim, top.bagSim);
+  if (stemOk >= 0.97 && !top.harm.length && !rivals.length && (!hasOpts || top.opt.score >= 0.9)) level = 'exact';
+  else if ((top.score >= 0.85 || (top.score >= 0.68 && margin >= 0.15)) && !top.harm.length && !rivals.length && (!hasOpts || top.opt.score >= 0.7)) level = 'match';
+  else if (top.score >= 0.55) level = 'check';
+  else level = 'none';
+  if (hasOpts && !mapped && level !== 'none') level = 'check';
+  var why = [];
+  if (top.harm.length) why.push('the wording differs in words that can change the answer: ' + top.harm.join(', '));
+  if (rivals.length) why.push(hasOpts ? 'another bank question fits almost as well and gives a different answer' : 'the bank has this question more than once with different options and different answers; paste your options to pick the right one');
+  if (hasOpts && top.opt && top.opt.score < 0.7) why.push('your options only partly match the bank options');
+  if (hasOpts && !mapped && level !== 'none') why.push('the bank answer is not among your options');
+  return {split:sp, ust:ust, level:level, top:top, bank:b, mapped:mapped, rivals:rivals.slice(0, 3), why:why,
+    results:cand.slice(0, 6).map(function (c) { return {i:c.i, id:B[c.i].q.id, score:c.score, stemSim:c.stemSim, opt:c.opt ? c.opt.score : null}; })};
+}
+
+/* two answers say the same thing if they are near-identical, or the shorter one
+   appears word for word, in order, inside a longer one that is not much longer */
+function sameAnswer(a, b) {
+  if (a.ansN === b.ansN || optSim(a.ans, b.ans) >= 0.92) return true;
+  var x = norm(a.ans), y = norm(b.ans); if (x.length > y.length) { var t = x; x = y; y = t; }
+  return x.length >= 2 && lcs(x, y) === x.length && y.length <= 2.5 * x.length && !/\band\b/.test(a.ans + ' ' + b.ans);
+}
+/* live filter: ranks bank questions while the person is still typing.
+   The last word may be half-typed, so it matches any word that starts with it. */
+var VOCAB = null;
+function live(raw, n) {
+  var text = String(raw || ''), sp = split(text);
+  var q = norm(sp.stem || text), partial = /[a-z0-9]$/i.test(text.trim()) && !/\s$/.test(text);
+  if (!q.length) return [];
+  if (!VOCAB) { VOCAB = {}; B.forEach(function (b) { b.bag.forEach(function (w) { VOCAB[w] = 1; }); }); }
+  var last = partial && q[q.length - 1].length >= 2 ? q[q.length - 1] : null, pre = [];
+  if (last) pre = Object.keys(VOCAB).filter(function (w) { return w.indexOf(last) === 0; });
+  var full = last ? q.slice(0, -1) : q;
+  var wts = full.map(idf), tot = wts.reduce(function (a, b) { return a + b; }, 0) + (last ? idf(last) * 0.8 : 0);
+  if (!tot) return [];
+  var qv = vec(full.length ? full : q);
+  var out = [];
+  B.forEach(function (b, i) {
+    var got = 0, inSt = {}, inBag = {};
+    b.st.forEach(function (w) { inSt[w] = 1; }); b.bag.forEach(function (w) { inBag[w] = 1; });
+    full.forEach(function (w, k) { got += inSt[w] ? wts[k] : (inBag[w] ? 0.5 * wts[k] : 0); });
+    if (pre.length) { var hit = pre.some(function (w) { return inSt[w]; }) ? 1 : (pre.some(function (w) { return inBag[w]; }) ? 0.5 : 0); got += hit * idf(last) * 0.8; }
+    var cover = got / tot;
+    if (cover < 0.35) return;
+    var sc = 0.7 * cover + 0.3 * cos(qv, b.v);
+    if (full.length >= 4) sc = 0.6 * sc + 0.4 * sim(q, b.st);
+    out.push({i:i, score:sc, cover:cover});
+  });
+  return out.sort(function (a, b) { return b.score - a.score; }).slice(0, n || 10);
+}
+/* which words of a bank text matched the query (for highlighting) */
+function matchedWords(raw) {
+  var q = norm(split(raw).stem || raw), set = {};
+  q.forEach(function (w) { set[w] = 1; });
+  var last = /[a-z0-9]$/i.test(String(raw).trim()) ? q[q.length - 1] : null;
+  return function (word) {
+    var w = norm(word, true)[0]; if (!w) return false;
+    return !!set[w] && w.length > 2 && ['all','only','both','first','last','most','least','many','true','false','correct'].indexOf(w) < 0 || (last && last.length >= 3 && w.indexOf(last) === 0);
+  };
+}
+/* near-duplicates of a bank question (for "same question elsewhere") */
+function variants(i, min) {
+  var a = B[i], out = [];
+  B.forEach(function (b, j) {
+    if (j === i) return;
+    var s = Math.max(sim(a.st, b.st), dice(a.st, b.st));
+    if (s < (min || 0.86)) return;
+    var harm = harmful(diffBag(a.st, b.st), diffBag(b.st, a.st));
+    if (harm.length) return;
+    out.push({j:j, s:s});
+  });
+  return out.sort(function (x, y) { return y.s - x.s; });
+}
+/* every pair of bank questions with near-identical wording and no answer-changing
+   difference. An inverted index keeps this fast: only pairs that share most of
+   their less common words are compared word by word. */
+function pairs(min) {
+  min = min || 0.86;
+  var post = {}, out = [], cap = Math.max(20, N * 0.12);
+  B.forEach(function (b, i) { uniq(b.st).forEach(function (w) { if (DF[w] <= cap) (post[w] = post[w] || []).push(i); }); });
+  B.forEach(function (a, i) {
+    var cnt = {}, ua = uniq(a.st).filter(function (w) { return DF[w] <= cap; });
+    if (!ua.length) return;
+    ua.forEach(function (w) { post[w].forEach(function (j) { if (j > i) cnt[j] = (cnt[j] || 0) + 1; }); });
+    Object.keys(cnt).forEach(function (j) {
+      j = +j; var b = B[j], ub = uniq(b.st).filter(function (w) { return DF[w] <= cap; }).length;
+      if (2 * cnt[j] / (ua.length + ub) < min - 0.2) return;
+      var s = Math.max(sim(a.st, b.st), dice(a.st, b.st));
+      if (s < min) return;
+      if (harmful(diffBag(a.st, b.st), diffBag(b.st, a.st)).length) return;
+      out.push({i:i, j:j, s:s});
+    });
+  });
+  return out;
+}
+/* do two bank questions agree? returns 'same', 'conflict' or 'different options' */
+function agree(a, b) {
+  if (a.ansN === b.ansN) return 'same';
+  var aInB = b.opts.some(function (o) { return optSim(o.t, a.ans) >= 0.75; });
+  var bInA = a.opts.some(function (o) { return optSim(o.t, b.ans) >= 0.75; });
+  if (optSim(a.ans, b.ans) >= 0.85) return 'same';
+  if (aInB || bInA) return 'conflict';
+  return 'different options';
+}
+
+return {prep:prep, pairs:pairs, live:live, matchedWords:matchedWords, sameAnswer:sameAnswer, harmful:harmful, solve:solve, split:split, norm:norm, sim:sim, dice:dice, variants:variants, agree:agree, optSim:optSim, get B() { return B; }, HARM:HARM};
+})();
+if (typeof module !== 'undefined') module.exports = MCQ;
+
+</script>
+<script>
+/* Turns an uploaded JSON question bank into the shape the matcher uses.
+   It accepts the BT2102 master bank format and the common variations seen in
+   other exports, and reports what it found so the person can check the mapping. */
+var LOADER = (function () {
+'use strict';
+
+var F = {
+  id: ['id', 'qid', 'question_id', 'questionId', 'code', 'number', 'no', 'num', 'qno'],
+  stem: ['question', 'stem', 'prompt', 'question_text', 'questionText', 'text', 'q', 'body', 'title'],
+  context: ['context', 'code', 'passage', 'scenario', 'figure', 'table', 'extra', 'snippet', 'image_alt', 'exhibit'],
+  options: ['options', 'choices', 'alternatives', 'opts', 'answers_list', 'answerOptions', 'answer_options'],
+  answer: ['answer', 'correct', 'correct_answer', 'correctAnswer', 'answer_key', 'answerKey', 'key', 'correct_option', 'correctOption', 'ans',
+           'correct_index', 'correctIndex', 'answer_index', 'answerIndex', 'solution'],
+  answerText: ['answer_text', 'answerText', 'correct_text', 'correctText'],
+  explanation: ['explanation', 'rationale', 'reason', 'why', 'justification', 'explain', 'solution_text', 'feedback'],
+  topic: ['topic', 'category', 'chapter', 'section', 'lecture', 'module', 'unit', 'subject', 'tags', 'tag'],
+  part: ['part', 'set', 'group', 'quiz', 'paper', 'week'],
+  source: ['source', 'origin', 'from', 'reference'],
+  note: ['note', 'notes', 'comment', 'remarks'],
+  flag: ['review_flag', 'reviewFlag', 'flag', 'warning', 'doubt', 'caution'],
+  likely: ['likely_answer', 'likelyAnswer', 'suggested_answer', 'suggestedAnswer', 'alt_answer', 'alternative_answer'],
+  also: ['also_in', 'alsoIn', 'duplicates', 'same_as'],
+  similar: ['similar_to', 'similarTo', 'related', 'see_also']
+};
+var LIST_KEYS = ['questions', 'items', 'mcqs', 'mcq', 'data', 'bank', 'qs', 'questionBank', 'question_bank', 'entries', 'records'];
+var REF_KEYS = ['reference_markdown', 'reference', 'references', 'cheatsheet', 'cheat_sheet', 'notes_markdown', 'appendix', 'theory', 'summary_markdown'];
+var GROUP_KEYS = ['sections', 'topics', 'chapters', 'parts', 'groups', 'sets', 'quizzes', 'lectures'];
+
+function str(v) {
+  if (v == null) return '';
+  if (Array.isArray(v)) return v.map(str).filter(Boolean).join(', ');
+  if (typeof v === 'object') return v.text != null ? str(v.text) : (v.name != null ? str(v.name) : JSON.stringify(v));
+  return String(v).trim();
+}
+function pick(o, keys, used) {
+  for (var k = 0; k < keys.length; k++) if (o[keys[k]] != null && o[keys[k]] !== '') { if (used) used[keys[k]] = 1; return {key:keys[k], val:o[keys[k]]}; }
+  // case-insensitive fallback
+  var lower = {}; Object.keys(o).forEach(function (x) { lower[x.toLowerCase()] = x; });
+  for (k = 0; k < keys.length; k++) { var real = lower[keys[k].toLowerCase()]; if (real && o[real] != null && o[real] !== '') { if (used) used[real] = 1; return {key:real, val:o[real]}; } }
+  return null;
+}
+function isQuestion(o) {
+  if (!o || typeof o !== 'object' || Array.isArray(o)) return false;
+  var s = pick(o, F.stem);
+  var optList = Array.isArray(o.answers) && o.answers.length >= 2;
+  return !!(s && typeof s.val === 'string' && s.val.trim() && (optList || pick(o, F.options) || pick(o, F.answer) || pick(o, F.answerText)));
+}
+
+/* find the question objects anywhere in the file, keeping the title of any
+   enclosing section as a topic */
+function collect(root) {
+  var out = [];
+  function walk(x, trail, depth) {
+    if (depth > 6 || x == null) return;
+    if (Array.isArray(x)) {
+      var qs = x.filter(isQuestion);
+      if (qs.length && qs.length >= x.length * 0.5) { x.forEach(function (o) { if (isQuestion(o)) out.push({o:o, trail:trail}); else walk(o, trail, depth + 1); }); return; }
+      x.forEach(function (o) { walk(o, trail, depth + 1); });
+      return;
+    }
+    if (typeof x !== 'object') return;
+    if (isQuestion(x)) { out.push({o:x, trail:trail}); return; }
+    var name = str(x.title || x.name || x.topic || x.section || x.chapter || '');
+    var t = name && depth > 0 ? trail.concat([name]) : trail;
+    var keys = Object.keys(x);
+    // walk question lists first so the file order is kept
+    keys.sort(function (a, b) { return (LIST_KEYS.indexOf(b) >= 0) - (LIST_KEYS.indexOf(a) >= 0); });
+    keys.forEach(function (k) { if (typeof x[k] === 'object') walk(x[k], t, depth + 1); });
+  }
+  walk(root, [], 0);
+  return out;
+}
+
+var LAB = /^\s*(?:\(([A-Za-z])\)|([A-Za-z])\s*[).:\]]|([A-Za-z])\s+-\s)\s*/;
+function letter(k) { return String.fromCharCode(65 + k); }
+function parseOptions(v, warn) {
+  var opts = [], correct = [];
+  if (typeof v === 'string') {
+    var lines = v.split(/\n+/).map(function (l) { return l.trim(); }).filter(Boolean);
+    if (lines.length < 2) lines = v.split(/\s*(?=\(?[A-F][).:]\s)/).map(function (l) { return l.trim(); }).filter(Boolean);
+    v = lines;
+  }
+  if (Array.isArray(v)) {
+    v.forEach(function (o, k) {
+      if (o == null) return;
+      if (typeof o !== 'object') {
+        var t = String(o), m = LAB.exec(t), l = letter(k);
+        if (m && v.length <= 8 && (m[1] || m[2] || m[3]).toUpperCase() === l) t = t.slice(m[0].length);
+        opts.push([l, t.trim()]); return;
+      }
+      var lab = pick(o, ['label', 'letter', 'key', 'id', 'option', 'value']), txt = pick(o, ['text', 'content', 'answer', 'option_text', 'optionText', 'description', 'value', 'label', 'title']);
+      var L = lab && String(lab.val).trim().length <= 2 && lab.key !== (txt && txt.key) ? String(lab.val).trim().toUpperCase() : letter(k);
+      if (/^\d+$/.test(L)) L = letter(+L - (v.length && pick(v[0], ['label', 'letter', 'key', 'id']) && String(pick(v[0], ['label', 'letter', 'key', 'id']).val) === '0' ? 0 : 1));
+      var T = txt ? str(txt.val) : '';
+      if (!T) { warn('an option has no text'); return; }
+      opts.push([L, T]);
+      var c = pick(o, ['correct', 'isCorrect', 'is_correct', 'answer', 'right']);
+      if (c && c.val === true) correct.push(L);
+    });
+  } else if (v && typeof v === 'object') {
+    Object.keys(v).forEach(function (k, n) { var L = /^[A-Za-z]$/.test(k) ? k.toUpperCase() : (/^\d+$/.test(k) ? letter(+k - 1) : letter(n)); opts.push([L, str(v[k])]); });
+  }
+  return {opts:opts, correct:correct};
+}
+
+/* answer as letters. base is 0 or 1 for numeric answers */
+function parseAnswer(v, opts, base, warn) {
+  var labels = opts.map(function (o) { return o[0]; }), out = [];
+  function add(L) { if (labels.indexOf(L) >= 0 && out.indexOf(L) < 0) out.push(L); }
+  function byText(t) {
+    var n = String(t).trim().toLowerCase().replace(/\s+/g, ' ');
+    for (var k = 0; k < opts.length; k++) if (opts[k][1].trim().toLowerCase().replace(/\s+/g, ' ') === n) return opts[k][0];
+    for (k = 0; k < opts.length; k++) if (opts[k][1].trim().toLowerCase().replace(/[.\s]+$/, '') === n.replace(/[.\s]+$/, '')) return opts[k][0];
+    return null;
+  }
+  (Array.isArray(v) ? v : [v]).forEach(function (a) {
+    if (a == null) return;
+    if (typeof a === 'boolean') { var t = byText(a ? 'true' : 'false'); if (t) add(t); return; }
+    if (typeof a === 'number') { add(letter(a - base)); return; }
+    if (typeof a === 'object') { a = str(a); }
+    var s = String(a).trim(), m;
+    if (!s) return;
+    var bt = byText(s); if (bt) { add(bt); return; }
+    if ((m = /^(?:option|answer|ans|choice)?\s*[:(]?\s*([A-Za-z])\s*[).:]?\s*$/i.exec(s))) { add(m[1].toUpperCase()); return; }
+    if (/^\d+$/.test(s)) { add(letter(+s - base)); return; }
+    if (/^[A-Fa-f](\s*[,&/+]\s*|\s+and\s+|\s+)[A-Fa-f](([,&/+]|\s+and\s+|\s+)[A-Fa-f])*$/.test(s) || /^[A-F]{2,6}$/.test(s)) { s.toUpperCase().replace(/[^A-F]/g, '').split('').forEach(add); return; }
+    if ((m = /^\(?([A-Za-z])[).:]\s+(.+)$/.exec(s)) && labels.indexOf(m[1].toUpperCase()) >= 0) { add(m[1].toUpperCase()); return; }
+  });
+  return out;
+}
+
+function parseRefs(root, warn) {
+  var refs = [];
+  if (!root || typeof root !== 'object' || Array.isArray(root)) return refs;
+  REF_KEYS.forEach(function (k) {
+    var v = root[k]; if (v == null) return;
+    if (typeof v === 'string') refs.push({title:k === 'reference_markdown' || k === 'reference' || k === 'references' ? 'Reference' : k.replace(/_/g, ' ').replace(/^\w/, function (c) { return c.toUpperCase(); }), md:v});
+    else if (Array.isArray(v)) v.forEach(function (r, n) {
+      if (typeof r === 'string') refs.push({title:'Reference ' + (n + 1), md:r});
+      else if (r && typeof r === 'object') { var md = pick(r, ['markdown', 'md', 'content', 'text', 'body']); if (md) refs.push({title:str(r.title || r.name || 'Reference ' + (n + 1)), md:String(md.val)}); }
+    });
+    else if (typeof v === 'object') Object.keys(v).forEach(function (t) { if (typeof v[t] === 'string') refs.push({title:t, md:v[t]}); });
+  });
+  return refs;
+}
+
+function load(text) {
+  var root, warnings = [], wcount = {};
+  function warn(msg, id) { var k = msg; wcount[k] = wcount[k] || {msg:msg, ids:[]}; if (id) wcount[k].ids.push(id); }
+  try { root = JSON.parse(String(text).replace(/^﻿/, '')); }
+  catch (e) { return {error:'This file is not valid JSON: ' + e.message}; }
+  var found = collect(root);
+  if (!found.length) return {error:'No questions found. Each question needs a question text field (for example "question" or "stem") and either "options" or "answer". See the format guide below.'};
+
+  // part titles from a "parts" table if present
+  var partTitle = {};
+  if (root && Array.isArray(root.parts)) root.parts.forEach(function (p) { if (p && p.part != null) partTitle[String(p.part)] = str(p.title || p.name || ''); });
+
+  // numeric answers: 0-based or 1-based?
+  var nums = [], zeroKey = false;
+  found.forEach(function (f) { var a = pick(f.o, F.answer); if (a && typeof a.val === 'number') { nums.push(a.val); if (/index|idx/i.test(a.key)) zeroKey = true; } });
+  var base = zeroKey || nums.indexOf(0) >= 0 ? 0 : 1;
+
+  var used = {}, ids = {}, qs = [], kinds = {mcq:0, multi:0, tf:0, open:0};
+  found.forEach(function (f, n) {
+    var o = f.o, u = {};
+    var stem = str(pick(o, F.stem, u).val);
+    var idp = pick(o, F.id, u), id = idp ? str(idp.val) : '';
+    if (!id || ids[id]) { var nid = 'Q' + String(n + 1).padStart(3, '0'); if (id) warn('duplicate ID, renumbered', id); id = ids[nid] ? nid + '-' + n : nid; }
+    ids[id] = 1;
+    var op = pick(o, F.options, u), po = op ? parseOptions(op.val, function (m) { warn(m, id); }) : {opts:[], correct:[]};
+    // "answers" is sometimes the option list (with correct: true on the right one)
+    if (!op && Array.isArray(o.answers) && o.answers.length > 1) { po = parseOptions(o.answers, function (m) { warn(m, id); }); u.answers = 1; }
+    var opts = po.opts;
+    var ap = pick(o, F.answer, u), atp = pick(o, F.answerText, u);
+    var ans = po.correct.slice(), answerText = '';
+    if (!ans.length && ap) {
+      if (!opts.length && /^(true|false|t|f|yes|no)$/i.test(str(ap.val))) {
+        opts = [['A', 'True'], ['B', 'False']];
+        ans = /^(true|t|yes)$/i.test(str(ap.val)) ? ['A'] : ['B'];
+      } else if (!opts.length) answerText = str(ap.val);
+      else ans = parseAnswer(ap.val, opts, base);
+    }
+    if (!ans.length && atp && opts.length) ans = parseAnswer(atp.val, opts, base);
+    if (!ans.length && !answerText && atp) answerText = str(atp.val);
+    if (opts.length && !ans.length) {
+      if (ap || atp) { warn('answer does not match any option; shown as written', id); answerText = str((ap || atp).val); }
+      else warn('no answer given', id);
+    }
+    if (!opts.length && !answerText && !ans.length) warn('no answer given', id);
+    if (opts.length === 2 && /^true$/i.test(opts[0][1]) && /^false$/i.test(opts[1][1])) kinds.tf++;
+    else if (!opts.length) kinds.open++;
+    else if (ans.length > 1) kinds.multi++;
+    else kinds.mcq++;
+    var part = pick(o, F.part, u), topic = pick(o, F.topic, u), src = pick(o, F.source, u);
+    var partName = part ? (partTitle[str(part.val)] ? 'Part ' + str(part.val) + ': ' + partTitle[str(part.val)] : str(part.val)) : (f.trail[0] || '');
+    if (/^\d+$/.test(partName)) partName = 'Part ' + partName;
+    var lk = pick(o, F.likely, u), likely = lk && opts.length ? parseAnswer(lk.val, opts, base) : [];
+    qs.push({
+      id:id, stem:stem, context:str((pick(o, F.context, u) || {}).val),
+      options:opts, answer:ans, answerText:answerText,
+      explanation:str((pick(o, F.explanation, u) || {}).val), note:str((pick(o, F.note, u) || {}).val),
+      flag:str((pick(o, F.flag, u) || {}).val), likely:likely,
+      also:[].concat((pick(o, F.also, u) || {val:[]}).val).map(str).filter(Boolean),
+      similar:[].concat((pick(o, F.similar, u) || {val:[]}).val).map(str).filter(Boolean),
+      part:partName || 'Questions', topic:topic ? str(topic.val) : (f.trail[f.trail.length - 1] !== partName ? f.trail[f.trail.length - 1] || '' : ''),
+      source:src ? str(src.val) : ''
+    });
+    Object.keys(u).forEach(function (k) { used[k] = (used[k] || 0) + 1; });
+  });
+  var title = root && !Array.isArray(root) ? str(root.title || root.name || root.course || '') : '';
+  Object.keys(wcount).forEach(function (k) { warnings.push(wcount[k]); });
+  return {title:title, questions:qs, references:parseRefs(root), report:{count:qs.length, fields:used, kinds:kinds, base:nums.length ? base : null, warnings:warnings}};
+}
+
+return {load:load};
+})();
+if (typeof module !== 'undefined') module.exports = LOADER;
+
+</script>
+<script>
+(function () {
+'use strict';
+/* the untouched page, captured before anything renders, so "Save offline copy"
+   can write a clean file with the bank built in */
+var PRISTINE = '<!doctype html>\n' + document.documentElement.outerHTML;
+var $ = function (id) { return document.getElementById(id); };
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function store(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+var KEY = 'exam_autosolver_bank_v1';
+
+/* ---------------- shared rendering helpers ---------------- */
+var KW = /\b(SELECT|DISTINCT|FROM|LEFT JOIN|RIGHT JOIN|INNER JOIN|FULL JOIN|CROSS JOIN|JOIN|ON|WHERE|AND|OR|NOT|IN|IS|NULL|GROUP BY|HAVING|ORDER BY|LIMIT|AS|DESC|ASC|BETWEEN|LIKE|EXISTS|CASE|WHEN|THEN|ELSE|END|WITH|OVER|PARTITION BY|UNION|ALL|INSERT INTO|VALUES|UPDATE|SET|DELETE FROM|CREATE TABLE|CREATE VIEW|DROP TABLE|ALTER TABLE|ADD|PRIMARY KEY|FOREIGN KEY|REFERENCES|CHECK|DEFAULT|UNIQUE|CASCADE|INT|VARCHAR|CHAR|DECIMAL|DATE)\b/g;
+var FN = /\b(COUNT|SUM|AVG|MIN|MAX|ROUND|CONCAT|YEAR|MONTH|COALESCE|RANK|DENSE_RANK|ROW_NUMBER|CAST)\b(?=\()/g;
+function hl(code, lang) {
+  if (!/^(sql|mysql)$/i.test(lang || '') && !/\b(SELECT|CREATE TABLE|INSERT INTO|UPDATE)\b/.test(code)) return esc(code);
+  return code.split(/('(?:[^']|'')*'|--[^\n]*)/g).map(function (p, i) {
+    if (i % 2) return /^'/.test(p) ? '<span class="str">' + esc(p) + '</span>' : '<span class="cm">' + esc(p) + '</span>';
+    return esc(p).replace(FN, '<span class="fn">$1</span>').replace(KW, '<span class="kw">$1</span>').replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="num">$1</span>');
+  }).join('');
+}
+function inline(p, mark) {
+  var segs = String(p).split(/(`[^`]+`)/), h = '';
+  segs.forEach(function (sg, k) {
+    if (k % 2) { h += '<code>' + esc(sg.slice(1, -1)) + '</code>'; return; }
+    var t = esc(sg).replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>').replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, '$1<i>$2</i>')
+      .replace(/!\[([^\]]*)\]\([^)]*\)/g, '[image: $1]').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1');
+    if (mark) t = t.replace(/(<[^>]+>|&[#a-z0-9]+;)|([A-Za-z0-9][A-Za-z0-9'\-]*)/g, function (all, tag, w) { return tag ? tag : (mark(w) ? '<mark>' + w + '</mark>' : w); });
+    h += t;
+  });
+  return h;
+}
+function md(s, mark) {
+  var parts = String(s || '').split(/(```[^\n]*\n[\s\S]*?```)/), out = '';
+  parts.forEach(function (p, k) {
+    if (k % 2) { var m = /^```([^\n]*)\n([\s\S]*?)\n?```$/.exec(p); out += '<pre>' + hl(m ? m[2] : p, m ? m[1].trim() : '') + '</pre>'; return; }
+    out += inline(p, mark);
+  });
+  return out.replace(/\n{2,}/g, '\n').replace(/^\n+|\n+$/g, '');
+}
+var COPYBUF = [];
+function codebox(code, lang) { COPYBUF.push(code); return '<div class="codebox"><pre>' + hl(code, lang) + '</pre><button class="copy" data-copy="' + (COPYBUF.length - 1) + '">Copy</button></div>'; }
+/* a fuller markdown renderer for the reference tab */
+function mdDoc(src, baseTitle) {
+  var lines = String(src || '').replace(/\r/g, '').split('\n'), h = '', i = 0, list = [], tbl = [], para = [], inBlock = false;
+  var levels = lines.map(function (l) { var m = /^(#{1,6})\s/.exec(l); return m ? m[1].length : 9; }), top = Math.min.apply(null, levels.concat([9]));
+  function flushPara() { if (para.length) { h += '<p>' + inline(para.join(' ')) + '</p>'; para = []; } }
+  function flushList() { while (list.length) h += list.pop() === 'ol' ? '</ol>' : '</ul>'; }
+  function flushTbl() {
+    if (!tbl.length) return;
+    var rows = tbl.filter(function (r) { return !/^\|?[\s|:-]+\|?$/.test(r); }).map(function (r) { return r.replace(/^\||\|$/g, '').split('|').map(function (c) { return c.trim(); }); });
+    h += '<div class="tablewrap"><table class="doc"><thead><tr>' + rows[0].map(function (c) { return '<th>' + inline(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      rows.slice(1).map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + inline(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+    tbl = [];
+  }
+  function flushAll() { flushPara(); flushList(); flushTbl(); }
+  function openBlock() { if (inBlock) h += '</div>'; h += '<div class="cblock">'; inBlock = true; }
+  if (baseTitle) h += '<h1>' + esc(baseTitle) + '</h1>';
+  openBlock();
+  for (; i < lines.length; i++) {
+    var l = lines[i], m;
+    if ((m = /^```(.*)$/.exec(l))) {
+      flushAll(); var code = []; i++;
+      while (i < lines.length && !/^```/.test(lines[i])) code.push(lines[i++]);
+      h += codebox(code.join('\n'), m[1].trim()); continue;
+    }
+    if (/^\s*\|/.test(l)) { flushPara(); flushList(); tbl.push(l.trim()); continue; } else flushTbl();
+    if ((m = /^(#{1,6})\s+(.*)$/.exec(l))) {
+      flushAll(); var lv = m[1].length - top;
+      if (lv <= 0 && !(baseTitle && i === 0)) { if (inBlock) { h += '</div>'; inBlock = false; } h += '<h1>' + inline(m[2]) + '</h1>'; openBlock(); }
+      else if (lv === 1 || (lv <= 0)) { openBlock(); h += '<h3>' + inline(m[2]) + '</h3>'; }
+      else h += '<h4>' + inline(m[2]) + '</h4>';
+      continue;
+    }
+    if ((m = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/.exec(l))) {
+      flushPara();
+      var depth = Math.floor(m[1].replace(/\t/g, '    ').length / 2) + 1, kind = /\d/.test(m[2]) ? 'ol' : 'ul';
+      while (list.length > depth) h += list.pop() === 'ol' ? '</ol>' : '</ul>';
+      while (list.length < depth) { h += '<' + kind + '>'; list.push(kind); }
+      h += '<li>' + inline(m[3]).replace(/^([^:<]{2,40}):\s/, '<b>$1:</b> ') + '</li>'; continue;
+    }
+    if ((m = /^>\s?(.*)$/.exec(l))) { flushAll(); h += '<blockquote>' + inline(m[1]) + '</blockquote>'; continue; }
+    if (/^\s*$/.test(l)) { flushPara(); flushList(); continue; }
+    if (/^\s*([-*_])\1{2,}\s*$/.test(l)) { flushAll(); continue; }
+    flushList(); para.push(l.trim());
+  }
+  flushAll(); if (inBlock) h += '</div>';
+  return h.replace(/<div class="cblock"><\/div>/g, '');
+}
+function copyText(txt, b) {
+  var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1200); };
+  var fb = function () { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done(); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, fb); else fb();
+}
+function download(name, text, type) {
+  var blob = new Blob([text], {type:type || 'application/octet-stream'}), a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.copy[data-copy]'); if (b) copyText(COPYBUF[+b.dataset.copy], b);
+  var g = e.target.closest('[data-goto]'); if (g) { var el = $(g.dataset.goto); if (el) window.scrollTo({top:el.getBoundingClientRect().top + window.scrollY - 120, behavior:'smooth'}); }
+});
+
+/* ================= UPLOAD VIEW ================= */
+var SAMPLE = {
+  title: 'Sample Course Question Bank',
+  questions: [
+    {id: 'Q1', topic: 'Transactions', question: 'Which ACID property ensures a transaction is all or nothing?',
+     options: ['Durability', 'Isolation', 'Atomicity', 'Consistency'], answer: 'C',
+     explanation: 'Atomicity means either every step of the transaction happens or none of it does.'},
+    {id: 'Q2', topic: 'Normalisation', question: 'A relation is in BCNF if every determinant is a candidate key.', answer: true},
+    {id: 'Q3', topic: 'SQL', question: 'What does this query return?', context: '```sql\nSELECT dept, COUNT(*)\nFROM staff\nGROUP BY dept\nHAVING COUNT(*) > 5;\n```',
+     options: {A: 'Every department', B: 'Departments with more than 5 staff', C: 'Staff in departments with more than 5 people', D: 'An error'}, answer: 'B'},
+    {id: 'Q4', topic: 'SQL', question: 'Which of these are DML commands? (Select all that apply)',
+     options: [{label: 'A', text: 'SELECT'}, {label: 'B', text: 'CREATE'}, {label: 'C', text: 'UPDATE'}, {label: 'D', text: 'GRANT'}], answer: ['A', 'C']},
+    {id: 'Q5', topic: 'Design', question: 'Name the diagram used to model entities and relationships.', answer: 'Entity-relationship (ER) diagram'},
+    {id: 'Q6', topic: 'Normalisation', question: 'Normalisation ______ data duplication.', options: ['eliminates', 'reduces', 'increases', 'maximises'], answer: 'A',
+     review_flag: 'Foreign key values are still repeated after normalisation, so "reduces" is the safer answer.', likely_answer: 'B'}
+  ],
+  reference_markdown: '## Normal forms\n\n- 1NF: atomic values, no repeating groups.\n- 2NF: 1NF and no partial dependency.\n- 3NF: 2NF and no transitive dependency.\n\n## SQL clause order\n\n```sql\nSELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...\n```'
+};
+var FMT_ROWS = [
+  ['List of questions', 'A top-level array, or <code>questions</code> / <code>items</code> / <code>mcqs</code> / <code>data</code>. Questions nested inside <code>sections</code> or <code>topics</code> are found too, and the section title becomes the topic.'],
+  ['Question text <b>(required)</b>', '<code>question</code>, <code>stem</code>, <code>prompt</code>, <code>text</code>'],
+  ['Options', 'An array of strings, an array of <code>{label, text}</code> objects (with optional <code>correct: true</code>), an object <code>{"A": "...", "B": "..."}</code>, or one string with A. B. C. lines. Named <code>options</code>, <code>choices</code> or <code>alternatives</code>.'],
+  ['Answer <b>(required)</b>', '<code>answer</code>, <code>correct</code>, <code>correct_answer</code>, <code>key</code>. A letter (<code>"C"</code>), several letters (<code>["A","C"]</code> or <code>"A, C"</code>), the option text, a number (<code>correct_index</code> is counted from 0, other numbers from 1), or <code>true</code>/<code>false</code>. With no options, the answer is shown as written (short-answer questions).'],
+  ['Extra text', '<code>context</code>, <code>code</code>, <code>passage</code>: shown under the question (Markdown code blocks allowed).'],
+  ['Grouping', '<code>part</code>, <code>topic</code> (or <code>category</code>, <code>chapter</code>, <code>lecture</code>), <code>source</code>. A top-level <code>parts</code> list of <code>{part, title}</code> names the parts.'],
+  ['Explanations', '<code>explanation</code>, <code>rationale</code>, <code>note</code>'],
+  ['Doubtful answers', '<code>review_flag</code>: why the answer may be wrong. <code>likely_answer</code>: the letter you think is right. Both are shown as warnings whenever the question is matched.'],
+  ['Links', '<code>also_in</code>, <code>similar_to</code>: IDs of the same question elsewhere.'],
+  ['Reference notes', 'Top-level <code>reference_markdown</code> (or <code>cheatsheet</code>, <code>references</code>: a list of <code>{title, markdown}</code>). You can also add .md files when uploading.']
+];
+$('fmtExample').textContent = JSON.stringify({title: 'My Course Question Bank', questions: [SAMPLE.questions[0], SAMPLE.questions[1]], reference_markdown: '## Notes\n\n- ...'}, null, 2);
+$('fmtTable').innerHTML = FMT_ROWS.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('');
+$('copyFmt').addEventListener('click', function () { copyText($('fmtExample').textContent, this); });
+$('dlSample').addEventListener('click', function () { download('sample_question_bank.json', JSON.stringify(SAMPLE, null, 2), 'application/json'); });
+$('trySample').addEventListener('click', function () { pending = {name:'sample_question_bank.json', text:JSON.stringify(SAMPLE)}; refs = []; analyse(); showFiles([{name:'sample_question_bank.json', ok:true}]); });
+
+var pending = null, refs = [], parsed = null;
+function showFiles(list) { $('fileChips').innerHTML = list.map(function (f) { return '<span class="filechip' + (f.ok ? '' : ' bad') + '">' + esc(f.name) + (f.note ? ' · ' + esc(f.note) : '') + '</span>'; }).join(''); }
+function readFiles(files) {
+  files = Array.prototype.slice.call(files || []);
+  if (!files.length) return;
+  var jsons = files.filter(function (f) { return /\.json$/i.test(f.name) || f.type === 'application/json'; });
+  var notes = files.filter(function (f) { return jsons.indexOf(f) < 0 && /\.(md|markdown|txt)$/i.test(f.name); });
+  var other = files.filter(function (f) { return jsons.indexOf(f) < 0 && notes.indexOf(f) < 0; });
+  var chips = [];
+  $('upErr').innerHTML = '';
+  if (!jsons.length && !pending) { $('upErr').innerHTML = '<div class="err">Please include a .json question bank.</div>'; }
+  var todo = jsons.slice(0, 1).concat(notes), left = todo.length, newRefs = [];
+  if (jsons.length > 1) chips.push({name:jsons.length - 1 + ' more JSON file(s)', ok:false, note:'only the first is used'});
+  other.forEach(function (f) { chips.push({name:f.name, ok:false, note:'not a .json, .md or .txt file'}); });
+  todo.forEach(function (f) {
+    var r = new FileReader();
+    r.onload = function () {
+      if (jsons.indexOf(f) >= 0) pending = {name:f.name, text:String(r.result)};
+      else newRefs.push({title:f.name.replace(/\.(md|markdown|txt)$/i, '').replace(/[_-]+/g, ' '), md:String(r.result)});
+      chips.push({name:f.name, ok:true});
+      if (--left === 0) { if (newRefs.length) refs = jsons.length ? newRefs : refs.concat(newRefs); else if (jsons.length) refs = []; showFiles(chips); analyse(); }
+    };
+    r.onerror = function () { chips.push({name:f.name, ok:false, note:'could not be read'}); if (--left === 0) { showFiles(chips); analyse(); } };
+    r.readAsText(f);
+  });
+  if (!todo.length) showFiles(chips);
+}
+$('file').addEventListener('change', function () { readFiles(this.files); this.value = ''; });
+var drop = $('drop');
+['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
+['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
+drop.addEventListener('drop', function (e) { readFiles(e.dataTransfer.files); });
+
+function analyse() {
+  if (!pending) return;
+  parsed = LOADER.load(pending.text);
+  if (parsed.error) { $('upErr').innerHTML = '<div class="err">' + esc(pending.name) + ': ' + esc(parsed.error) + '</div>'; $('checkWrap').classList.add('hidden'); return; }
+  $('upErr').innerHTML = '';
+  var r = parsed.report, k = r.kinds, rows = [];
+  var title = parsed.title || pending.name.replace(/\.json$/i, '').replace(/[_-]+/g, ' ');
+  rows.push(['Title', '<input class="titlein" id="titleIn" value="' + esc(title) + '">']);
+  rows.push(['Questions', r.count + ' (' + [k.mcq && k.mcq + ' multiple choice', k.multi && k.multi + ' with several answers', k.tf && k.tf + ' true/false', k.open && k.open + ' short answer'].filter(Boolean).join(', ') + ')']);
+  var parts = {}; parsed.questions.forEach(function (q) { parts[q.part] = (parts[q.part] || 0) + 1; });
+  rows.push(['Parts', Object.keys(parts).map(function (p) { return esc(p) + ' (' + parts[p] + ')'; }).join('<br>')]);
+  var topics = {}; parsed.questions.forEach(function (q) { if (q.topic) topics[q.topic] = 1; });
+  rows.push(['Topics', Object.keys(topics).length ? Object.keys(topics).length + ': ' + esc(Object.keys(topics).slice(0, 8).join(', ')) + (Object.keys(topics).length > 8 ? ', ...' : '') : 'none']);
+  rows.push(['Fields used', Object.keys(r.fields).map(function (f) { return '<code>' + esc(f) + '</code> ' + r.fields[f]; }).join(', ')]);
+  if (r.base != null) rows.push(['Number answers', 'counted from ' + r.base + (r.base === 0 ? ' (0 = A)' : ' (1 = A)')]);
+  var allRefs = parsed.references.concat(refs);
+  rows.push(['Reference notes', allRefs.length ? allRefs.map(function (x) { return esc(x.title) + ' (' + Math.round(x.md.length / 100) / 10 + 'k characters)'; }).join(', ') : 'none']);
+  var ex = parsed.questions[0];
+  rows.push(['First question', esc(ex.id) + ': ' + esc(ex.stem.slice(0, 160)) + '<br><span class="small">Answer: ' + esc(ansText(ex) || '(none)') + '</span>']);
+  $('report').innerHTML = rows.map(function (x) { return '<tr><td>' + x[0] + '</td><td>' + x[1] + '</td></tr>'; }).join('');
+  $('warnList').innerHTML = r.warnings.length ? '<div class="warnbox"><b>Warnings</b><ul class="notes">' + r.warnings.map(function (w) { return '<li>' + esc(w.msg) + (w.ids.length ? ': ' + esc(w.ids.slice(0, 12).join(', ')) + (w.ids.length > 12 ? ' and ' + (w.ids.length - 12) + ' more' : '') : '') + '</li>'; }).join('') + '</ul></div>' : '<p class="small">No problems found.</p>';
+  $('buildNote').textContent = 'Builds in a second or two. The bank is remembered in this browser.';
+  $('checkWrap').classList.remove('hidden');
+  setTimeout(function () { var el = $('u-check'); window.scrollTo({top:el.getBoundingClientRect().top + window.scrollY - 120, behavior:'smooth'}); }, 50);
+}
+$('build').addEventListener('click', function () {
+  if (!parsed || parsed.error) return;
+  var payload = {title:($('titleIn') && $('titleIn').value.trim()) || parsed.title || 'Question bank', text:pending.text, refs:refs, at:new Date().toISOString()};
+  var saved = store(KEY, JSON.stringify(payload));
+  openDoc(payload, parsed, saved);
+});
+
+/* ================= DOCUMENT VIEW ================= */
+var Q = [], BYID = {}, BI, CONFLICT = {}, TWINS = [], CONFLICTS = [], DOC = null, current = 'ask', showAns = true;
+function ansText(q) {
+  if (q.answer && q.answer.length) return q.answer.map(function (l) { var o = q.options.filter(function (x) { return x[0] === l; })[0]; return o ? o[1] : ''; }).filter(Boolean).join('; ');
+  return q.answerText || '';
+}
+function ansLabel(q) { return q.answer && q.answer.length ? q.answer.join(', ') + '. ' + ansText(q) : (q.answerText || '(no answer given)'); }
+function likelyOpts(q) { return (q.likely || []).map(function (l) { return q.options.filter(function (o) { return o[0] === l; })[0]; }).filter(Boolean); }
+
+function openDoc(payload, pre, saved) {
+  var res = pre || LOADER.load(payload.text);
+  if (res.error) { alertUpload(res.error); return; }
+  DOC = payload; Q = res.questions; BYID = {};
+  Q.forEach(function (q, i) { BYID[q.id] = i; });
+  BI = MCQ.prep(Q);
+  // look-alikes: same wording, different answers
+  CONFLICT = {}; TWINS = []; CONFLICTS = [];
+  MCQ.pairs(0.86).forEach(function (p) {
+    var a = BI[p.i], b = BI[p.j];
+    if (MCQ.sameAnswer(a, b)) return;
+    var ag = MCQ.agree(a, b);
+    if (ag === 'same') return;
+    if (ag === 'conflict') { CONFLICTS.push([p.i, p.j]); (CONFLICT[p.i] = CONFLICT[p.i] || []).push(p.j); (CONFLICT[p.j] = CONFLICT[p.j] || []).push(p.i); }
+    else TWINS.push([p.i, p.j]);
+  });
+  document.title = payload.title;
+  $('docTitle').textContent = payload.title;
+  var allRefs = res.references.concat(payload.refs || []);
+  $('askSub').textContent = 'Type or paste an exam question. Matching questions from the ' + Q.length + '-question bank appear as you type. Paste the options too and the answer is given as the letter in your own paper, even if the options are in a different order.';
+  $('bankSub').textContent = 'All ' + Q.length + ' questions as written in the bank. A red tag means the bank marks the answer as doubtful or another version disagrees.';
+  // reference
+  COPYBUF = [];
+  var hasRef = allRefs.length > 0;
+  $('refBody').innerHTML = allRefs.map(function (r) { return mdDoc(r.md, allRefs.length > 1 || !/^#/.test(r.md.trim()) ? r.title : null); }).join('');
+  ['menuRef', 'sideRef'].forEach(function (id) { $(id).classList.toggle('hidden', !hasRef); });
+  // example chips: spread across the bank
+  var ex = [], step = Math.max(1, Math.floor(Q.length / 6));
+  for (var k = Math.floor(step / 2); k < Q.length && ex.length < 6; k += step) ex.push(Q[k].stem.split('\n')[0].split(/\s+/).slice(0, 9).join(' '));
+  $('chips').innerHTML = ex.map(function (x) { return '<button class="chip" data-ex="' + esc(x) + '">' + esc(x) + '</button>'; }).join('');
+  $('bankList').innerHTML = ''; $('q').value = '';
+  renderTraps();
+  $('upView').classList.add('hidden'); $('docView').classList.remove('hidden');
+  run();
+  var start = recall('exam_autosolver_tab') || 'ask';
+  if (start === 'ref' && !hasRef) start = 'ask';
+  show(['ask', 'bank', 'ref', 'traps'].indexOf(start) >= 0 ? start : 'ask');
+  if (saved === false && !EMBEDDED) setTimeout(function () { alert('This bank is too large to remember in this browser. Use "Save offline copy" to keep a file with the bank built in.'); }, 100);
+}
+function alertUpload(msg) { $('upView').classList.remove('hidden'); $('docView').classList.add('hidden'); $('upErr').innerHTML = '<div class="err">' + esc(msg) + '</div>'; }
+
+/* ---------- cards ---------- */
+function tags(i) {
+  var q = Q[i], t = '';
+  if (q.flag || (q.likely && q.likely.length)) t += '<span class="flagdot">check answer</span>';
+  if (CONFLICT[i]) t += '<span class="flagdot y">versions disagree</span>';
+  return t;
+}
+function warnings(i, userOpts) {
+  var q = Q[i], h = '', lk = likelyOpts(q);
+  if (q.flag || lk.length) {
+    var mine = [];
+    if (lk.length && userOpts && userOpts.length) lk.forEach(function (so) { var best = null; userOpts.forEach(function (o) { var v = MCQ.optSim(o[1], so[1]); if (v >= 0.75 && (!best || v > best.v)) best = {o:o, v:v}; }); if (best) mine.push(best.o); });
+    h += '<div class="warnbox red"><b>The bank answer may be wrong.</b> ' + (q.flag ? esc(q.flag) : '') +
+      (lk.length ? ' <b>Likely answer: ' + esc(mine.length === lk.length ? mine.map(function (o) { return o[0] + '. ' + o[1]; }).join('; ') + ' (your letter)' : lk.map(function (o) { return o[0] + '. ' + o[1]; }).join('; ')) + '.</b>' : '') + '</div>';
+  }
+  if (CONFLICT[i]) h += '<div class="warnbox"><b>Another version in the bank disagrees.</b> ' + CONFLICT[i].map(function (j) { return esc(Q[j].id) + ' answers ' + esc(ansLabel(Q[j])); }).join('; ') + '. Compare the options; one of the sources is probably wrong.</div>';
+  return h;
+}
+function optList(q) {
+  if (!q.options.length) return '<p class="small"><b>Answer:</b> ' + inline(q.answerText || '(none)') + '</p>';
+  return '<ul class="opts">' + q.options.map(function (o) {
+    var right = q.answer.indexOf(o[0]) >= 0, sug = (q.likely || []).indexOf(o[0]) >= 0;
+    return '<li class="' + (right ? 'right' : (sug ? 'sug' : '')) + '"><span class="ol">' + esc(o[0]) + '.</span>' + inline(o[1]) + (right ? ' &nbsp;<span class="meta">answer</span>' : (sug ? ' &nbsp;<span class="meta">likely answer</span>' : '')) + '</li>';
+  }).join('') + '</ul>';
+}
+function srcLine(q) { return [q.id, q.part, q.topic].filter(Boolean).join(' · ') + (q.source && q.part.indexOf(q.source) < 0 ? ' · ' + q.source : ''); }
+function body(i) {
+  var q = Q[i];
+  return '<div class="stemtxt">' + md(q.stem) + '</div>' + (q.context ? '<div class="ctx stemtxt">' + md(q.context) + '</div>' : '') + optList(q) + warnings(i) +
+    (q.explanation ? '<p class="small"><b>Explanation:</b> ' + esc(q.explanation.length > 900 ? q.explanation.slice(0, 900) + '...' : q.explanation) + '</p>' : '') +
+    (q.note ? '<p class="small"><b>Note:</b> ' + esc(q.note) + '</p>' : '') +
+    '<p class="meta">' + esc(srcLine(q)) + (q.also.length ? ' · also in ' + esc(q.also.join(', ')) : '') + (q.similar.length ? ' · similar to ' + esc(q.similar.join(', ')) : '') + '</p>';
+}
+function card(i, o) {
+  o = o || {};
+  var q = Q[i], lk = likelyOpts(q), doubt = q.flag || lk.length;
+  var ans = showAns || o.forceShow ?
+    '<span class="cardans' + (doubt ? ' doubt' : '') + '">' + (lk.length ? 'Bank answer: ' + inline(ansLabel(q)) + ' · likely: ' + inline(lk.map(function (x) { return x[0] + '. ' + x[1]; }).join('; ')) : 'Answer: ' + inline(ansLabel(q))) + '</span>' :
+    '<span class="cardans hid">Answer hidden <button class="reveal" data-reveal="' + i + '">Show</button></span>';
+  return '<details' + (o.open ? ' open' : '') + ' data-i="' + i + '"><summary><span class="qn">' + esc(q.id) + '</span><span class="sumbody"><span class="stemtxt">' + inline(q.stem.split('\n')[0], o.mark) + '</span>' + tags(i) + ans + '</span>' +
+    (o.score != null ? '<span class="score">' + Math.max(0, Math.round(o.score * 100)) + '%</span>' : '') + '</summary><div class="dbody" data-lazy="' + i + '"></div></details>';
+}
+/* card bodies are filled in when opened, so long lists stay quick */
+document.addEventListener('toggle', function (e) {
+  var d = e.target; if (!d.matches || !d.matches('details[data-i]') || !d.open) return;
+  var b = d.querySelector('.dbody[data-lazy]'); if (b && !b.innerHTML) b.innerHTML = body(+b.dataset.lazy);
+}, true);
+
+/* ---------- Ask ---------- */
+var lastAnswer = '', timer;
+var LEVEL = {exact:['Exact match', ''], match:['Matched', ''], check:['Check the match', 'warnb'], none:['No reliable match', 'low']};
+function run() {
+  var text = $('q').value;
+  if (!text.trim()) { $('out').classList.add('hidden'); $('livewrap').classList.add('hidden'); $('chips').classList.remove('hidden'); lastAnswer = ''; buildOutline('ask'); return; }
+  $('chips').classList.add('hidden');
+  var mark = MCQ.matchedWords(text), sp = MCQ.split(text);
+  var lv = MCQ.live(text, 12), toks = MCQ.norm(sp.stem || text);
+  var r = toks.length >= 3 || sp.options.length >= 2 ? MCQ.solve(text) : null;
+  var order = [], seen = {};
+  if (r && r.bank && r.level !== 'none') { order.push({i:r.top.i, score:r.top.score}); seen[r.top.i] = 1; r.rivals.forEach(function (c) { if (!seen[c.i]) { order.push({i:c.i, score:c.score}); seen[c.i] = 1; } }); }
+  lv.forEach(function (x) { if (!seen[x.i]) { order.push(x); seen[x.i] = 1; } });
+  order = order.slice(0, 12);
+  $('livewrap').classList.remove('hidden');
+  $('liveCount').textContent = order.length ? order.length + ' shown' : '';
+  $('live').innerHTML = order.length ? order.map(function (x) { return card(x.i, {mark:mark, score:x.score}); }).join('') : '<p class="empty">No bank question uses these words yet. Keep typing, or try a key term.</p>';
+  if (!r) { $('out').classList.add('hidden'); lastAnswer = ''; buildOutline('ask'); return; }
+  renderAnswer(r);
+  buildOutline('ask');
+}
+function renderAnswer(r) {
+  var box = $('ansbox'), L = LEVEL[r.level];
+  $('conf').textContent = L[0]; $('conf').className = 'badge' + (L[1] ? ' ' + L[1] : '');
+  box.className = 'ansbox' + (r.level === 'check' ? ' check' : (r.level === 'none' ? ' none' : ''));
+  var h = '', q = r.bank ? r.bank.q : null, i = r.top ? r.top.i : -1;
+  if (r.level === 'none' || !q) {
+    h = '<p>No bank question matches closely enough to trust. The nearest questions are listed below; open one to compare.</p>'; lastAnswer = '';
+  } else {
+    var at = ansText(q), doubt = q.flag || (q.likely && q.likely.length), pre = doubt ? 'Bank answer: ' : '';
+    if (r.mapped) { h += '<p class="bigans">' + (pre ? pre + 'pick' : 'Pick') + ' <b>' + esc(r.mapped.letter) + '</b>: ' + inline(r.mapped.text) + '</p>'; lastAnswer = r.mapped.letter + '. ' + r.mapped.text; }
+    else if (r.split.options.length >= 2) { h += '<p class="bigans">' + pre + '<b>' + esc(q.answer.join(', ') || '') + '</b> ' + inline(at || q.answerText) + '</p><p class="small">This answer does not appear among your options. Compare them with the bank options below.</p>'; lastAnswer = at || q.answerText; }
+    else if (q.options.length) { h += '<p class="bigans">' + pre + '<b>' + esc(q.answer.join(', ')) + '</b>. ' + inline(at) + '</p><p class="small">That is the letter in the bank. Paste your options too and the letter will match your own paper.</p>'; lastAnswer = at; }
+    else { h += '<p class="bigans">' + pre + inline(q.answerText || '(no answer given)') + '</p>'; lastAnswer = q.answerText; }
+    if (!showAns) h = '<p class="bigans">Answer hidden <button class="reveal" id="revealMain">Show</button></p>';
+    h += '<p class="meta">From ' + esc(srcLine(q)) + '</p>';
+    if (r.why.length) h += '<ul class="notes">' + r.why.map(function (w) { return '<li>' + esc(w.charAt(0).toUpperCase() + w.slice(1)) + '.</li>'; }).join('') + '</ul>';
+    if (showAns) h += warnings(i, r.split.options);
+    h += '<details><summary>Matched bank question</summary><div class="dbody"><div class="stemtxt">' + md(q.stem) + '</div>' + (q.context ? '<div class="ctx stemtxt">' + md(q.context) + '</div>' : '') + (showAns ? optList(q) : '') +
+      (q.explanation && showAns ? '<p class="small"><b>Explanation:</b> ' + esc(q.explanation.length > 900 ? q.explanation.slice(0, 900) + '...' : q.explanation) + '</p>' : '') + '</div></details>';
+    if (r.rivals.length) h += '<p class="small" style="margin-top:8px"><b>Other bank versions that fit:</b> ' + r.rivals.map(function (c) { var rq = Q[c.i]; return esc(rq.id) + (showAns ? ' (' + esc(ansLabel(rq)) + ')' : ''); }).join('; ') + '. They are listed first below.</p>';
+  }
+  box.innerHTML = h;
+  var I = [['Question read as', r.split.stem ? r.split.stem.replace(/\s+/g, ' ').slice(0, 220) : '(none)'],
+    ['Options found', r.split.options.length ? r.split.options.map(function (o) { return o[0] + '. ' + o[1]; }).join(' | ') : 'none (question only)'],
+    ['Key words', (r.ust || []).join(' ')]];
+  if (r.top) {
+    I.push(['Closest bank question', Q[r.top.i].id]);
+    I.push(['Wording similarity', Math.round(Math.max(r.top.stemSim, r.top.bagSim) * 100) + '%']);
+    if (r.top.opt) I.push(['Option match', Math.round(r.top.opt.score * 100) + '% (' + r.top.opt.pairs.length + ' of ' + r.split.options.length + ' options paired)']);
+    if (r.top.onlyU.length) I.push(['Words only in yours', r.top.onlyU.join(', ')]);
+    if (r.top.onlyB.length) I.push(['Words only in the bank', r.top.onlyB.join(', ')]);
+    if (r.top.harm.length) I.push(['Answer-changing differences', r.top.harm.join('; ')]);
+  }
+  $('interp').innerHTML = I.map(function (p) { return '<tr><td>' + esc(p[0]) + '</td><td>' + esc(p[1]) + '</td></tr>'; }).join('');
+  $('out').classList.remove('hidden');
+}
+function grow() { var t = $('q'); t.style.height = 'auto'; t.style.height = Math.min(Math.max(t.scrollHeight + 2, 92), 360) + 'px'; }
+$('q').addEventListener('input', function () { grow(); clearTimeout(timer); timer = setTimeout(run, 60); });
+$('q').addEventListener('keydown', function (e) { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); run(); } });
+$('go').addEventListener('click', function () { if (!$('q').value.trim()) $('q').focus(); run(); });
+$('clear').addEventListener('click', function () { $('q').value = ''; grow(); run(); $('q').focus(); });
+$('copyTop').addEventListener('click', function () { if (lastAnswer) copyText(lastAnswer, $('copyTop')); });
+$('chips').addEventListener('click', function (e) { var c = e.target.closest('.chip'); if (c) { $('q').value = c.dataset.ex; grow(); run(); } });
+function setShow(v) {
+  showAns = v === 'show'; store('exam_autosolver_show', v);
+  Array.prototype.forEach.call($('showAns').children, function (b) { b.setAttribute('aria-pressed', b.dataset.v === v ? 'true' : 'false'); });
+}
+$('showAns').addEventListener('click', function (e) { if (e.target.dataset.v) { setShow(e.target.dataset.v); run(); } });
+setShow(recall('exam_autosolver_show') === 'hide' ? 'hide' : 'show');
+document.addEventListener('click', function (e) {
+  var rv = e.target.closest('[data-reveal]');
+  if (rv) { e.preventDefault(); var i = +rv.dataset.reveal; rv.parentNode.outerHTML = '<span class="cardans">Answer: ' + inline(ansLabel(Q[i])) + '</span>'; return; }
+  if (e.target.id === 'revealMain') { setShow('show'); run(); }
+});
+
+/* ---------- Question bank ---------- */
+var bankTimer;
+function renderBank() {
+  var f = $('bankSearch').value.toLowerCase().trim(), words = f ? f.split(/\s+/) : [], html = '', part = null, topic = null, n = 0;
+  Q.forEach(function (q, i) {
+    if (words.length) {
+      var hay = (q.id + ' ' + q.stem + ' ' + q.context + ' ' + q.options.map(function (o) { return o[1]; }).join(' ') + ' ' + q.answerText + ' ' + q.topic).toLowerCase();
+      if (!words.every(function (w) { return hay.indexOf(w) >= 0; })) return;
+    }
+    if (q.part !== part) { part = q.part; topic = null; html += '<h1>' + esc(part) + '</h1>'; }
+    if (q.topic && q.topic !== topic) { topic = q.topic; html += '<h3>' + esc(topic) + '</h3>'; }
+    html += card(i, {forceShow:true}); n++;
+  });
+  $('bankList').innerHTML = html || '<p class="empty">No questions match.</p>';
+  $('bankCount').textContent = f ? n + ' of ' + Q.length : Q.length + ' questions';
+  if (current === 'bank') buildOutline('bank');
+}
+$('bankSearch').addEventListener('input', function () { clearTimeout(bankTimer); bankTimer = setTimeout(renderBank, 120); });
+
+/* ---------- Reference search ---------- */
+$('refSearch').addEventListener('input', function () {
+  var f = this.value.toLowerCase().trim();
+  Array.prototype.forEach.call(document.querySelectorAll('#refBody .cblock'), function (blk) { blk.classList.toggle('hidden', !!f && blk.textContent.toLowerCase().indexOf(f) < 0); });
+});
+
+/* ---------- Traps ---------- */
+function renderTraps() {
+  var h = '', count = 0;
+  var flagged = Q.map(function (q, i) { return i; }).filter(function (i) { return Q[i].flag || (Q[i].likely && Q[i].likely.length); });
+  if (flagged.length) { h += '<h1>Doubtful answers</h1><p class="small">The bank marks these answers as possibly wrong. The likely answer, where given, is highlighted in yellow inside the question.</p>' + flagged.map(function (i) { return card(i, {forceShow:true}); }).join(''); count += flagged.length; }
+  if (CONFLICTS.length) { h += '<h1>Versions that disagree</h1><p class="small">The same question appears twice, and the answer of one is offered as a wrong option in the other. One source is probably wrong.</p>' + CONFLICTS.map(function (p) { return '<div class="pairrow">' + card(p[0], {forceShow:true}) + card(p[1], {forceShow:true}) + '</div>'; }).join(''); count += CONFLICTS.length; }
+  if (TWINS.length) { h += '<h1>Same question, different options</h1><p class="small">These pairs share (nearly) the same wording but have different options, so the answer text differs. Typing only the question cannot tell them apart: paste the options.</p>' + TWINS.map(function (p) { return '<div class="pairrow">' + card(p[0], {forceShow:true}) + card(p[1], {forceShow:true}) + '</div>'; }).join(''); count += TWINS.length; }
+  if (!count) h += '<p class="empty">No doubtful answers, disagreements or look-alike questions were found.</p>';
+  h += '<h1>Exam habits</h1><ul class="tip">' +
+    '<li><b>Read for NOT, EXCEPT and FALSE.</b> One word can flip the answer of an otherwise identical question. The finder warns when your wording differs in a word like this, or swaps one option-word for another (2NF for 3NF, say).</li>' +
+    '<li><b>Go by the answer text, not the letter.</b> Letters move between sources. Paste the options and the finder gives the letter in your own paper.</li>' +
+    '<li><b>"Check the match" means compare.</b> Open the top question and check the wording before trusting it.</li>' +
+    '<li><b>No reliable match</b> means the question is probably not in the bank. Use the Reference tab instead of forcing the nearest question.</li></ul>';
+  $('trapBody').innerHTML = h;
+  $('trapCount').textContent = flagged.length + ' doubtful, ' + CONFLICTS.length + ' disagreeing, ' + TWINS.length + ' look-alike pairs';
+}
+
+/* ---------- tabs and outline ---------- */
+function buildOutline(tab) {
+  var ul = document.querySelector('[data-outline="' + tab + '"]'), sec = $('tab-' + tab);
+  var hs = sec.querySelectorAll(tab === 'ask' ? 'h2' : 'h1:not(.title)'), html = '';
+  Array.prototype.forEach.call(hs, function (h, k) {
+    var hid = h.closest('.hidden'); if (hid && hid !== sec) return;
+    if (!h.id) h.id = 'h-' + tab + '-' + k;
+    html += '<li><button data-goto="' + h.id + '">' + esc(h.childNodes[0].textContent.trim()) + '</button></li>';
+  });
+  ul.innerHTML = html;
+}
+function show(tab) {
+  current = tab;
+  if (tab === 'bank' && !$('bankList').innerHTML) renderBank();
+  ['ask', 'bank', 'ref', 'traps'].forEach(function (k) {
+    $('tab-' + k).classList.toggle('hidden', k !== tab);
+    document.querySelector('[data-outline="' + k + '"]').classList.toggle('hidden', k !== tab);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#tablist > li > button'), function (b) { b.setAttribute('aria-selected', b.dataset.tab === tab ? 'true' : 'false'); });
+  Array.prototype.forEach.call(document.querySelectorAll('#menus button'), function (b) { b.setAttribute('aria-current', b.dataset.tab === tab ? 'true' : 'false'); });
+  Array.prototype.forEach.call(document.querySelectorAll('#toolbar .tgroup'), function (g) { g.classList.toggle('hidden', g.dataset.for !== tab); });
+  buildOutline(tab);
+  store('exam_autosolver_tab', tab);
+  window.scrollTo(0, 0);
+}
+document.addEventListener('click', function (e) {
+  var t = e.target.closest('[data-tab]'); if (t && (t.closest('#tablist') || t.closest('#menus'))) show(t.dataset.tab);
+});
+
+/* ---------- file actions ---------- */
+$('loadOther').addEventListener('click', function () {
+  $('docView').classList.add('hidden'); $('upView').classList.remove('hidden');
+  pending = null; parsed = null; refs = []; $('checkWrap').classList.add('hidden'); $('fileChips').innerHTML = ''; $('upErr').innerHTML = '';
+  showResume(); document.title = 'Exam Autosolver'; window.scrollTo(0, 0);
+});
+$('saveCopy').addEventListener('click', function () {
+  if (!DOC) return;
+  var data = JSON.stringify(DOC).replace(/<\//g, '<\\/').replace(/<!(--)/g, '<\\u0021$1');
+  var open = '<' + 'script type="application/json" id="embedded-bank">', a = PRISTINE.indexOf(open), b = PRISTINE.indexOf('</' + 'script>', a);
+  var html = PRISTINE.slice(0, a + open.length) + data + PRISTINE.slice(b);
+  var name = (DOC.title || 'question_bank').replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '_').slice(0, 60) + '_Autosolver.html';
+  download(name, html, 'text/html');
+});
+
+/* ---------- start ---------- */
+var EMBEDDED = null;
+function showResume() {
+  var s = recall(KEY), el = $('resume');
+  if (!s) { el.classList.add('hidden'); return; }
+  try {
+    var p = JSON.parse(s);
+    el.innerHTML = 'Last bank used here: <b>' + esc(p.title) + '</b>. <button class="btn" id="resumeBtn" style="margin-left:6px">Open it</button> <button class="btn" id="forgetBtn">Forget it</button>';
+    el.classList.remove('hidden');
+    $('resumeBtn').onclick = function () { openDoc(p); };
+    $('forgetBtn').onclick = function () { store(KEY, null); el.classList.add('hidden'); };
+  } catch (e) { el.classList.add('hidden'); }
+}
+(function start() {
+  var emb = $('embedded-bank').textContent.trim();
+  if (emb) { try { EMBEDDED = JSON.parse(emb); } catch (e) { EMBEDDED = null; } }
+  if (EMBEDDED) { openDoc(EMBEDDED); return; }
+  var s = recall(KEY);
+  if (s) { try { openDoc(JSON.parse(s)); return; } catch (e) { store(KEY, null); } }
+  showResume();
+})();
+window.__app = {run: run, show: show, openDoc: openDoc};
+})();
+
+</script>
+</body>
+</html>

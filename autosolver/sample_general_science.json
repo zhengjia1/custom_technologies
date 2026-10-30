@@ -1,0 +1,597 @@
+{
+  "title": "Sample Bank: General Science",
+  "questions": [
+    {
+      "id": "SCI-Q01",
+      "topic": "Physics",
+      "question": "What is the SI unit of force?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Joule"
+        },
+        {
+          "label": "B",
+          "text": "Newton"
+        },
+        {
+          "label": "C",
+          "text": "Watt"
+        },
+        {
+          "label": "D",
+          "text": "Pascal"
+        }
+      ],
+      "answer": "B",
+      "explanation": "One newton accelerates a 1 kg mass at 1 m/s squared."
+    },
+    {
+      "id": "SCI-Q02",
+      "topic": "Physics",
+      "question": "Which quantity is a vector?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Speed"
+        },
+        {
+          "label": "B",
+          "text": "Mass"
+        },
+        {
+          "label": "C",
+          "text": "Velocity"
+        },
+        {
+          "label": "D",
+          "text": "Temperature"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Velocity has both size and direction."
+    },
+    {
+      "id": "SCI-Q03",
+      "topic": "Physics",
+      "question": "Approximately how fast does light travel in a vacuum?",
+      "options": [
+        {
+          "label": "A",
+          "text": "300,000 km/s"
+        },
+        {
+          "label": "B",
+          "text": "30,000 km/s"
+        },
+        {
+          "label": "C",
+          "text": "3,000 km/s"
+        },
+        {
+          "label": "D",
+          "text": "3,000,000 km/s"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "SCI-Q04",
+      "topic": "Physics",
+      "question": "Sound travels faster in air than in water.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Sound travels about four times faster in water."
+    },
+    {
+      "id": "SCI-Q05",
+      "topic": "Physics",
+      "question": "Which of Newton's laws states that every action has an equal and opposite reaction?",
+      "options": [
+        {
+          "label": "A",
+          "text": "First law"
+        },
+        {
+          "label": "B",
+          "text": "Second law"
+        },
+        {
+          "label": "C",
+          "text": "Third law"
+        },
+        {
+          "label": "D",
+          "text": "Law of gravitation"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "SCI-Q06",
+      "topic": "Physics",
+      "question": "What does a step-up transformer increase?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Current"
+        },
+        {
+          "label": "B",
+          "text": "Voltage"
+        },
+        {
+          "label": "C",
+          "text": "Power"
+        },
+        {
+          "label": "D",
+          "text": "Frequency"
+        }
+      ],
+      "answer": "B",
+      "explanation": "It raises voltage and lowers current; power stays roughly the same."
+    },
+    {
+      "id": "SCI-Q07",
+      "topic": "Physics",
+      "question": "Which colour of visible light has the longest wavelength?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Violet"
+        },
+        {
+          "label": "B",
+          "text": "Green"
+        },
+        {
+          "label": "C",
+          "text": "Blue"
+        },
+        {
+          "label": "D",
+          "text": "Red"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "SCI-Q08",
+      "topic": "Chemistry",
+      "question": "What is the chemical symbol for sodium?",
+      "options": [
+        {
+          "label": "A",
+          "text": "So"
+        },
+        {
+          "label": "B",
+          "text": "Sd"
+        },
+        {
+          "label": "C",
+          "text": "Na"
+        },
+        {
+          "label": "D",
+          "text": "S"
+        }
+      ],
+      "answer": "C",
+      "explanation": "From the Latin natrium."
+    },
+    {
+      "id": "SCI-Q09",
+      "topic": "Chemistry",
+      "question": "What is the pH of pure water at 25 degrees Celsius?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "7"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "14"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q10",
+      "topic": "Chemistry",
+      "question": "Which gas makes up most of the Earth's atmosphere?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Oxygen"
+        },
+        {
+          "label": "B",
+          "text": "Carbon dioxide"
+        },
+        {
+          "label": "C",
+          "text": "Argon"
+        },
+        {
+          "label": "D",
+          "text": "Nitrogen"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Nitrogen is about 78% of dry air."
+    },
+    {
+      "id": "SCI-Q11",
+      "topic": "Chemistry",
+      "question": "Which type of bond involves the sharing of electron pairs?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ionic"
+        },
+        {
+          "label": "B",
+          "text": "Covalent"
+        },
+        {
+          "label": "C",
+          "text": "Metallic"
+        },
+        {
+          "label": "D",
+          "text": "Hydrogen"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q12",
+      "topic": "Chemistry",
+      "question": "Noble gases are highly reactive.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Their full outer shells make them very unreactive."
+    },
+    {
+      "id": "SCI-Q13",
+      "topic": "Chemistry",
+      "question": "Which of these is NOT a state of matter?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plasma"
+        },
+        {
+          "label": "B",
+          "text": "Solid"
+        },
+        {
+          "label": "C",
+          "text": "Energy"
+        },
+        {
+          "label": "D",
+          "text": "Gas"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "SCI-Q14",
+      "topic": "Chemistry",
+      "question": "Which element has atomic number 6?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Oxygen"
+        },
+        {
+          "label": "B",
+          "text": "Carbon"
+        },
+        {
+          "label": "C",
+          "text": "Nitrogen"
+        },
+        {
+          "label": "D",
+          "text": "Helium"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q15",
+      "topic": "Chemistry",
+      "question": "Which of the following are noble gases? (Select all that apply)",
+      "options": [
+        {
+          "label": "A",
+          "text": "Neon"
+        },
+        {
+          "label": "B",
+          "text": "Chlorine"
+        },
+        {
+          "label": "C",
+          "text": "Argon"
+        },
+        {
+          "label": "D",
+          "text": "Hydrogen"
+        }
+      ],
+      "answer": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "SCI-Q16",
+      "topic": "Biology",
+      "question": "Which organelle is known as the powerhouse of the cell?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nucleus"
+        },
+        {
+          "label": "B",
+          "text": "Ribosome"
+        },
+        {
+          "label": "C",
+          "text": "Mitochondrion"
+        },
+        {
+          "label": "D",
+          "text": "Golgi apparatus"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Mitochondria produce most of the cell's ATP."
+    },
+    {
+      "id": "SCI-Q17",
+      "topic": "Biology",
+      "question": "Which blood cells carry oxygen?",
+      "options": [
+        {
+          "label": "A",
+          "text": "White blood cells"
+        },
+        {
+          "label": "B",
+          "text": "Red blood cells"
+        },
+        {
+          "label": "C",
+          "text": "Platelets"
+        },
+        {
+          "label": "D",
+          "text": "Plasma cells"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q18",
+      "topic": "Biology",
+      "question": "What process do plants use to make glucose from sunlight?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Respiration"
+        },
+        {
+          "label": "B",
+          "text": "Fermentation"
+        },
+        {
+          "label": "C",
+          "text": "Transpiration"
+        },
+        {
+          "label": "D",
+          "text": "Photosynthesis"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "SCI-Q19",
+      "topic": "Biology",
+      "question": "How many chambers does the human heart have?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Two"
+        },
+        {
+          "label": "B",
+          "text": "Three"
+        },
+        {
+          "label": "C",
+          "text": "Four"
+        },
+        {
+          "label": "D",
+          "text": "Five"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "SCI-Q20",
+      "topic": "Biology",
+      "question": "DNA is found only in the nucleus of a cell.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Mitochondria and chloroplasts also contain DNA."
+    },
+    {
+      "id": "SCI-Q21",
+      "topic": "Biology",
+      "question": "Which molecule carries amino acids to the ribosome during protein synthesis?",
+      "options": [
+        {
+          "label": "A",
+          "text": "mRNA"
+        },
+        {
+          "label": "B",
+          "text": "tRNA"
+        },
+        {
+          "label": "C",
+          "text": "rRNA"
+        },
+        {
+          "label": "D",
+          "text": "DNA polymerase"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q22",
+      "topic": "Biology",
+      "question": "Which is the largest organ of the human body?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Liver"
+        },
+        {
+          "label": "B",
+          "text": "Brain"
+        },
+        {
+          "label": "C",
+          "text": "Skin"
+        },
+        {
+          "label": "D",
+          "text": "Lungs"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "SCI-Q23",
+      "topic": "Earth and Space",
+      "question": "Which planet is closest to the Sun?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Venus"
+        },
+        {
+          "label": "B",
+          "text": "Mercury"
+        },
+        {
+          "label": "C",
+          "text": "Mars"
+        },
+        {
+          "label": "D",
+          "text": "Earth"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SCI-Q24",
+      "topic": "Earth and Space",
+      "question": "Which layer of the Earth lies directly beneath the crust?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Inner core"
+        },
+        {
+          "label": "B",
+          "text": "Outer core"
+        },
+        {
+          "label": "C",
+          "text": "Mantle"
+        },
+        {
+          "label": "D",
+          "text": "Lithosphere"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The lithosphere is the crust plus the rigid top of the mantle, so it is not beneath the crust."
+    },
+    {
+      "id": "SCI-Q25",
+      "topic": "Earth and Space",
+      "question": "The graph below shows a ball's height over time. What is happening at the highest point?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its velocity is zero and its acceleration is zero"
+        },
+        {
+          "label": "B",
+          "text": "Its velocity is zero and its acceleration is 9.8 m/s squared downwards"
+        },
+        {
+          "label": "C",
+          "text": "Its velocity is at a maximum"
+        },
+        {
+          "label": "D",
+          "text": "Its acceleration is upwards"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Gravity keeps acting at the top, so acceleration stays 9.8 m/s squared downwards even though the ball stops for an instant.",
+      "context": "Height rises from 0 m at t = 0 s to 5 m at t = 1 s, then falls back to 0 m at t = 2 s."
+    }
+  ],
+  "reference_markdown": "## Quick facts\n\n### Units\n- Force: newton (N)\n- Energy: joule (J)\n- Power: watt (W)\n- Pressure: pascal (Pa)\n\n### Newton's laws\n1. An object stays at rest or in uniform motion unless a force acts on it.\n2. F = ma.\n3. Every action has an equal and opposite reaction.\n\n### Cell organelles\n| Organelle | Job |\n|---|---|\n| Nucleus | Holds most of the DNA |\n| Mitochondrion | Makes ATP |\n| Ribosome | Builds proteins |\n"
+}
