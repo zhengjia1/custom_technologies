@@ -4,7 +4,7 @@ These instructions replace every earlier `AGENTS.md` instruction for this worksp
 
 ## Product objective
 
-Build a CyberChef-style website where students paste RStudio output or configure an analysis and receive accurate, context-specific prose or R code.
+Build a document-editor-style website where students paste RStudio output or configure an analysis and receive accurate, context-specific prose or R code.
 
 - The complete application must remain in one standalone `index.html` file.
 - Keep all HTML, CSS, JavaScript, fonts, samples, and templates embedded in that file.
@@ -16,11 +16,15 @@ Build a CyberChef-style website where students paste RStudio output or configure
 
 ## Application structure
 
-- Keep the CyberChef-style recipe library and workbench layout.
+- Keep the document-editor layout: a light title bar with a document icon, the document name **Untitled document** and the version beneath it; a left operations sidebar; and the workbench shown as a white page on a pale background with blue accents.
+- Do not show a **BT1101 Prose Lab** heading in the page. Keep the browser-tab `<title>` as **BT1101 Prose Lab** because the update check validates it.
 - Universal Detector must always be the first operation.
-- Separate tutorials into collapsible recipe groups and substantial workflows into collapsible cards.
-- Keep recipe search by test name, topic, and R function.
-- Keep the resizable sidebar, keyboard controls, responsive mobile library, and locally persisted sidebar width.
+- List every operation in one flat sidebar list after Universal Detector, in tutorial order. Do not group operations into collapsible tutorial sections. Keep substantial workflows in collapsible cards.
+- Put recipe search at the top of the sidebar, above the operation list. Keep search by test name, topic, and R function.
+- Keep the sidebar in view while the page scrolls on desktop, so search stays reachable.
+- Keep the resizable sidebar, keyboard controls, responsive mobile library, and locally persisted sidebar width. Typing a letter outside a text field starts a search, opening the mobile library first when it is closed.
+- Keep the **Dark mode** toggle at the top right of the title bar. Follow the system colour scheme until the user toggles it, then persist the choice locally under `bt1101-theme`. Apply the saved theme before first paint. Define every stylesheet colour as a `--c-*` token with a light value and a `:root[data-theme="dark"]` value, and give new colours both.
+- Keep half-screen layouts readable. Make `main` a size container: paired workbench columns stack into one column when the content area is 780px or narrower, regardless of sidebar width; panel-header actions wrap onto a new line instead of squeezing titles; and the sidebar narrows to at most 30vw between 721px and 1180px.
 - Preserve keyboard focus, accessible labels, live status/error regions, and responsive layouts.
 - Use embedded Source Sans Pro throughout; do not introduce a separate code font.
 - Generated prose should grow to fit its content.
@@ -352,7 +356,7 @@ Sensitivity completion behaviour:
 - Prompt the user for the new version number whenever an `index.html` change is requested and no new version was supplied.
 - Use the exact format `ddmmyy_hhmm`, with an optional display-only leading `v` and optional display-only trailing `h`.
 - Store the canonical version in JavaScript as `ddmmyy_hhmm` without the leading `v` or trailing `h`.
-- Display it beneath **BT1101 Prose Lab** as `vddmmyy_hhmmh`.
+- Display it beneath the document name in the title bar as `vddmmyy_hhmmh`.
 - Put `<!-- BT1101 Prose Lab version: vddmmyy_hhmmh -->` on the first line of `index.html`.
 - Update the first-line marker, displayed version, and JavaScript version together.
 - Do not use a separate version API endpoint.
@@ -375,5 +379,6 @@ After every `index.html` edit:
 7. Parse-check every generated R-code option affected by the change with R, not only JavaScript syntax, and fix any option that R cannot compile.
 8. For permutation changes, exercise Option 2 → Option 3 → Option 2, repeated copying, canonical restoration, and shared workflow references. Verify argument bindings and ordered structures remain intact; compare executable variants' results with the canonical answer. Isolated argument-order changes must preserve rendered chart output.
 9. For chart changes, test both orientations where supported, positive and negative values, constant values, extreme observations, long category labels, applicable transformations, and more than one plot size. Check both-axis geometry, histogram bin edges, label placement, bounded ticks, and restoration of temporary graphics settings across all six options.
+10. For layout or styling changes, check light and dark themes, phone width, half-screen widths such as 800px and 960px, and full width. Confirm no operation causes horizontal page scrolling.
 
 Do not split production assets into extra runtime files while testing or implementing changes.
