@@ -564,10 +564,46 @@
   function quartiles(ds, pct) {
     return [["1Q", 25], ["Median", 50], ["3Q", 75]].map(function (q) {
       for (var i = 0; i < pct.length; i++) {
-        if (pct[i] >= q[1]) return { name: q[0], label: String(ds.data[i].label) };
+        if (pct[i] >= q[1]) return { name: q[0], label: String(ds.data[i].label), index: i };
       }
-      return { name: q[0], label: String(ds.data[pct.length - 1].label) };
+      return { name: q[0], label: String(ds.data[pct.length - 1].label), index: pct.length - 1 };
     });
+  }
+
+  // Runs INSIDE the chart page (injected via toString, so it must not use anything from this
+  // page). On a narrow screen there isn't room for every group, so neighbouring groups are
+  // merged (counts added up, percentiles recalculated). The quartile lines keep their exact
+  // values ("1Q: 27.5") and sit on the merged bar that contains them.
+  function fitGroups(groups, quarts, width) {
+    var maxBars = Math.max(6, Math.floor((width - 140) / 16)); // ~16px per bar at least
+    var k = groups.length <= maxBars ? 1 : Math.ceil(groups.length / maxBars);
+    var range = /^\s*(-?\d+(?:\.\d+)?)\s*[-–]\s*(-?\d+(?:\.\d+)?)\s*$/;
+    function mergedLabel(first, last) {
+      var a = range.exec(first), b = range.exec(last);
+      return (a ? a[1] : first) + "–" + (b ? b[2] : last);
+    }
+    var buckets = [];
+    for (var i = 0; i < groups.length; i += k) {
+      var part = groups.slice(i, i + k);
+      buckets.push({
+        label: part.length === 1 ? part[0].label : mergedLabel(part[0].label, part[part.length - 1].label),
+        count: part.reduce(function (s, g) { return s + g.count; }, 0)
+      });
+    }
+    var total = buckets.reduce(function (s, b) { return s + b.count; }, 0), running = 0;
+    var data = buckets.map(function (b) {
+      running += b.count;
+      return { label: b.label, metadata: [], value: [Math.round(running / total * 1000) / 10, b.count] };
+    });
+    // quartiles that land on the same merged bar share one line ("Median: 30 · 3Q: 31.5")
+    var lines = [];
+    quarts.forEach(function (q) {
+      var at = buckets[Math.floor(q.index / k)].label, text = q.name + ": " + q.label;
+      var same = lines.filter(function (l) { return l.at === at; })[0];
+      if (same) same.text += " · " + text; else lines.push({ at: at, text: text });
+    });
+    var xLines = lines.map(function (l) { return l.text + " :: " + l.at; }).join("\n");
+    return { k: k, data: data, xLines: xLines };
   }
 
   // Labels are shown exactly as Excel displays them. Only plain years (2021, 2022...) are left
@@ -591,10 +627,10 @@
 
   function buildGraphHtml(title, titles, ds) {
     // The template draws the FIRST value column as the line on the right axis (secondary_series: 1).
+    // The chart page merges groups itself if it's shown on a narrow screen (see fitGroups).
     var pct = percentiles(ds);
-    var data = ds.data.map(function (d, i) {
-      return { label: String(d.label), metadata: [], value: [pct[i], +d.value[0]] };
-    });
+    var groups = ds.data.map(function (d) { return { label: String(d.label), count: +d.value[0] }; });
+    var quarts = quartiles(ds, pct);
     var settings = {
       "chart_type": "column_grouped_line",
       "secondary_series": 1,
@@ -619,9 +655,8 @@
       // each line is "label :: position on the x axis"
       "axes_highlights.placement": "above",
       "axes_highlights.x_enabled": true,
-      "axes_highlights.x_lines": quartiles(ds, pct).map(function (q) {
-        return q.name + ": " + q.label + " :: " + q.label;
-      }).join("\n"),
+      "axes_highlights.x_lines": "", // set by the chart page from its width
+      "layout.subtitle": "",          // the "groups merged" note, set by the chart page
       "axes_highlights.x_line_color": "#333333",
       "axes_highlights.x_line_dash": 3,
       "axes_highlights.x_line_width": 1.5,
@@ -673,18 +708,38 @@
       "_Flourish_unflattenInto(window.template.state, " + js(settings) + ");\n" +
       "var _Flourish_data_column_names = " + js(columnNames) + ",\n" +
       "    _Flourish_data_metadata = " + js(metadata) + ",\n" +
-      "    _Flourish_data = { data: " + js(data) + " };\n" +
-      "for (var _d in _Flourish_data) {\n" +
-      "  window.template.data[_d] = _Flourish_data[_d];\n" +
-      "  window.template.data[_d].column_names = _Flourish_data_column_names[_d];\n" +
-      "  window.template.data[_d].metadata = _Flourish_data_metadata[_d];\n" +
+      "    _groups = " + js(groups) + ",\n" +
+      "    _quartiles = " + js(quarts) + ",\n" +
+      "    _fitGroups = " + fitGroups.toString() + ",\n" +
+      "    _mergeNote = " + js("Some groups have been merged to fit this narrow screen. Best viewed on desktop.") + ",\n" +
+      "    _k = 0;\n" +
+      // Fit the groups to the window width. Nested settings are set property by property (the
+      // template keeps references to the original objects).
+      "function _applyFit() {\n" +
+      "  var fit = _fitGroups(_groups, _quartiles, window.innerWidth);\n" +
+      "  if (fit.k === _k) return false;\n" +
+      "  _k = fit.k;\n" +
+      "  var d = fit.data;\n" +
+      "  d.column_names = _Flourish_data_column_names.data;\n" +
+      "  d.metadata = _Flourish_data_metadata.data;\n" +
+      "  window.template.data.data = d;\n" +
+      "  window.template.state.axes_highlights.x_lines = fit.xLines;\n" +
+      "  window.template.state.layout.subtitle = fit.k > 1 ? _mergeNote : \"\";\n" +
+      "  return true;\n" +
       "}\n" +
+      "_applyFit();\n" +
       // Fill the window. embedded.js decides fixed_height by reading the parent page's URL, which
       // the sandbox can block; it then falls back to a set height by width (400px on phones,
       // 650px on desktop) and leaves the rest of the screen empty. Force it, and stop re-checks.
       "Flourish.fixed_height = true;\n" +
       "Flourish.checkHeight = function () {};\n" +
       "window.template.draw();\n" +
+      // re-merge when the width changes enough (e.g. a phone turned sideways)
+      "var _resizeTimer;\n" +
+      "window.addEventListener(\"resize\", function () {\n" +
+      "  clearTimeout(_resizeTimer);\n" +
+      "  _resizeTimer = setTimeout(function () { if (_applyFit()) window.template.update(); }, 200);\n" +
+      "});\n" +
       "</" + S + ">\n</" + "body>\n</" + "html>\n";
   }
 

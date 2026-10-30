@@ -91,6 +91,12 @@ the Flourish exports were identical apart from a hidden credit string.
   position is the group's label, which works for single marks (number axis) and ranges like
   `26-30` (category axis) alike. The CDN template (118910) supports these settings, so nothing
   new needs hosting.
+- Results merges groups **on narrow screens** (`fitGroups`, injected into the chart page via
+  `toString()` so it runs where the width is known): at most ~1 bar per 16 px, neighbouring groups
+  merged (counts summed, percentiles recalculated, labels like `27.5–29.5`). Quartile values come
+  from the full data; their lines move to the merged bar containing them, and quartiles on the same
+  bar share one line. When merged, `layout.subtitle` says "Some groups have been merged to fit this
+  narrow screen. Best viewed on desktop." Re-fits on resize (`template.update()`). Desktop is unchanged.
 - **Set nested chart settings as dotted keys, not objects** (`"number_format_secondary.suffix": "%"`).
   The template builds some formatters once at load around the original object; replacing the
   object (`"number_format_secondary": { suffix: "%" }`) is silently ignored by the axis.
