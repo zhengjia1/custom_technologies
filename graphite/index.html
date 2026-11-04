@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#101010">
 <title>Graphite</title>
+<script>
+  // dark is the default; a saved choice (any Graphite page) wins
+  (function () {
+    var t = "dark";
+    try { t = localStorage.getItem("graphite-theme") || "dark"; } catch (e) {}
+    document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark");
+  })();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <style>
@@ -134,6 +142,21 @@
     font: inherit; font-size: 15px; color: var(--text); background: transparent; border: 1px solid var(--gray);
   }
   .toolbar button.save { background: var(--paper); color: #333; border-color: var(--paper); }
+  /* Save menu: Cloud / SVG / HTML */
+  .toolbar { position: relative; z-index: 2; }
+  .save-wrap { position: relative; flex: none; }
+  .save-options {
+    position: absolute; right: 0; top: calc(100% + 6px); z-index: 20; min-width: 150px;
+    display: flex; flex-direction: column; gap: 2px; padding: 4px;
+    background: #181818; border: 1px solid #333; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  }
+  .save-options[hidden], .save-options button[hidden] { display: none; }
+  .toolbar .save-options button {
+    width: 100%; height: 34px; padding: 0 10px; text-align: left;
+    background: transparent; color: var(--text); border: none; border-radius: 6px;
+  }
+  .toolbar .save-options button:hover, .toolbar .save-options button:focus-visible { background: #2a2a2a; outline: none; }
+  .save-options small { opacity: .6; margin-left: 6px; font-size: 12px; }
   .toolbar button:disabled { opacity: .5; cursor: default; }
   .toolbar .status { flex: 1; min-width: 0; font-size: 14px; opacity: .85; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .toolbar .status.error { color: var(--error); opacity: 1; }
@@ -189,6 +212,43 @@
   .sample-dl:hover { border-color: var(--gray); }
   .samples-msg { margin: 10px 0 0; min-height: 1em; font-size: 14px; color: var(--error); }
 
+  /* ---------- Theme toggle + light mode (dark is the default) ---------- */
+  .theme-btn {
+    position: fixed; top: calc(12px + env(safe-area-inset-top)); right: 12px; z-index: 5;
+    width: 36px; height: 36px; padding: 0; border-radius: 50%; cursor: pointer;
+    font: inherit; font-size: 18px; line-height: 1;
+    color: #fff; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.25);
+  }
+  .toolbar .theme-btn { position: static; flex: none; width: 32px; height: 32px; padding: 0; border-radius: 50%; font-size: 16px; }
+  #viewer { background: #15171c; }
+  #frame { background: #15171c; }
+
+  html[data-theme="light"] { --text: #1d1d1f; --ink: #ffffff; --error: #c62828; }
+  html[data-theme="light"] body { background-color: #f4f3ef; }
+  html[data-theme="light"] body::before { background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.72)); }
+  html[data-theme="light"] .greetings,
+  html[data-theme="light"] .hint,
+  html[data-theme="light"] #error,
+  html[data-theme="light"] .link-btn { text-shadow: none; }
+  html[data-theme="light"] .input::placeholder { color: #777; }
+  html[data-theme="light"] .toggle button.active { color: #fff; } /* white on the grey highlight */
+  html[data-theme="light"] .input:not(:focus) {
+    background: linear-gradient(#fff, #fff) padding-box, linear-gradient(#cfcfcf, #cfcfcf) border-box;
+  }
+  html[data-theme="light"] .theme-btn { color: #1d1d1f; background: rgba(255,255,255,.85); border-color: rgba(0,0,0,.15); }
+  html[data-theme="light"] .toolbar { background: #f4f4f4; color: #1d1d1f; border-bottom: 1px solid #ddd; }
+  html[data-theme="light"] .toolbar button { color: #1d1d1f; border-color: #bbb; }
+  html[data-theme="light"] .toolbar button.save { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+  html[data-theme="light"] .toolbar .theme-btn { background: #fff; }
+  html[data-theme="light"] .save-options { background: #fff; border-color: #ddd; box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+  html[data-theme="light"] .toolbar .save-options button { color: #1d1d1f; }
+  html[data-theme="light"] .toolbar .save-options button:hover,
+  html[data-theme="light"] .toolbar .save-options button:focus-visible { background: #f0f0f0; }
+  html[data-theme="light"] .dialog { background: #fff; color: #1d1d1f; box-shadow: 0 10px 40px rgba(0,0,0,.2); }
+  html[data-theme="light"] .dialog .close { color: #1d1d1f; }
+  html[data-theme="light"] .samples-list .sample, html[data-theme="light"] .sample-dl { background: #f6f6f6; color: #1d1d1f; border-color: #ddd; }
+  html[data-theme="light"] #viewer, html[data-theme="light"] #frame { background: #fff; }
+
   @media (max-width: 480px) {
     .greetings { font-size: 19px; }
     .toolbar { padding-left: 12px; padding-right: 12px; gap: 6px; }
@@ -199,6 +259,7 @@
 <body>
 
 <main id="setup">
+  <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">&#9728;</button>
   <h2 class="greetings" id="greetings">Upload a spreadsheet or paste data to start.</h2>
 
   <div class="panel">
@@ -225,7 +286,7 @@ May 1	20	99
 May 2	66	33
 May 3	19	82"></textarea>
     </div>
-    <p class="hint" id="hint">.xlsx or .csv, up to 10 MB. First row = series names, first column = x-axis labels. Your data stays on your device unless you choose Save to Cloud.</p>
+    <p class="hint" id="hint">.xlsx or .csv, up to 10 MB. First row = series names, first column = x-axis labels (dates like 3 Nov 2026 or 03/11/2026, day first, go on a real time axis). Your data stays on your device unless you choose Save to Cloud.</p>
 
     <button type="button" class="submit_btn" id="go">Submit</button>
     <div id="error"></div>
@@ -237,10 +298,17 @@ May 3	19	82"></textarea>
 <div id="viewer">
   <div class="toolbar">
     <span class="status" id="status" role="status"></span>
-    <button type="button" class="save" id="save">Download</button>
-    <button type="button" class="save" id="cloud">Save to Cloud</button>
+    <div class="save-wrap" id="save-wrap">
+      <button type="button" class="save" id="save-menu" aria-haspopup="true" aria-expanded="false">Save &#9662;</button>
+      <div class="save-options" id="save-options" role="menu" hidden>
+        <button type="button" role="menuitem" id="cloud">Cloud<small>share link</small></button>
+        <button type="button" role="menuitem" id="save-svg">SVG<small>image</small></button>
+        <button type="button" role="menuitem" id="save">HTML<small>interactive</small></button>
+      </div>
+    </div>
     <button type="button" id="back">New</button>
     <button type="button" id="copy" hidden>Create your own copy</button>
+    <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">&#9728;</button>
   </div>
   <!-- sandboxed: graphs opened from share links contain other people's data -->
   <iframe id="frame" title="Graph" sandbox="allow-scripts allow-popups"></iframe>
@@ -305,8 +373,8 @@ May 3	19	82"></textarea>
 
   // ---------- Mode toggle ----------
   var hints = {
-    file: ".xlsx or .csv, up to 10 MB. First row = series names, first column = x-axis labels. Your data stays on your device unless you choose Save to Cloud.",
-    paste: "Copy cells from Excel / Google Sheets, or paste CSV. First row = series names, first column = x-axis labels."
+    file: ".xlsx or .csv, up to 10 MB. First row = series names, first column = x-axis labels (dates like 3 Nov 2026 or 03/11/2026, day first, go on a real time axis). Your data stays on your device unless you choose Save to Cloud.",
+    paste: "Copy cells from Excel / Google Sheets, or paste CSV. First row = series names, first column = x-axis labels (dates like 3 Nov 2026 or 03/11/2026, day first, go on a real time axis)."
   };
   document.querySelectorAll("#toggle button").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -540,7 +608,7 @@ May 3	19	82"></textarea>
     var header = rows[0];
     var columns = valueCols.map(function (c, k) { return cellText(header[c]) || "Series " + (k + 1); });
 
-    var data = [];
+    var data = [], dates = [];
     for (var i = 1; i < rows.length; i++) {
       var label = cellText(rows[i][labelCol]);
       if (!label || label.charAt(0) === "=") continue;
@@ -548,13 +616,65 @@ May 3	19	82"></textarea>
       var values = valueCols.map(function (c) { return cellNumber(rows[i][c]); });
       if (values.every(function (v) { return v === ""; })) continue;    // notes like "Source: ..."
       data.push({ label: label, value: values });
+      dates.push(labelDate(rows[i][labelCol], label));
     }
     // rows without a single number were skipped above, so an empty list means nothing to plot
     if (!data.length) throw new Error("No numbers found to plot. Put labels in the first column and numbers in the columns after it.");
     if (data.length > MAX_ROWS) throw new Error("Too many rows to graph (" + data.length + "). The limit is " + MAX_ROWS + ".");
     if (columns.length > MAX_SERIES) throw new Error("Too many series (" + columns.length + "). The limit is " + MAX_SERIES + ".");
-    return { columns: columns, data: data, labelType: guessLabelType(data) };
+    var timeAxis = applyTimeAxis(data, dates);
+    return { columns: columns, data: data, labelType: timeAxis ? "date" : guessLabelType(data) };
   }
+
+  // ---------- Dates: real time axis ----------
+  // A label counts as a date if it's a real Excel date cell, or text written as
+  // DD MMM YYYY ("3 Nov 2026", "03 November 2026") or DD/MM/YYYY ("03/11/2026", day first).
+  // Only when EVERY label is a date does the chart get a time axis; otherwise labels stay text.
+  var MONTH_NAMES = ["january", "february", "march", "april", "may", "june", "july", "august",
+    "september", "october", "november", "december"];
+  var MONTH_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function isoDate(y, m, d) {
+    var t = new Date(Date.UTC(y, m - 1, d));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== m - 1 || t.getUTCDate() !== d) return null; // e.g. 31/02
+    return y + "-" + pad2(m) + "-" + pad2(d);
+  }
+  // "YYYY-MM-DD" for a date label, or null
+  function labelDate(cell, text) {
+    if (cell && cell.t === "n" && cell.z && XLSX.SSF.is_date(cell.z)) {
+      var p = XLSX.SSF.parse_date_code(cell.v);
+      return p ? isoDate(p.y, p.m, p.d) : null;
+    }
+    text = String(text || "").trim();
+    var m = /^(\d{1,2})\s+([A-Za-z]{3,9})\.?\s+(\d{4})$/.exec(text);
+    if (m) {
+      var name = m[2].toLowerCase();
+      for (var i = 0; i < 12; i++) {
+        if (MONTH_NAMES[i].indexOf(name) === 0 && name.length >= 3) return isoDate(+m[3], i + 1, +m[1]);
+      }
+      return null;
+    }
+    m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(text);
+    return m ? isoDate(+m[3], +m[2], +m[1]) : null;
+  }
+  // "2026-11-03" -> "03 Nov 2026" (the standard form labels are stored in)
+  function niceDate(iso) {
+    var p = iso.split("-");
+    return p[2] + " " + MONTH_SHORT[+p[1] - 1] + " " + p[0];
+  }
+  // A dataset whose labels are all dates: sorted by date, labels in the standard form.
+  function applyTimeAxis(data, dates) {
+    if (!data.length || dates.some(function (d) { return !d; })) return false;
+    data.forEach(function (d, i) { d._date = dates[i]; });
+    data.sort(function (a, b) { return a._date < b._date ? -1 : a._date > b._date ? 1 : 0; });
+    data.forEach(function (d) { d.label = niceDate(d._date); delete d._date; });
+    return true;
+  }
+  // the chart wants ISO dates; labels are stored as "03 Nov 2026"
+  function chartLabel(ds, label) {
+    return ds.labelType === "date" ? labelDate(null, label) : label;
+  }
+  var DATE_META = { type: "datetime", type_id: "datetime$%Y-%m-%d", output_format_id: "datetime$%d %b %Y" };
 
   // Labels are shown exactly as Excel displays them. Only plain years (2021, 2022...) are left
   // for the chart to treat as time; anything else ("May 1", "1-May-24", "Q3") stays as text
@@ -592,15 +712,24 @@ May 3	19	82"></textarea>
       "series_filter_mode": "multi",
       "x.axis_position": "bottom"
     };
+    if (ds.labelType === "date") {
+      // real time axis: dates are spaced by the time between them
+      settings["label_data_type"] = "datetime";
+      settings["datetime_input_format"] = "%Y-%m-%d";
+      settings["x_axis_date_format"] = "%d %b %Y"; // otherwise ticks reuse the input format (2026-11-03)
+    }
+    var data = ds.data.map(function (d) { return { label: chartLabel(ds, d.label), value: d.value }; });
     var columnNames = { data: { label: "Time", value: ds.columns } };
     var metadata = {
       data: {
-        label: { type: "datetime", type_id: "datetime$%Y", output_format_id: "datetime$%Y" },
+        label: ds.labelType === "date" ? DATE_META : { type: "datetime", type_id: "datetime$%Y", output_format_id: "datetime$%Y" },
         value: ds.columns.map(function () {
           return { type: "number", type_id: "number$none_point", output_format_id: "number$none_point" };
         })
       }
     };
+    var themed = chartTheme(); // dark / light colours for the chart
+    Object.keys(themed).forEach(function (k) { if (k !== "_bg") settings[k] = themed[k]; });
     var S = "script";
     // Page tags are split ("</" + "body>") so dev servers that inject a script before the first
     // closing body tag in the file (e.g. VS Code Live Server) don't inject it into this string.
@@ -611,7 +740,7 @@ May 3	19	82"></textarea>
       '<link rel="stylesheet" type="text/css" href="https://cdn.zhengjia.dev/graph/static/supp_3a.css">\n' +
       '<style id="choices-styles"></style>\n' +
       // supp_2.css pulls html & body up by 10px each, which clips the title
-      '<style>html, body { margin-top: 0 !important; }</style>\n</' + 'head>\n<' + 'body style="transform: translateZ(0)">\n' +
+      '<style>html, body { margin-top: 0 !important; }</style>\n</' + 'head>\n<' + 'body style="transform: translateZ(0); background: ' + themed._bg + '">\n' +
       "<" + S + '>window.Flourish = { "environment": "live", "is_read_only": true };</' + S + ">\n" +
       "<" + S + ' src="https://cdn.zhengjia.dev/graph/static/supp_1.js"></' + S + ">\n" +
       "<" + S + ' src="https://cdn.zhengjia.dev/graph/static/embedded.js"></' + S + ">\n" +
@@ -632,7 +761,7 @@ May 3	19	82"></textarea>
       "_Flourish_unflattenInto(window.template.state, " + js(settings) + ");\n" +
       "var _Flourish_data_column_names = " + js(columnNames) + ",\n" +
       "    _Flourish_data_metadata = " + js(metadata) + ",\n" +
-      "    _Flourish_data = { data: " + js(ds.data) + " };\n" +
+      "    _Flourish_data = { data: " + js(data) + " };\n" +
       "for (var _d in _Flourish_data) {\n" +
       "  window.template.data[_d] = _Flourish_data[_d];\n" +
       "  window.template.data[_d].column_names = _Flourish_data_column_names[_d];\n" +
@@ -644,6 +773,8 @@ May 3	19	82"></textarea>
       "Flourish.fixed_height = true;\n" +
       "Flourish.checkHeight = function () {};\n" +
       "window.template.draw();\n" +
+      // answers the parent page's "Save > SVG" (see svgExporter)
+      "(" + svgExporter.toString() + ")();\n" +
       "</" + S + ">\n</" + "body>\n</" + "html>\n";
   }
 
@@ -686,15 +817,253 @@ May 3	19	82"></textarea>
     $("viewer").classList.add("show");
   }
 
-  $("save").addEventListener("click", function () {
-    var blob = new Blob([graphHtml], { type: "text/html" });
+  // ---------- Theme: dark by default, toggle top-right ----------
+  function theme() { return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark"; }
+  function syncThemeButtons() {
+    var dark = theme() === "dark", label = dark ? "Switch to light mode" : "Switch to dark mode";
+    [].forEach.call(document.querySelectorAll("[data-theme-toggle]"), function (b) {
+      b.innerHTML = dark ? "&#9728;" : "&#9790;"; // sun in dark mode (go light), moon in light mode
+      b.setAttribute("aria-label", label);
+      b.title = label;
+    });
+  }
+  [].forEach.call(document.querySelectorAll("[data-theme-toggle]"), function (b) {
+    b.addEventListener("click", function () {
+      var next = theme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("graphite-theme", next); } catch (e) {}
+      syncThemeButtons();
+      // redraw the chart on screen in the new colours (Save > HTML / SVG follow it too)
+      if ($("viewer").classList.contains("show") && current) {
+        graphHtml = buildGraphHtml(current.title, current.titles !== undefined ? current.titles : current.searchTitle, current.ds);
+        $("frame").srcdoc = graphHtml;
+      }
+    });
+  });
+  syncThemeButtons();
+
+  // Chart colours for the current theme, as Flourish settings (dotted keys, see AGENTS.md).
+  function chartTheme() {
+    var dark = theme() === "dark";
+    var c = dark
+      ? { bg: "#15171c", text: "#e6e6e6", muted: "#a9aeb8", line: "#3a3e46", grid: "#2a2d34", popup: "#24272e", mark: "#d6d6d6" }
+      : { bg: "#ffffff", text: "#333333", muted: "#666666", line: "#dddddd", grid: "#eeeeee", popup: "#ffffff", mark: "#333333" };
+    var s = {
+      "layout.background_color_enabled": true,
+      "layout.background_color": c.bg,
+      "layout.font_color": c.text,
+      "popup.style_popups": true,
+      "popup.fill_color": c.popup,
+      "popup.text_color": c.text,
+      // quartile lines on Results (ignored elsewhere)
+      "axes_highlights.x_line_color": c.mark,
+      "axes_highlights.x_label_color": c.mark,
+      "axes_highlights.x_shadow_color": c.bg
+    };
+    ["x", "y", "y2"].forEach(function (a) {
+      s[a + ".line_and_tick_color"] = c.line;
+      s[a + ".gridline_color"] = c.grid;
+      s[a + ".tick_label_color"] = c.muted;
+      s[a + ".title_color"] = c.text;
+    });
+    s._bg = c.bg;
+    return s;
+  }
+
+  // ---------- Save menu (Cloud / SVG / HTML) ----------
+  function closeSaveMenu() {
+    $("save-options").hidden = true;
+    $("save-menu").setAttribute("aria-expanded", "false");
+  }
+  $("save-menu").addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = $("save-options").hidden;
+    $("save-options").hidden = !open;
+    this.setAttribute("aria-expanded", String(open));
+  });
+  $("save-options").addEventListener("click", closeSaveMenu);
+  document.addEventListener("click", function (e) { if (!$("save-wrap").contains(e.target)) closeSaveMenu(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSaveMenu(); });
+  window.addEventListener("blur", closeSaveMenu); // clicking into the chart frame
+
+  function downloadFile(content, type, ext) {
     var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = graphTitle.replace(/[\\/:*?"<>|]+/g, "_").slice(0, 80) + ".html";
+    a.href = URL.createObjectURL(new Blob([content], { type: type }));
+    a.download = graphTitle.replace(/[\\/:*?"<>|]+/g, "_").slice(0, 80) + ext;
     document.body.appendChild(a);
     a.click();
     a.remove();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+
+  // SVG: the chart frame is sandboxed, so ask it for the image (see svgExporter).
+  $("save-svg").addEventListener("click", function () {
+    var frame = $("frame"), finished = false;
+    setStatus("Preparing SVG…");
+    function finish(svg, err) {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener("message", onMessage);
+      clearTimeout(timer);
+      if (svg) { downloadFile(svg, "image/svg+xml", ".svg"); setStatus(""); }
+      else setStatus(err || "Couldn't create the SVG", true);
+    }
+    // the chart page may still be loading, so keep asking until it acknowledges
+    var acked = false;
+    function ask() {
+      if (finished || acked) return;
+      frame.contentWindow.postMessage({ graphiteSvg: true }, "*");
+      setTimeout(ask, 500);
+    }
+    function onMessage(e) {
+      if (e.source !== frame.contentWindow || !e.data) return;
+      if (e.data.graphiteSvgAck) acked = true;
+      else if (e.data.graphiteSvgResult) finish(e.data.graphiteSvgResult);
+      else if (e.data.graphiteSvgError) finish(null, "Couldn't create the SVG: " + e.data.graphiteSvgError);
+    }
+    var timer = setTimeout(function () { finish(null, "Couldn't create the SVG (the chart didn't respond)"); }, 25000);
+    window.addEventListener("message", onMessage);
+    ask();
+  });
+
+  // Runs INSIDE the chart page (injected via toString, so it must not use anything from this
+  // page). Answers {graphiteSvg} messages with one standalone SVG of the whole chart: the
+  // Flourish library first turns its HTML parts (title, subtitle, legend) into SVG, then every
+  // SVG on the page is copied to its on-screen position with its computed styles written inline,
+  // so the file looks the same outside the browser.
+  function svgExporter() {
+    var NS = "http://www.w3.org/2000/svg";
+    var PROPS = ["fill", "fill-opacity", "stroke", "stroke-width", "stroke-opacity", "stroke-dasharray",
+      "stroke-linecap", "stroke-linejoin", "opacity", "font-family", "font-size", "font-weight",
+      "font-style", "text-anchor", "dominant-baseline", "letter-spacing", "visibility"];
+    function inline(src, dst) {
+      if (src.nodeType !== 1) return;
+      var cs = getComputedStyle(src), style = "";
+      for (var i = 0; i < PROPS.length; i++) {
+        var v = cs.getPropertyValue(PROPS[i]);
+        if (v) style += PROPS[i] + ":" + v + ";";
+      }
+      if (cs.display === "none") style += "display:none;";
+      // keep the element's own inline style (some charts size shapes there, e.g. clip-path
+      // rectangles with width:...px) and add the computed values after it
+      var own = src.getAttribute("style");
+      dst.setAttribute("style", (own ? own.replace(/;?\s*$/, ";") : "") + style);
+      for (var j = 0; j < src.childNodes.length; j++) inline(src.childNodes[j], dst.childNodes[j]);
+    }
+    // For libraries without the screenshot hook (Graphite's line chart): draw the title,
+    // subtitle and legend (labels + colour swatches) as SVG ourselves.
+    function htmlParts(out) {
+      function textOf(el) {
+        var r = el.getBoundingClientRect(), cs = getComputedStyle(el), txt = el.textContent.replace(/\s+/g, " ").trim();
+        if (!txt || !r.width || cs.display === "none" || cs.visibility === "hidden") return;
+        var t = document.createElementNS(NS, "text"), size = parseFloat(cs.fontSize) || 14;
+        t.setAttribute("x", r.left + (parseFloat(cs.paddingLeft) || 0));
+        t.setAttribute("y", r.top + (parseFloat(cs.paddingTop) || 0) + size * 0.85);
+        t.setAttribute("style", "fill:" + cs.color + ";font-family:" + cs.fontFamily + ";font-size:" + cs.fontSize +
+          ";font-weight:" + cs.fontWeight + ";font-style:" + cs.fontStyle);
+        t.textContent = txt;
+        out.appendChild(t);
+      }
+      [].forEach.call(document.querySelectorAll("#fl-layout-header-container h1, #fl-layout-header-container h2, " +
+        "#fl-layout-header-container h3, #fl-layout-header-container p, .fl-legend-title, .fl-legend-label"), textOf);
+      [].forEach.call(document.querySelectorAll(".fl-legend-swatch"), function (el) {
+        var r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+        if (!r.width || cs.display === "none") return;
+        var s = document.createElementNS(NS, "rect");
+        s.setAttribute("x", r.left); s.setAttribute("y", r.top);
+        s.setAttribute("width", r.width); s.setAttribute("height", r.height);
+        s.setAttribute("rx", parseFloat(cs.borderTopLeftRadius) || 0);
+        s.setAttribute("fill", cs.backgroundColor !== "rgba(0, 0, 0, 0)" ? cs.backgroundColor : cs.borderTopColor);
+        out.appendChild(s);
+      });
+    }
+    function assemble(withHtml) {
+      var W = document.documentElement.clientWidth, H = window.innerHeight;
+      var out = document.createElementNS(NS, "svg");
+      out.setAttribute("xmlns", NS);
+      out.setAttribute("width", W);
+      out.setAttribute("height", H);
+      out.setAttribute("viewBox", "0 0 " + W + " " + H);
+      var style = document.createElementNS(NS, "style");
+      style.textContent = "@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');";
+      out.appendChild(style);
+      var bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("width", "100%");
+      bg.setAttribute("height", "100%");
+      bg.setAttribute("fill", getComputedStyle(document.body).backgroundColor || "#ffffff");
+      out.appendChild(bg);
+      [].forEach.call(document.querySelectorAll("svg"), function (svg) {
+        if (svg.parentNode && svg.parentNode.closest && svg.parentNode.closest("svg")) return; // nested
+        if (svg.classList.contains("fl-ignore-svg-download") || svg.closest(".flourish-popup")) return;
+        var r = svg.getBoundingClientRect(), cs = getComputedStyle(svg);
+        if (!r.width || !r.height || cs.display === "none" || cs.visibility === "hidden") return;
+        // some charts draw beyond their <svg> box (e.g. a 300x150 box filling the whole chart
+        // area), so make the copy at least as big as its container, and let it overflow
+        var box = svg.parentNode && svg.parentNode.getBoundingClientRect ? svg.parentNode.getBoundingClientRect() : r;
+        var copy = svg.cloneNode(true);
+        inline(svg, copy);
+        copy.setAttribute("x", r.left);
+        copy.setAttribute("y", r.top);
+        copy.setAttribute("width", Math.max(r.width, box.right - r.left));
+        copy.setAttribute("height", Math.max(r.height, box.bottom - r.top));
+        copy.setAttribute("overflow", "visible");
+        copy.removeAttribute("id");
+        out.appendChild(copy);
+      });
+      if (withHtml) htmlParts(out);
+      return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(out);
+    }
+    window.addEventListener("message", function (e) {
+      if (!e.data || !e.data.graphiteSvg) return;
+      e.source.postMessage({ graphiteSvgAck: true }, "*");
+      if (busy) return; // a repeated request while the first is still running
+      busy = true;
+      whenStill(function () { exportNow(e); });
+    });
+    // Charts animate in (bars grow, lines draw from width 0, everything fades in), so wait until
+    // the drawing stops changing: compare a quick fingerprint of every shape every 250ms.
+    function fingerprint() {
+      var parts = [];
+      [].forEach.call(document.querySelectorAll("svg rect, svg path, svg g, svg circle, svg line, svg text"), function (el) {
+        parts.push((el.getAttribute("d") || "").length, el.getAttribute("width"), el.getAttribute("height"),
+          el.getAttribute("x"), el.getAttribute("y"), el.getAttribute("transform"), getComputedStyle(el).opacity);
+      });
+      return parts.join(",");
+    }
+    function whenStill(done) {
+      var last = null, same = 0, started = Date.now();
+      (function check() {
+        var now = fingerprint();
+        same = now === last ? same + 1 : 0;
+        last = now;
+        if (same >= 2 || Date.now() - started > 10000) done();
+        else setTimeout(check, 250);
+      })();
+    }
+    var busy = false;
+    function exportNow(e) {
+      var reply = function (msg) { busy = false; e.source.postMessage(msg, "*"); };
+      try {
+        var t = window.template;
+        if (t && typeof t.screenshot === "function") {
+          // the library adds SVG copies of its HTML text, calls back, then removes them again
+          t.screenshot({ format: "svg" }, function () {
+            return new Promise(function (resolve) {
+              try { reply({ graphiteSvgResult: assemble() }); } catch (err) { reply({ graphiteSvgError: String(err && err.message || err) }); }
+              resolve();
+            });
+          });
+        } else {
+          reply({ graphiteSvgResult: assemble(true) });
+        }
+      } catch (err) {
+        reply({ graphiteSvgError: String(err && err.message || err) });
+      }
+    }
+  }
+
+  $("save").addEventListener("click", function () {
+    downloadFile(graphHtml, "text/html", ".html");
   });
 
   $("back").addEventListener("click", function () {
@@ -862,7 +1231,9 @@ May 3	19	82"></textarea>
     if (!columns.length || !data.length) throw new Error("That shared graph is empty.");
     return {
       title: str(s.title), searchTitle: str(s.searchTitle),
-      columns: columns, data: data, labelType: s.labelType === "auto" ? "auto" : "string"
+      columns: columns, data: data,
+      labelType: s.labelType === "auto" ? "auto" :
+        s.labelType === "date" && data.every(function (d) { return labelDate(null, d.label); }) ? "date" : "string"
     };
   }
 

@@ -20,6 +20,16 @@ Four pages, each a single self-contained `index.html` (no build step, no framewo
 Look and feel follows zhengjia.dev: random background photo from `cdn.zhengjia.dev/static/N.jpg`,
 Adobe Clean font, dark inputs with a gradient border that glows only on focus.
 
+**Dark mode is the default.** A round ☀/☾ button (top-right of the start screen, end of the chart
+toolbar; `[data-theme-toggle]`) switches to light. The choice is saved in `localStorage`
+(`graphite-theme`, shared by all four pages) and applied by a small `<head>` script before first
+paint (`<html data-theme="dark|light">`); light mode is a block of `html[data-theme="light"]` CSS
+overrides. Charts get theme colours from `chartTheme()` (Flourish dotted-key settings: layout
+background/font, axis lines/gridlines/ticks/titles, popups, Results' quartile lines), merged into
+the settings in `buildGraphHtml`, plus the chart page's body background. Switching theme while a
+chart is open rebuilds it; Save > SVG/HTML use the current theme (the SVG's background is the chart
+page's body colour).
+
 ## Files
 
 ```
@@ -60,9 +70,20 @@ validation, cloud save, sandboxing…) must be applied to **all four files** by 
    with `raw: true` so labels are kept as typed.
 4. **Rendering** (`buildGraphHtml`): builds a complete standalone HTML page for the chart and shows
    it in `<iframe id="frame" sandbox="allow-scripts allow-popups">` via `srcdoc`.
-   **Download** saves exactly that HTML.
+   The toolbar's **Save ▾** menu offers **Cloud** (share link), **SVG** (image) and **HTML** (that
+   standalone page, interactive). Shared graphs hide Cloud.
 5. **Share links**: `?id=<uuid>` loads a cloud-saved graph; `?id=sample` shows a built-in sample.
-   Shared graphs open with **Download** / **Create your own copy** instead of Save to Cloud / New.
+   Shared graphs open with **Save** (SVG / HTML) / **Create your own copy** instead of Save / New.
+6. **SVG export** (`svgExporter`, injected into the chart page via `toString()`): the parent posts
+   `{graphiteSvg}` to the sandboxed frame (re-sending every 500 ms until `{graphiteSvgAck}`, since
+   the chart page may still be loading). The chart page waits until the drawing stops changing
+   (shape fingerprint stable for 2 checks, max 10 s — charts animate in), lets the library convert
+   its HTML title/subtitle/legend to SVG (`template.screenshot({format:"svg"})` on the newer
+   library; on Graphite's older one, which lacks it, `htmlParts()` does it), then copies every
+   on-screen `<svg>` to its position with computed styles inlined (keeping each element's own
+   inline style — clip-path rects are sized there) and replies `{graphiteSvgResult}`. Skips
+   `.fl-ignore-svg-download` and popups; copies are sized to at least their container because
+   the line chart's `#graphic` is a 300×150 box that overflows.
 
 ### Chart files (on the CDN)
 
@@ -120,8 +141,23 @@ the Flourish exports were identical apart from a hidden credit string.
   `String.replace`, use a function replacer — `$` sequences in minified code corrupt it otherwise.
 - **Screenshots of the chart** often catch the 1.5 s entrance animation (empty or half-drawn bars).
   Wait or re-take before concluding something is broken.
+- **The Claude browser pane runs no animation frames while it isn't being drawn** (0 rAF/s), so
+  charts freeze at their start state (opacity 0) and SVG exports come out blank *in testing only*.
+  Keep the pane drawing (take screenshots while exporting) before trusting an export test.
 - **Flourish label types:** with `"auto"`, labels like "May 1" were read as years (2001…). Graphite
   only lets plain 4-digit years be `auto`; everything else is `string`.
+- **Real time axis (Graphite + Combo only).** A label is a date if it's a real Excel date cell (any
+  display format) or text as `DD MMM YYYY` (`3 Nov 2026`, full month names OK) or `DD/MM/YYYY`
+  (`03/11/2026`, day first). Only if **every** label is a date: rows are sorted by date, labels are
+  stored as `03 Nov 2026`, `labelType = "date"`, and the chart gets ISO dates (`DATE_META`:
+  `datetime$%Y-%m-%d` in, `datetime$%d %b %Y` out). Graphite's old library also needs
+  `x_axis_date_format`, or ticks show the input format. Invalid dates (31/02), month-first text and
+  dates without a year stay text. The newer library only accepts `datetime$` ids from its built-in
+  list (`%Y-%m-%d` and `%d %b %Y` are on it) and silently skips points whose label won't parse.
+  It also does **not** parse label strings itself: on a time axis it sorts with `label.getTime()`,
+  so the Combo chart page turns labels into `Date` objects before drawing (otherwise: blank chart,
+  console "t.label.getTime is not a function"). It formats with `utcFormat`, so they must be **UTC
+  midnight** (`Date.UTC`) — local midnight shows every tick a day early east of Greenwich.
 
 ## Save to Cloud
 
