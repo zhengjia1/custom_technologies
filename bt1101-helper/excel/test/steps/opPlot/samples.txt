@@ -1,0 +1,887 @@
+# Samples and copy
+open	ggplot
+# sample mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample Grouped barplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample grouped mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample frequency bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample pie chart basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample side-by-side bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample stacked bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample mosaic plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample contingency plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample histogram basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample boxplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample grouped boxplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample scatterplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample line plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample Pareto analysis basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+click	#ggplotBench .plot-axis-interval-toggle
+# sample mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample Grouped barplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample grouped mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample frequency bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample pie chart axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample side-by-side bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample stacked bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample mosaic plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample contingency plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample histogram axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample boxplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample grouped boxplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample scatterplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample line plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+# sample Pareto analysis axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotThreshold	55
+input	#plotBins	7
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+click	#loadGgplotSampleBtn
+val	#plotDataset
+val	#plotX
+val	#plotY
+val	#plotGroup
+val	#plotTitle
+val	#plotStyle
+val	#plotBins
+val	#plotThreshold
+val	#plotXTransform
+val	#plotYTransform
+val	#plotWorkflowSearch
+toast
+canon
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+toast
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+disabled	#copyGgplotCodeBtn
+click	#copyGgplotCodeBtn
+clip
+input	#plotWorkflowSearch	nothing
+click	#loadGgplotSampleBtn
+val	#plotX
+click	#copyGgplotCodeBtn
+clip

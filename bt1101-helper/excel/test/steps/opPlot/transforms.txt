@@ -1,0 +1,711 @@
+# Axis transformations
+open	ggplot
+# mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	region_name
+input	#plotY	sales_total, profit_margin
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# grouped mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	store_type
+input	#plotY	weekly_sales
+input	#plotGroup	season
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# grouped boxplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	branch
+input	#plotY	rating
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# histogram basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# boxplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# scatterplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+input	#plotY	gross_income
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# line plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	year
+input	#plotY	revenue
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# inapplicable frequency bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable pie chart
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable contingency plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable Grouped barplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	daily_screen_time_hours
+input	#plotGroup	age_group
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable Pareto analysis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+input	#plotX	sales
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+click	#ggplotBench .plot-axis-interval-toggle
+# mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	region_name
+input	#plotY	sales_total, profit_margin
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# grouped mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	store_type
+input	#plotY	weekly_sales
+input	#plotGroup	season
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# grouped boxplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	branch
+input	#plotY	rating
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# histogram axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# boxplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# scatterplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+input	#plotY	gross_income
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# line plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	year
+input	#plotY	revenue
+change	#plotXTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log10
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	log2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	sqrt
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotYTransform	inverse
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none
+canon
+read	#ggplotCode
+# inapplicable frequency bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable pie chart
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable contingency plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable Grouped barplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+input	#plotX	daily_screen_time_hours
+input	#plotGroup	age_group
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+# inapplicable Pareto analysis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+change	#plotXTransform	log
+change	#plotYTransform	sqrt
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+input	#plotX	sales
+canon
+read	#ggplotCode
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+attr	#plotTitle	placeholder
+change	#plotXTransform	none
+change	#plotYTransform	none

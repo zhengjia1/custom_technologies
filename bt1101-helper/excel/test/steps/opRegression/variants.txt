@@ -1,0 +1,41 @@
+# Answer options on regression outputs (random initial option, explicit option changes, copy)
+open	lm-predict
+click	#loadRegressionSampleBtn
+read	#regressionCode
+click	#copyRegressionCodeBtn
+clip
+select	#simpleRegressionBench .answer-variant-select	2
+read	#regressionCode
+click	#copyRegressionCodeBtn
+clip
+class	#copyRegressionCodeBtn
+change	#regressionTransform	log
+read	#regressionCode
+class	#copyRegressionCodeBtn
+open	multi-regression
+click	#loadMultiRegressionOutputBtn
+read	#multiRegressionProse
+click	#multiRegressionProse [data-copy-multi-regression="1"]
+clip
+click	#dismissRegressionUnitsAlert
+select	#multiRegressionInterpretationPanel .answer-variant-select	3
+read	#multiRegressionProse
+click	#copyMultiRegressionProseBtn
+clip
+click	#dismissRegressionUnitsAlert
+read	#advancedRegressionCode
+select	#advancedRegressionBench .answer-variant-select	4
+read	#advancedRegressionCode
+read	#advancedRegressionPredictionCode
+click	#copyAdvancedRegressionPredictionCodeBtn
+clip
+open	confusion
+click	#loadConfusionOutputBtn
+read	#confusionProse
+click	#copyConfusionProseBtn
+clip
+open	glm
+click	#loadGlmOutputBtn
+read	#glmProse
+click	#glmProse [data-copy-glm="0"]
+clip

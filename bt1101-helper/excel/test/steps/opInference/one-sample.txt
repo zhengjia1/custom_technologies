@@ -1,0 +1,230 @@
+# One-sample mean / proportion tests: setup, code, samples, parsing and prose
+open	one-sample
+canon
+read	#activeTitle
+read	#oneSampleHypotheses
+read	#oneSampleCode
+read	#oneSampleInterpretation
+class	#oneSampleSuccessField
+class	#oneSampleConditionField
+attr	#oneSampleNull	placeholder
+click	#copyOneSampleCodeBtn
+clip
+toast
+# mean sample setup and output (two-sided)
+click	#loadOneSampleSetupBtn
+canon
+toast
+val	#oneSampleDataset
+val	#oneSampleColumn
+val	#oneSampleNull
+read	#oneSampleHypotheses
+read	#oneSampleCode
+click	#loadOneSampleOutputBtn
+canon
+toast
+val	#oneSampleOutputText
+read	#oneSampleInterpretation
+click	#copyOneSampleProseBtn
+clip
+toast
+# alternatives with the sample output reloaded
+change	#oneSampleAlternative	greater
+canon
+read	#oneSampleHypotheses
+read	#oneSampleCode
+read	#oneSampleInterpretation
+click	#loadOneSampleOutputBtn
+canon
+read	#oneSampleInterpretation
+change	#oneSampleAlternative	less
+click	#loadOneSampleOutputBtn
+canon
+read	#oneSampleHypotheses
+read	#oneSampleCode
+read	#oneSampleInterpretation
+click	#copyOneSampleProseBtn
+clip
+# alpha variations
+input	#oneSampleAlpha	0.01
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	0.018
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	0.1
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	0.025
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	abc
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	1
+read	#oneSampleInterpretation
+input	#oneSampleAlpha	0.05
+# printed p-value bounds and parsing
+input	#oneSampleOutputText	t = 3.2, df = 20, p-value < 2.2e-16
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 3.2, df = 20, p-value < 0.06
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 3.2, df = 20, p-value <= 0.05
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 3.2, df = 20, p-value <= 0.04
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value > 0.04
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value > 0.05
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value >= 0.05
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value > 1
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 0.05
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 0.0500001
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 0.0499999
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 0.049999
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 1.5
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	t = 0.2, df = 20, p-value = 1e999
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	##   p_value = 0.003\n## z = -2.81234
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	P VALUE=.2\nT=-0.45
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	p-value   =   0.0123
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	no p value here
+read	#oneSampleInterpretation
+input	#oneSampleOutputText	
+read	#oneSampleInterpretation
+click	#pasteOneSampleBtn
+toast
+val	#oneSampleOutputText
+# filters and missing values
+input	#oneSampleFilter	Region == "East"
+canon
+read	#oneSampleCode
+click	#oneSampleExcludeMissing
+canon
+read	#oneSampleCode
+input	#oneSampleFilter	
+canon
+read	#oneSampleCode
+click	#oneSampleExcludeMissing
+canon
+read	#oneSampleCode
+input	#oneSampleDataset	my data
+input	#oneSampleColumn	hours studied
+canon
+read	#oneSampleCode
+input	#oneSampleDataset	
+input	#oneSampleColumn	
+input	#oneSampleNull	abc
+canon
+read	#oneSampleHypotheses
+read	#oneSampleCode
+input	#oneSampleNull	
+canon
+read	#oneSampleHypotheses
+input	#oneSampleNull	50
+# proportion: parameter switch converts the null value
+change	#oneSampleParameter	proportion
+canon
+val	#oneSampleNull
+read	#oneSampleHypotheses
+read	#oneSampleCode
+class	#oneSampleSuccessField
+disabled	#oneSampleSuccess
+attr	#oneSampleNull	placeholder
+click	#loadOneSampleOutputBtn
+canon
+val	#oneSampleOutputText
+read	#oneSampleInterpretation
+change	#oneSampleAlternative	two.sided
+click	#loadOneSampleOutputBtn
+canon
+read	#oneSampleInterpretation
+click	#copyOneSampleProseBtn
+clip
+input	#oneSampleSuccess	Yes please
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+input	#oneSampleSuccess	say "hi" \\ there
+canon
+read	#oneSampleCode
+# proportion sample setup (condition)
+click	#loadOneSampleSetupBtn
+canon
+val	#oneSampleDataset
+val	#oneSampleColumn
+val	#oneSampleNull
+val	#oneSampleAlternative
+val	#oneSampleFilter
+val	#oneSampleCondition
+val	#oneSamplePopulation
+class	#oneSampleSuccessField
+disabled	#oneSampleSuccess
+read	#oneSampleHypotheses
+read	#oneSampleCode
+click	#loadOneSampleOutputBtn
+canon
+val	#oneSampleOutputText
+read	#oneSampleInterpretation
+click	#copyOneSampleProseBtn
+clip
+change	#oneSampleAlternative	greater
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+change	#oneSampleAlternative	two.sided
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+click	#oneSampleExcludeMissing
+canon
+read	#oneSampleCode
+click	#oneSampleExcludeMissing
+# condition wording
+input	#oneSampleCondition	Amount >= 22.5
+read	#oneSampleInterpretation
+input	#oneSampleCondition	  Score<=-3
+read	#oneSampleInterpretation
+input	#oneSampleCondition	Rating == 5
+read	#oneSampleInterpretation
+input	#oneSampleCondition	x.y != .5
+read	#oneSampleInterpretation
+input	#oneSampleCondition	Amount < 1234.5678
+read	#oneSampleInterpretation
+input	#oneSampleCondition	Amount > 50 & Region == "East"
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+input	#oneSamplePopulation	
+read	#oneSampleInterpretation
+input	#oneSampleCondition	
+canon
+class	#oneSampleSuccessField
+disabled	#oneSampleSuccess
+read	#oneSampleCode
+read	#oneSampleInterpretation
+# back to mean converts 0.5 only
+input	#oneSampleNull	0.5
+change	#oneSampleParameter	mean
+val	#oneSampleNull
+input	#oneSampleNull	0.3
+change	#oneSampleParameter	proportion
+val	#oneSampleNull
+change	#oneSampleParameter	mean
+canon
+val	#oneSampleNull
+class	#oneSampleSuccessField
+read	#oneSampleHypotheses
+read	#oneSampleCode

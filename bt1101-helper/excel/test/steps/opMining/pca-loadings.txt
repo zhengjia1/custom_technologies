@@ -1,0 +1,88 @@
+open	pca
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+click	#copyPcaLoadingsBtn
+clip
+click	#loadPcaLoadingsSampleBtn
+toast
+val	#pcaCount
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+click	#copyPcaLoadingsBtn
+clip
+toast
+input	#pcaCount	4
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	1
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	5
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	0
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	2
+input	#pcaLoadingsOutput	Murder -0.53 0.41\nAssault -0.58 0.18
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaLoadingsOutput	  PC1  PC2\n\n
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaLoadingsOutput	    PC1 PC2\nonlyname\nshort 0.5
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaLoadingsOutput	   pc 1   Pc 2   PC3\r\n"Var A"  1.23456 -0.0000123 0.5\r\n'Var B' 0 2.5 0.1\r\nVarC -1 -0.000 1e-2\r\nVarD 0.5 abc 0.2 0.3\r\nVarE +0.25 -1.5e0 0.3 extra 9
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	3
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaLoadingsOutput	            PC1\nx   0.7071068\ny  -0.7071068
+input	#pcaCount	1
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaCount	2
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+input	#pcaLoadingsOutput	                PC1        PC2        PC3         PC4\nMurder   -0.5358995 -0.4181809  0.3412327  0.64922780
+input	#pcaCount	4
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn
+click	#copyPcaLoadingsBtn
+clip
+toast
+input	#pcaLoadingsOutput	
+canon
+read	#pcaLoadingsProse
+class	#pcaLoadingsProse
+disabled	#copyPcaLoadingsBtn

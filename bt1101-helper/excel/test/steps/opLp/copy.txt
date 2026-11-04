@@ -1,0 +1,235 @@
+open	lpsolve
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+canon
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+clip
+toast
+read	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+disabled	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#sensitivityInterpretation .sensitivity-prose-card:nth-child(2)
+class	#variableRenameAlert
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+clip
+toast
+class	#variableRenameAlert
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#sensitivityInterpretation [data-sensitivity-copy="reduced"]
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#sensitivityInterpretation [data-sensitivity-copy="slack"]
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#sensitivityInterpretation
+input	#lpObjective	0.15, 0.40, 0.70
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#sensitivityInterpretation
+count	#lpBench .is-copy-complete
+canon
+click	#copySensitivityProseBtn
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+count	#lpBench .is-copy-complete
+read	#sensitivityInterpretation [data-sensitivity-copy="slack"]
+input	#sensObjectiveValue	101
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+count	#lpBench .is-copy-complete
+canon
+click	#sensitivityInterpretation [data-sensitivity-copy="slack"]
+clip
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+input	#sensDuals	0.01, 0, 0.03, -0.1, 0, 0
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#sensitivityInterpretation
+canon
+click	#copyLpCodeBtn
+clip
+toast
+click	#copyLpAsciiBtn
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#sensitivityInterpretation [data-sensitivity-copy="slack"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+select	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator	1
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#lpCode
+click	#copyLpCodeBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadLpSampleBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#copyLpAsciiBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadLpParserSampleBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#sensitivityInterpretation
+click	#copyLpCodeBtn
+clip
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#resetLpBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadLpSampleBtn
+click	#copyLpAsciiBtn
+click	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-remove-constraint
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#copyLpCodeBtn
+click	#lpBench .code-panel .lp-collapse-toggle
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#lpBench .code-panel .lp-collapse-toggle
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#lpBench .lp-table-panel .lp-collapse-toggle
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+input	#lpSmartInput	Maximise 3X1 + 2X2\nSubject to\nA: X1 + X2 <= 4
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+click	#copyLpCodeBtn
+input	#lpSmartInput	Maximise 3X1 +
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+read	#lpParseStatus

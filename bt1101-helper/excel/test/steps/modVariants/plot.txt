@@ -1,0 +1,52 @@
+# Plotting: recipe changes re-randomise; chart-code copies warn when axis intervals are off.
+open	ggplot
+val	#ggplotBench .answer-variant-select
+read	#ggplotCode
+click	#loadGgplotSampleBtn
+val	#ggplotBench .answer-variant-select
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+class	#plotAxisRangeAlert
+key	#plotAxisRangeAlert	Escape
+class	#plotAxisRangeAlert
+change	#ggplotBench .answer-variant-select	2
+read	#ggplotCode
+change	#ggplotBench .answer-variant-select	3
+change	#ggplotBench .answer-variant-select	2
+read	#ggplotCode
+input	#plotWorkflowSearch	Histogram
+change	#plotWorkflowSearch
+val	#plotWorkflow
+val	#ggplotBench .answer-variant-select
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+class	#plotAxisRangeAlert
+click	#dismissPlotAxisRangeAlert
+change	#plotStyle	stacked
+val	#ggplotBench .answer-variant-select
+input	#plotWorkflowSearch	Scatterplot
+change	#plotWorkflowSearch
+val	#ggplotBench .answer-variant-select
+read	#ggplotCode
+click	#ggplotBench .plot-axis-interval-toggle
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+class	#plotAxisRangeAlert
+click	#ggplotBench .plot-axis-interval-toggle
+input	#plotWorkflowSearch	Pareto
+change	#plotWorkflowSearch
+click	#loadGgplotSampleBtn
+read	#ggplotCode
+click	#copyGgplotCodeBtn
+clip
+class	#plotAxisRangeAlert
+input	#plotWorkflowSearch	Pie chart
+change	#plotWorkflowSearch
+click	#loadGgplotSampleBtn
+change	#ggplotBench .answer-variant-select	4
+read	#ggplotCode
+change	#ggplotBench .answer-variant-select	5
+read	#ggplotCode

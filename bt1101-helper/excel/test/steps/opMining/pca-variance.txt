@@ -1,0 +1,163 @@
+open	pca
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	#copyPcaVarianceBtn
+clip
+click	#loadPcaVarianceSampleBtn
+toast
+val	#pcaCount
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+class	[data-pca-variance-mode="individual"]
+attr	[data-pca-variance-mode="individual"]	aria-pressed
+class	[data-pca-variance-mode="cumulative"]
+attr	[data-pca-variance-mode="cumulative"]	aria-pressed
+click	#copyPcaVarianceBtn
+clip
+toast
+click	[data-pca-variance-mode="cumulative"]
+class	[data-pca-variance-mode="individual"]
+attr	[data-pca-variance-mode="individual"]	aria-pressed
+class	[data-pca-variance-mode="cumulative"]
+attr	[data-pca-variance-mode="cumulative"]	aria-pressed
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	#copyPcaVarianceBtn
+clip
+toast
+input	#pcaCount	1
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	4
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	5
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	#pcaVarianceMode
+class	[data-pca-variance-mode="individual"]
+attr	[data-pca-variance-mode="individual"]	aria-pressed
+class	[data-pca-variance-mode="cumulative"]
+attr	[data-pca-variance-mode="cumulative"]	aria-pressed
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	[data-pca-variance-mode="individual"]
+class	[data-pca-variance-mode="individual"]
+attr	[data-pca-variance-mode="individual"]	aria-pressed
+class	[data-pca-variance-mode="cumulative"]
+attr	[data-pca-variance-mode="cumulative"]	aria-pressed
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	3
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	0
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	1.5
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	2
+input	#pcaSummaryOutput	   \n  
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaSummaryOutput	Standard deviation 1.2 0.8
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	[data-pca-variance-mode="cumulative"]
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaSummaryOutput	Importance of components:\r\n                          PC1    PC2    PC3\r\nStandard deviation     1.421  0.884  0.541\r\nProportion of Variance 0.673  0.260  0.067\r\nCumulative Proportion  0.673  0.933  1.000
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	3
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	[data-pca-variance-mode="individual"]
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaSummaryOutput	Proportion of Variance 0.5 abc .25 1e-3 +0.125e0
+input	#pcaCount	4
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaSummaryOutput	proportion  of\tvariance\t0.6111 0.2222 0.0999 0.0668\nCUMULATIVE PROPORTION 0.6111 0.8333 0.9332 1
+input	#pcaCount	11
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	2
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	[data-pca-variance-mode="cumulative"]
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaSummaryOutput	Proportion of Variance 0.99949 0.00051
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	[data-pca-variance-mode="individual"]
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	12
+input	#pcaSummaryOutput	Proportion of Variance 0.3 0.1 0.1 0.1 0.1 0.05 0.05 0.05 0.05 0.04 0.03 0.03 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+input	#pcaCount	23
+canon
+read	#pcaVarianceProse
+class	#pcaVarianceProse
+disabled	#copyPcaVarianceBtn
+click	#copyPcaVarianceBtn
+clip
+toast

@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!--
+  Excel automation for the VBA toolchain (late-bound COM, independent of Office's interop
+  type libraries). Usage: cscript //nologo excel-task.wsf <job.json>
+
+  job.action = "build":   create job.output (.xlsm) with job.modules (imported .bas/.cls),
+                          job.form ({ name, caption, code }) and job.workbookCode.
+  job.action = "compile": open job.workbook and run Debug > Compile VBAProject. The dialog
+                          watcher (dialog-watch.ps1) reads and dismisses any error dialog;
+                          this script then reports the module and line the VBE selected.
+  job.action = "run":     open job.workbook and Application.Run job.macro with job.args;
+                          prints the returned value.
+  Excel's window handle is written to job.hwndFile first so the watcher can find dialogs.
+-->
+<job>
+<script language="JScript"><![CDATA[
+function readUtf8(path) {
+  var stream = new ActiveXObject("ADODB.Stream");
+  stream.Type = 2; stream.Charset = "utf-8"; stream.Open(); stream.LoadFromFile(path);
+  var text = stream.ReadText(); stream.Close();
+  return text;
+}
+function writeUtf8(path, text) {
+  var stream = new ActiveXObject("ADODB.Stream");
+  stream.Type = 2; stream.Charset = "utf-8"; stream.Open(); stream.WriteText(text);
+  stream.SaveToFile(path, 2); stream.Close();
+}
+function out(text) { WScript.StdOut.WriteLine(text); }
+
+// The very hidden "BTX" sheet: row 1 names each item, the rows below hold its text in
+// chunk files. The leading apostrophe stops Excel reading chunks such as "-x" as formulas.
+function writeStore(book, items) {
+  var store = book.Worksheets.Add(null, book.Worksheets.Item(1));
+  store.Name = "BTX";
+  store.Cells.NumberFormat = "@";
+  for (var c = 0; c < items.length; c++) {
+    store.Cells.Item(1, c + 1).Value2 = items[c].name;
+    for (var r = 0; r < items[c].files.length; r++) {
+      try { store.Cells.Item(r + 2, c + 1).Value2 = "'" + readUtf8(items[c].files[r]); }
+      catch (e) { throw new Error("Could not store " + items[c].files[r] + ": " + e.message); }
+    }
+  }
+  store.Visible = 2;
+}
+
+// The visible start sheet: what this is, and a button that reopens the app window.
+function writeStartSheet(start, info) {
+  start.Name = "Start";
+  start.Activate();
+  start.Parent.Windows.Item(1).DisplayGridlines = false;
+  start.Parent.Windows.Item(1).DisplayHeadings = false;
+  start.Cells.Interior.Color = 0xFDFBF9;
+  start.Columns.Item(1).ColumnWidth = 3;
+  start.Columns.Item(2).ColumnWidth = 100;
+  start.Cells.Font.Name = "Calibri";
+  var lines = [
+    ["Untitled document", 20, true, 0x1F1F1F],
+    ["BT1101 Prose Lab  " + info.version, 11, false, 0x68635F],
+    ["", 11, false, 0],
+    ["RStudio output to prose and R code. Everything runs inside this workbook.", 11, false, 0x1F1F1F],
+    ["The app window opens automatically when macros are enabled. Use the button below to reopen it.", 11, false, 0x1F1F1F],
+    ["Works in desktop Excel for Windows and Mac. Your theme and sidebar width are remembered on this computer.", 11, false, 0x68635F]
+  ];
+  for (var i = 0; i < lines.length; i++) {
+    var cell = start.Cells.Item(i + 2, 2);
+    cell.Value2 = lines[i][0];
+    cell.Font.Size = lines[i][1];
+    cell.Font.Bold = lines[i][2];
+    cell.Font.Color = lines[i][3];
+  }
+  var anchor = start.Cells.Item(9, 2);
+  var button = start.Shapes.AddShape(5, anchor.Left, anchor.Top, 220, 36);
+  button.Name = "OpenApp";
+  button.Fill.ForeColor.RGB = 0xD0570B;
+  button.Line.Visible = 0;
+  var range = button.TextFrame2.TextRange;
+  range.Text = "Open BT1101 Prose Lab";
+  range.Font.Size = 12;
+  range.Font.Bold = 1;
+  range.Font.Fill.ForeColor.RGB = 0xFFFFFF;
+  range.ParagraphFormat.Alignment = 2;
+  button.TextFrame2.VerticalAnchor = 3;
+  button.OnAction = "modBoot.StartApp";
+  start.Cells.Item(1, 1).Select();
+}
+
+var job = eval("(" + readUtf8(WScript.Arguments.Item(0)) + ")");
+var excel = new ActiveXObject("Excel.Application");
+excel.Visible = false;
+excel.DisplayAlerts = false;
+excel.EnableEvents = false;
+if (job.hwndFile) writeUtf8(job.hwndFile, String(excel.Hwnd));
+var exitCode = 0;
+try {
+  if (job.action === "build") {
+    var book = excel.Workbooks.Add();
+    while (book.Worksheets.Count > 1) book.Worksheets.Item(book.Worksheets.Count).Delete();
+    if (job.store) writeStore(book, job.store);
+    if (job.startSheet) writeStartSheet(book.Worksheets.Item(1), job.startSheet);
+    var project = book.VBProject;
+    for (var i = 0; i < job.modules.length; i++) project.VBComponents.Import(job.modules[i]);
+    if (job.form) {
+      var form = project.VBComponents.Add(3);
+      form.Name = job.form.name;
+      form.Properties.Item("Caption").Value = job.form.caption || job.form.name;
+      form.Properties.Item("StartUpPosition").Value = 0;
+      form.Properties.Item("ShowModal").Value = false;
+      var code = form.CodeModule;
+      if (code.CountOfLines > 0) code.DeleteLines(1, code.CountOfLines);
+      code.AddFromString(readUtf8(job.form.code));
+    }
+    if (job.workbookCode) {
+      var wb = project.VBComponents.Item("ThisWorkbook").CodeModule;
+      if (wb.CountOfLines > 0) wb.DeleteLines(1, wb.CountOfLines);
+      wb.AddFromString(readUtf8(job.workbookCode));
+    }
+    if (job.properties) {
+      for (var key in job.properties) book.BuiltinDocumentProperties.Item(key).Value = job.properties[key];
+    }
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    if (fso.FileExists(job.output)) fso.DeleteFile(job.output, true);
+    book.SaveAs(job.output, 52);
+    book.Close(false);
+    out("built " + job.output);
+  } else if (job.action === "compile") {
+    // A helper workbook reads the error position: JScript cannot call GetSelection.
+    var helper = excel.Workbooks.Add();
+    helper.VBProject.VBComponents.Add(1).CodeModule.AddFromString([
+      "Public Function ErrorPosition() As String",
+      "    Dim sl As Long, sc As Long, el As Long, ec As Long, pane As Object",
+      "    Set pane = Application.VBE.ActiveCodePane",
+      "    If pane Is Nothing Then Exit Function",
+      "    pane.GetSelection sl, sc, el, ec",
+      "    ErrorPosition = pane.CodeModule.Parent.Name & \" line \" & sl & \": \" & Trim$(pane.CodeModule.Lines(sl, 1))",
+      "End Function"].join(String.fromCharCode(13, 10)));
+    var book = excel.Workbooks.Open(job.workbook);
+    var vbe = excel.VBE;
+    var control = vbe.CommandBars.FindControl(1, 578);
+    if (!control) throw new Error("Compile command not found");
+    vbe.ActiveVBProject = book.VBProject;
+    control.Execute();
+    if (vbe.CommandBars.FindControl(1, 578).Enabled) {
+      exitCode = 1;
+      out("COMPILE ERROR in " + excel.Run("'" + helper.Name + "'!ErrorPosition"));
+    } else out("OK");
+    book.Close(false);
+    helper.Close(false);
+  } else if (job.action === "run") {
+    var book = excel.Workbooks.Open(job.workbook);
+    var args = job.args || [];
+    var macro = "'" + book.Name + "'!" + job.macro;
+    var result;
+    switch (args.length) {
+      case 0: result = excel.Run(macro); break;
+      case 1: result = excel.Run(macro, args[0]); break;
+      case 2: result = excel.Run(macro, args[0], args[1]); break;
+      case 3: result = excel.Run(macro, args[0], args[1], args[2]); break;
+      default: result = excel.Run(macro, args[0], args[1], args[2], args[3]); break;
+    }
+    if (job.resultFile) writeUtf8(job.resultFile, result === undefined || result === null ? "" : String(result));
+    else out(result === undefined || result === null ? "" : String(result));
+    book.Close(false);
+  }
+} catch (e) {
+  exitCode = 2;
+  out("ERROR: " + e.message);
+} finally {
+  try { excel.Quit(); } catch (e) {}
+}
+WScript.Quit(exitCode);
+]]></script>
+</job>

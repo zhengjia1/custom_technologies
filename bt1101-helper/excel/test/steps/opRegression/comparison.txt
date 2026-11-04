@@ -1,0 +1,49 @@
+# Pairwise (nested) model comparison
+open	model-comparison
+read	#modelComparisonProse
+class	#modelComparisonProse
+disabled	#copyModelComparisonProseBtn
+click	#loadModelComparisonOutputBtn
+toast
+val	#modelComparisonOutput
+canon
+read	#modelComparisonProse
+class	#modelComparisonProse
+disabled	#copyModelComparisonProseBtn
+click	#copyModelComparisonProseBtn
+clip
+toast
+class	#regressionUnitsAlert
+# One added predictor, significant, wrapped formula, stars
+input	#modelComparisonOutput	Analysis of Variance Table\n\nModel 1: Salary ~ Years + CAtBat +\n    CHits\nModel 2: Salary ~ Years + CAtBat + CHits + \n    `CRuns`\n  Res.Df      RSS Df Sum of Sq      F    Pr(>F)    \n1    259 32000000                                  \n2    258 30000000  1   2000000 17.2  4.5e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+canon
+read	#modelComparisonProse
+# Bound p-value and small F
+input	#modelComparisonOutput	Model 1: y ~ a\nModel 2: y ~ a + b + c\n  Res.Df RSS Df Sum of Sq F Pr(>F)\n1 97 120.5\n2 95 119.9 2 0.6 0.2378 < 2.2e-16 ***
+canon
+read	#modelComparisonProse
+input	#modelComparisonOutput	Model 1: y ~ a\nModel 2: y ~ a + b\n  Res.Df RSS Df Sum of Sq F Pr(>F)\n1 97 120.5\n2 96 119.9 1 0.6 0 1
+canon
+read	#modelComparisonProse
+# Bound that crosses the cutoff
+input	#modelComparisonOutput	Model 1: y ~ a\nModel 2: y ~ a + b\n  Res.Df RSS Df Sum of Sq F Pr(>F)\n1 97 120.5\n2 96 119.9 1 0.6 3.9 < 0.1
+read	#modelComparisonProse
+class	#modelComparisonProse
+disabled	#copyModelComparisonProseBtn
+# Invalid inputs
+input	#modelComparisonOutput	Model 1: y ~ a
+read	#modelComparisonProse
+class	#modelComparisonProse
+input	#modelComparisonOutput	Model 1: y ~ a + b\nModel 2: y ~ a + b
+read	#modelComparisonProse
+input	#modelComparisonOutput	Model 1: ~ a\nModel 2: ~ a + b
+read	#modelComparisonProse
+input	#modelComparisonOutput	Model 1: y ~ a\nModel 2: y ~ a + b\nno table
+read	#modelComparisonProse
+input	#modelComparisonOutput	Model 1: y ~ a\nModel 2: y ~ a + b\n  Res.Df RSS Df Sum of Sq F Pr(>F)\n1 97 120.5
+read	#modelComparisonProse
+input	#modelComparisonOutput
+read	#modelComparisonProse
+class	#modelComparisonProse
+disabled	#copyModelComparisonProseBtn
+click	#copyModelComparisonProseBtn

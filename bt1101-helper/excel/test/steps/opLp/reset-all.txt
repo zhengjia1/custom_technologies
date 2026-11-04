@@ -1,0 +1,991 @@
+# Every optimisation-model change resets the whole Tutorial 8 workflow.
+open	lpsolve
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+change	#lpDirection	min
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+change	#lpDirection	max
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpObjective	0.15, 0.40, 0.65
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name	Storage space
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs	210
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-coefficients	1, 0, 0.5
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+select	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator	2
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#lpSensitivity
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#lpSensitivity
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+change	#lpVariableType	integer
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+change	#lpVariableType	continuous
+click	#lpSensitivity
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpBinary	1
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpVariables	X1, X2, X3
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpConstraintRows .lp-constraint-row:nth-child(4) .lp-name	Extra
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#lpConstraintRows .lp-constraint-row:nth-child(4) .lp-remove-constraint
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#sensDuals	0.01, 0.02, 0.03, -0.1, 0, 0
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#sensRawOutput	X1 X2 X3\n7 2.2 0\n[1] 100\n[1] 0\n[1] 0.01 0.02 0.03 -0.1 0 0\n[1] 0.1 0.2 0.3\n[1] 0.3 0.4 0.5\nNULL\nNULL
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpSmartInput	Maximise 3X1 +
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+input	#lpSmartInput	Maximise 0.15X1 + 0.4X2 + 0.6X3\nSubject to\nBudget: 15X1 + 30X2 + 40X3 <= 200\nStorage: 7X1 + 5X2 + 8X3 <= 60\nDiet: X1 <= 7
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#loadSensitivitySampleBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#resetLpBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#loadLpParserSampleBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+val	#sensRawOutput
+read	#sensParseStatus
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+canon
+click	#sensitivityInterpretation [data-sensitivity-copy="slack"]
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#sensitivityInterpretation [data-sensitivity-copy="reduced"]
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+clip
+toast
+class	#variableRenameAlert
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#dismissVariableRenameAlert
+class	#variableRenameAlert
+input	#sensCoefTo	0.3, 0.4, 0.55
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#copySensitivityProseBtn
+clip
+toast
+class	#variableRenameAlert
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretationPanel .lp-collapse-toggle
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+click	#sensitivityInterpretationPanel .lp-collapse-toggle
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus

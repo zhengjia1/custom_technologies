@@ -1,0 +1,112 @@
+# Summarize for stats: initial state, dynamic column fields, transitions, toggles, copy
+open	summarize
+canon
+read	#activeTitle
+read	#summaryCode
+read	#summaryModeLabel
+disabled	#copySummaryCodeBtn
+count	#columnFields .column-row
+count	#summaryStatisticFields input
+count	#summaryStatisticFields input:checked
+read	#summaryStatisticFields
+attr	#summaryStatisticFields input[value="q1"]	role
+attr	#columnFields .column-input	placeholder
+attr	#columnFields .column-input	aria-label
+disabled	#columnFields .remove-column
+read	#columnFields .remove-column
+attr	#columnFields .remove-column	title
+val	#summaryDataset
+click	#copySummaryCodeBtn
+clip
+toast
+# whitespace only: no new field, still waiting
+input	#columnFields .column-input	  	 
+count	#columnFields .column-row
+read	#summaryCode
+read	#summaryModeLabel
+# first column
+input	#columnFields .column-input	sales
+canon
+read	#summaryCode
+read	#summaryModeLabel
+count	#columnFields .column-row
+attr	#columnFields .column-row:nth-child(2) .column-input	placeholder
+disabled	#columnFields .column-row:nth-child(1) .remove-column
+disabled	#columnFields .column-row:nth-child(2) .remove-column
+disabled	#copySummaryCodeBtn
+toast
+click	#copySummaryCodeBtn
+clip
+toast
+# typing more into the first field must not add another field
+input	#columnFields .column-row:nth-child(1) .column-input	sales_total
+count	#columnFields .column-row
+canon
+read	#summaryCode
+# second column -> multi-column template + toast
+input	#columnFields .column-row:nth-child(2) .column-input	profit margin
+canon
+read	#summaryCode
+read	#summaryModeLabel
+toast
+count	#columnFields .column-row
+attr	#columnFields .column-row:nth-child(3) .column-input	placeholder
+input	#columnFields .column-row:nth-child(3) .column-input	units
+canon
+read	#summaryCode
+read	#summaryModeLabel
+count	#columnFields .column-row
+click	#copySummaryCodeBtn
+clip
+toast
+# blank a middle field: stays multi-column with two columns
+input	#columnFields .column-row:nth-child(2) .column-input	  	 
+canon
+read	#summaryCode
+read	#summaryModeLabel
+count	#columnFields .column-row
+# remove the third row (units) -> back to one column + toast
+click	#columnFields .column-row:nth-child(3) .remove-column
+canon
+read	#summaryCode
+read	#summaryModeLabel
+toast
+count	#columnFields .column-row
+attr	#columnFields .column-row:nth-child(1) .column-input	placeholder
+attr	#columnFields .column-row:nth-child(2) .column-input	placeholder
+attr	#columnFields .column-row:nth-child(3) .column-input	placeholder
+# remove the first row: remaining rows re-numbered
+click	#columnFields .column-row:nth-child(1) .remove-column
+count	#columnFields .column-row
+attr	#columnFields .column-row:nth-child(1) .column-input	placeholder
+val	#columnFields .column-row:nth-child(1) .column-input
+read	#summaryCode
+read	#summaryModeLabel
+disabled	#copySummaryCodeBtn
+# remove all rows down to one, last remove button disabled
+click	#columnFields .column-row:nth-child(1) .remove-column
+count	#columnFields .column-row
+disabled	#columnFields .remove-column
+click	#columnFields .remove-column
+count	#columnFields .column-row
+read	#summaryCode
+read	#summaryModeLabel
+# dataset name handling
+input	#columnFields .column-input	score
+input	#summaryDataset	my data
+canon
+read	#summaryCode
+input	#summaryDataset	  	 
+canon
+read	#summaryCode
+input	#summaryDataset	students.2024
+canon
+read	#summaryCode
+input	#summaryDataset	.2bad
+canon
+read	#summaryCode
+# special characters in column names and captions
+input	#columnFields .column-row:nth-child(1) .column-input	  He said "hi" \\ `x`
+canon
+read	#summaryCode
+read	#summaryModeLabel

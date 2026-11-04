@@ -1,0 +1,747 @@
+# Pareto targets and incomplete fields
+open	ggplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	sales
+input	#plotThreshold	80
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	1
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	100
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	0
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	101
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	50.5
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	abc
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	0.80
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	99.99
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	 70 
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	1e2
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	-5
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	80
+# required mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	sales_total, profit_margin
+canon
+read	#ggplotCode
+input	#plotX	region_name
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required Grouped barplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	age_group
+canon
+read	#ggplotCode
+input	#plotX	daily_screen_time_hours
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required grouped mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	weekly_sales
+canon
+read	#ggplotCode
+input	#plotGroup	season
+canon
+read	#ggplotCode
+input	#plotX	store_type
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required frequency bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required pie chart
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required side-by-side bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required stacked bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required mosaic plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required contingency plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required histogram
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required grouped boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	rating
+canon
+read	#ggplotCode
+input	#plotX	branch
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required scatterplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	gross_income
+canon
+read	#ggplotCode
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required line plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	revenue
+canon
+read	#ggplotCode
+input	#plotX	year
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required Pareto analysis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	sales
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+click	#ggplotBench .plot-axis-interval-toggle
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	sales
+input	#plotThreshold	80
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	1
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	100
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	0
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	101
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	50.5
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	abc
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	0.80
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	99.99
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	 70 
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	1e2
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	-5
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotThreshold	80
+# required mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	sales_total, profit_margin
+canon
+read	#ggplotCode
+input	#plotX	region_name
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required Grouped barplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	age_group
+canon
+read	#ggplotCode
+input	#plotX	daily_screen_time_hours
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required grouped mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	weekly_sales
+canon
+read	#ggplotCode
+input	#plotGroup	season
+canon
+read	#ggplotCode
+input	#plotX	store_type
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required frequency bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required pie chart
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required side-by-side bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required stacked bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required mosaic plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required contingency plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+input	#plotX	gender
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required histogram
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required grouped boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	rating
+canon
+read	#ggplotCode
+input	#plotX	branch
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required scatterplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	gross_income
+canon
+read	#ggplotCode
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required line plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	revenue
+canon
+read	#ggplotCode
+input	#plotX	year
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode
+# required Pareto analysis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotX	sales
+canon
+read	#ggplotCode
+disabled	#copyGgplotCodeBtn
+input	#plotY	 , 
+canon
+read	#ggplotCode

@@ -1,0 +1,145 @@
+# ANOVA Step 3a: standard ANOVA + Tukey HSD parsing, staged copy completion and resets
+open	anova-many
+canon
+# route to Step 3a first (Bartlett p > alpha)
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\nBartlett's K-squared = 3.1, df = 3, p-value = 0.3765
+canon
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+# sample output: not significant, Tukey present
+click	#loadAnovaStandardOutputBtn
+canon
+toast
+val	#anovaStandardOutput
+read	#anovaStandardInterpretation
+class	#anovaStandardInterpretation
+disabled	#copyAnovaStandardProseBtn
+# significant ANOVA with some significant Tukey pairs
+input	#anovaStandardOutput	            Df Sum Sq Mean Sq F value   Pr(>F)    \nRegion       3  120.5   40.17   12.34 1.2e-06 ***\nResiduals  116  377.6    3.26                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = Amount ~ Region, data = dvd)\n\n$Region\n                 diff        lwr       upr     p adj\nNorth-East  2.1000000  0.9000000 3.3000000 0.0001000\nSouth-East  0.5000000 -0.7000000 1.7000000 0.7000000\nWest-East   1.0000000 -0.2000000 2.2000000 0.0400000\nPre-K-Grade1 -1.0000000 -2.2000000 0.2000000 0.0000000
+canon
+read	#anovaStandardInterpretation
+class	#anovaStandardInterpretation
+disabled	#copyAnovaStandardProseBtn
+# all pairs significant, single pair
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 2 80 40 20.5 <2e-16 ***\nResiduals 57 111.2 1.95\ndiff lwr upr p adj\nB-A 2.1 0.9 3.3 0.0001\nC-A 3.0 1.2 4.4 0.002\nC-B 0.9 0.1 1.7 0.03
+canon
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 1 80 40 20.5 0.0001\nResiduals 57 111.2 1.95\ndiff lwr upr p adj\nB-A 2.1 0.9 3.3 0.0001
+canon
+read	#anovaStandardInterpretation
+# significant ANOVA, Tukey finds none
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 2.9 0.039 *\nResiduals 116 400 3.45\ndiff lwr upr p adj\nB-A 0.9 -0.1 1.9 0.08\nC-A 0.8 -0.2 1.8 0.12\nNoDash 0.1 -0.2 0.4 0.9
+canon
+read	#anovaStandardInterpretation
+# significant pair whose label has no dash
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 2.9 0.039 *\nResiduals 116 400 3.45\ndiff lwr upr p adj\nNoDash 0.1 -0.2 0.4 0.01
+canon
+read	#anovaStandardInterpretation
+# significant ANOVA without Tukey output
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\ngroup 3 30 10 5.25 0.002 **\nResiduals 116 400 3.45
+canon
+read	#anovaStandardInterpretation
+# inconclusive Tukey bound
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 5.25 0.002\nResiduals 116 400 3.45\ndiff lwr upr p adj\nB-A 0.9 -0.1 1.9 <0.1\nC-A 0.8 0.2 1.8 0.01
+read	#anovaStandardInterpretation
+class	#anovaStandardInterpretation
+disabled	#copyAnovaStandardProseBtn
+# inconclusive omnibus bound, unreadable values, missing pieces
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 2.25 < 0.1\nResiduals 116 400 3.45
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 2.25 0.08\n
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion only 3 numbers 1 2
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value\nRegion 3 30 10 2.25\nResiduals 116 400 3.45
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 2.5 30 10 2.25 0.3\nResiduals 116.5 400 3.45
+canon
+read	#anovaStandardInterpretation
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 0.512 0.6744\nResiduals 116 400 3.45\ndiff lwr upr p adj\nB-A 0.9 -0.1 1.9 0.01
+canon
+read	#anovaStandardInterpretation
+# alpha variations
+input	#anovaAlpha	0.1
+canon
+read	#anovaStandardInterpretation
+input	#anovaAlpha	0.025
+canon
+read	#anovaStandardInterpretation
+input	#anovaAlpha	-1
+read	#anovaStandardInterpretation
+class	#anovaStandardInterpretation
+disabled	#copyAnovaStandardCodeBtn
+input	#anovaAlpha	0.05
+canon
+# staged completion: code then prose
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 5.25 0.002\nResiduals 116 400 3.45
+canon
+click	#copyAnovaStandardCodeBtn
+clip
+toast
+class	#anovaStandardCodeBox
+class	#anovaStandardPanel
+click	#copyAnovaStandardProseBtn
+clip
+toast
+class	#anovaStandardProseBox
+class	#anovaStandardPanel
+count	#anovaStandardPanel .completion-badge
+# editing the output resets the prose part only
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 5.26 0.002\nResiduals 116 400 3.45
+canon
+class	#anovaStandardCodeBox
+class	#anovaStandardProseBox
+class	#anovaStandardPanel
+click	#copyAnovaStandardProseBtn
+class	#anovaStandardPanel
+# Step 0 rename: code part reset, prose kept
+input	#anovaResponse	Spend
+canon
+class	#anovaStandardCodeBox
+class	#anovaStandardProseBox
+class	#anovaStandardPanel
+read	#anovaStandardCode
+read	#anovaStandardInterpretation
+# sample output reflects Step 0 names and resets everything
+click	#copyAnovaStandardCodeBtn
+input	#anovaDataset	shop data
+input	#anovaGroup	store type
+click	#loadAnovaStandardOutputBtn
+canon
+val	#anovaStandardOutput
+val	#anovaDataset
+val	#anovaGroup
+read	#anovaStandardInterpretation
+class	#anovaStandardCodeBox
+class	#anovaStandardProseBox
+# switching to the Welch route disables Step 3a and clears its state
+click	#copyAnovaStandardCodeBtn
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\np-value = 0.001
+canon
+class	#anovaStandardPanel
+class	#anovaStandardCodeBox
+disabled	#copyAnovaStandardProseBtn
+disabled	#copyAnovaStandardCodeBtn
+disabled	#loadAnovaStandardOutputBtn
+input	#anovaStandardOutput	Df Sum Sq Mean Sq F value Pr(>F)\nRegion 3 30 10 5.25 0.002\nResiduals 116 400 3.45
+read	#anovaStandardInterpretation
+disabled	#copyAnovaStandardProseBtn
+click	#copyAnovaStandardProseBtn
+clip
+# back to the standard route: expanded again
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\np-value = 0.9
+canon
+class	#anovaStandardPanel
+attr	#anovaStandardPanel .lp-collapse-toggle	aria-expanded
+disabled	#copyAnovaStandardProseBtn
+class	#anovaWelchPanel
+# no route (empty variance output): both branches available
+input	#anovaVarianceOutput		
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+disabled	#copyAnovaStandardProseBtn
+input	#anovaStandardOutput		
+read	#anovaStandardInterpretation
+class	#anovaStandardInterpretation

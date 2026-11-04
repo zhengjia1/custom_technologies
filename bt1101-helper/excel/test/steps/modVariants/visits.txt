@@ -1,0 +1,57 @@
+# Operation visits: untouched operations re-randomise; edited ones keep their selection and code.
+open	kmeans
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+open	kfold
+val	#kfoldBench .answer-variant-select
+read	#kfoldCode
+open	kmeans
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+click	#loadKmeansSampleBtn
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+change	#kmeansBench .answer-variant-select	4
+read	#kmeansCode
+attr	#tutorialList .operation[data-id="kmeans"]	data-user-edited
+attr	#tutorialList .operation[data-id="kmeans"]	data-answer-selections
+open	stepwise
+val	#stepwiseBench .answer-variant-select
+read	#stepwiseCode
+attr	#tutorialList .operation[data-id="kmeans"]	data-answer-selections
+open	kmeans
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+click	#copyKmeansCodeBtn
+clip
+class	#plotAxisRangeAlert
+click	#dismissPlotAxisRangeAlert
+class	#plotAxisRangeAlert
+click	#kmeansBench .plot-axis-interval-toggle
+read	#kmeansCode
+click	#copyKmeansCodeBtn
+clip
+class	#plotAxisRangeAlert
+open	stepwise
+val	#stepwiseBench .answer-variant-select
+read	#stepwiseCode
+open	kfold
+val	#kfoldBench .answer-variant-select
+read	#kfoldCode
+# An edited operation keeps its selection and exact code across visits.
+open	kmeans
+input	#kmeansK	4
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+attr	#tutorialList .operation[data-id="kmeans"]	data-user-edited
+open	kfold
+val	#kfoldBench .answer-variant-select
+open	kmeans
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode
+change	#kmeansBench .answer-variant-select	2
+read	#kmeansCode
+open	pca
+open	kmeans
+val	#kmeansBench .answer-variant-select
+read	#kmeansCode

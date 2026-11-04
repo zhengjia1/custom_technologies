@@ -1,0 +1,92 @@
+# Multi-variable regression interpretation: sample, parsing variants, invalid input, copy flows
+open	multi-regression
+click	#loadMultiRegressionOutputBtn
+toast
+val	#advDataset
+val	#advY
+val	#advPredictors
+canon
+read	#advancedRegressionCode
+read	#advancedRegressionPredictionCode
+read	#advancedRegressionConfidenceCode
+val	#multiRegressionOutput
+read	#multiRegressionProse
+count	#multiRegressionProse [data-copy-multi-model]
+count	#multiRegressionProse [data-copy-multi-regression]
+disabled	#copyMultiRegressionProseBtn
+# Copy everything: units warning modal
+class	#regressionUnitsAlert
+click	#copyMultiRegressionProseBtn
+clip
+toast
+class	#regressionUnitsAlert
+click	#dismissRegressionUnitsAlert
+class	#regressionUnitsAlert
+# Copy one model section (no units warning) and one predictor section (units warning)
+click	#multiRegressionProse [data-copy-multi-model="0"]
+clip
+toast
+class	#regressionUnitsAlert
+click	#multiRegressionProse [data-copy-multi-model="1"]
+clip
+toast
+click	#multiRegressionProse [data-copy-multi-regression="3"]
+clip
+toast
+class	#regressionUnitsAlert
+key	#regressionUnitsAlert	Escape
+class	#regressionUnitsAlert
+click	#multiRegressionProse [data-copy-multi-regression="0"]
+clip
+toast
+click	#dismissRegressionUnitsAlert
+# Stars, scientific notation, negative estimates, significant F with = p, backticks, zero estimate
+input	#multiRegressionOutput	Call:\nlm(formula = `Total Sales` ~ price + ad_spend + StoreSize + zero_var, \n    data = shop)\n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  1.250e+02  1.1e+01  11.36  < 2e-16 ***\nprice       -2.5e-01   5.0e-02  -5.00 1.2e-06 ***\nad_spend     3.75E+00   1.25e+00   3.00 0.00312 ** \n`StoreSize`  1.234e+05  4.0e+04   3.085  0.0234 *  \nzero_var     0.000e+00  1.0e-01   0.000  1.000    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 12.5 on 195 degrees of freedom\nMultiple R-squared:  0.4567,\tAdjusted R-squared:  0.4455 \nF-statistic: 40.98 on 4 and 195 DF,  p-value: 0.0000123
+canon
+read	#multiRegressionProse
+disabled	#copyMultiRegressionProseBtn
+# Non-significant F test and R-squared above one / tiny
+input	#multiRegressionOutput	Call:\nlm(y ~ x1 + x2, data = d)\n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept)   0.5000     0.2000   2.500   0.0150 *\nx1            0.0004     0.0010   0.400   0.6900\nx2           -1.2000     0.9000  -1.333   0.1870\n\nResidual standard error: 1.1 on 57 degrees of freedom\nMultiple R-squared:  0.0312,\tAdjusted R-squared:  -0.0028\nF-statistic: 0.9178 on 2 and 57.5 DF,  p-value: 0.4053
+canon
+read	#multiRegressionProse
+# Missing R-squared and F-statistic
+input	#multiRegressionOutput	lm(formula = sleep ~ totwrk, data = sleepdata)\nCoefficients:\n             Estimate Std. Error t value Pr(>|t|)\n(Intercept) 3586.37695   38.91243  92.165   <2e-16 ***\ntotwrk        -0.15075    0.01674  -9.005   <2e-16 ***
+canon
+read	#multiRegressionProse
+count	#multiRegressionProse [data-copy-multi-model]
+click	#copyMultiRegressionProseBtn
+clip
+toast
+class	#regressionUnitsAlert
+click	#dismissRegressionUnitsAlert
+# RStudio decorations between rows are skipped
+input	#multiRegressionOutput	Show in New Window\nCall:\nlm(formula = sleep ~ age + educ, data = sleepdata)\n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\nShow in New Window\n(Intercept) 3.6e+03 1.1e+02 31.8 <2e-16 ***\nage 2.4e+00 1.5e+00 1.6 0.105\neduc -9.7e+00 6.2e+00 -1.6 0.114\n\nMultiple R-squared:  0.1141,\tAdjusted R-squared:  0.109\nF-statistic: 22.57 on 2 and 703 DF,  p-value: < 2.2e-16
+canon
+read	#multiRegressionProse
+# p-value bounds that do not establish significance
+input	#multiRegressionOutput	Call:\nlm(formula = y ~ x, data = d)\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept)  1.0  0.1  10.0  <2e-16\nx            0.5  0.2   2.5  <0.1\n
+read	#multiRegressionProse
+disabled	#copyMultiRegressionProseBtn
+input	#multiRegressionOutput	Call:\nlm(formula = y ~ x, data = d)\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\nx            0.5  0.2   2.5  0.01\nMultiple R-squared: 0.2\nF-statistic: 6.25 on 1 and 20 DF, p-value: > 0.01
+read	#multiRegressionProse
+input	#multiRegressionOutput	Call:\nlm(formula = y ~ x, data = d)\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\nx            0.5  0.2   2.5  0.05\nMultiple R-squared: 0.2\nF-statistic: 6.25 on 1 and 20 DF, p-value: >= 0.2
+canon
+read	#multiRegressionProse
+# Invalid inputs
+input	#multiRegressionOutput	hello
+read	#multiRegressionProse
+disabled	#copyMultiRegressionProseBtn
+click	#copyMultiRegressionProseBtn
+input	#multiRegressionOutput	lm(formula = ~ x, data = d)
+read	#multiRegressionProse
+input	#multiRegressionOutput	lm(formula = y ~ x, data = d)\nCoefficients:\nx 1 2 3 4
+read	#multiRegressionProse
+input	#multiRegressionOutput	lm(formula = y ~ x, data = d)\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept)  1.0  0.1  10.0  <2e-16
+read	#multiRegressionProse
+input	#multiRegressionOutput
+read	#multiRegressionProse
+disabled	#copyMultiRegressionProseBtn
+# Sample on another operation keeps its form
+click	#loadMultiRegressionOutputBtn
+canon
+read	#multiRegressionProse

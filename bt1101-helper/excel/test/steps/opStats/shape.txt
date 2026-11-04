@@ -1,0 +1,116 @@
+# Skewness & kurtosis interpretation with the kurtosis / excess-kurtosis toggle
+open	shape
+canon
+read	#activeTitle
+read	#shapeOutput
+disabled	#copyShapeProseBtn
+click	#copyShapeProseBtn
+clip
+class	.metric-option[data-metric="kurtosis"]
+attr	.metric-option[data-metric="excess"]	aria-pressed
+# sample (kurtosis mode)
+click	#loadShapeSampleBtn
+canon
+val	#skewnessInput
+val	#kurtosisInput
+read	#shapeOutput
+attr	#shapeGeneratedProse	class
+disabled	#copyShapeProseBtn
+toast
+click	#copyShapeProseBtn
+clip
+toast
+# skewness descriptions
+input	#skewnessInput	0
+canon
+read	#shapeOutput
+input	#skewnessInput	-0
+read	#shapeOutput
+input	#skewnessInput	0.3
+read	#shapeOutput
+input	#skewnessInput	-0.4999
+read	#shapeOutput
+input	#skewnessInput	0.5
+read	#shapeOutput
+input	#skewnessInput	-1
+read	#shapeOutput
+input	#skewnessInput	1.0001
+read	#shapeOutput
+input	#skewnessInput	-2.345
+read	#shapeOutput
+input	#skewnessInput	 1e-5
+read	#shapeOutput
+input	#skewnessInput	0.00012345
+read	#shapeOutput
+input	#skewnessInput	1234.5678
+read	#shapeOutput
+# kurtosis comparisons
+input	#kurtosisInput	3
+read	#shapeOutput
+input	#kurtosisInput	3.0000000000001
+read	#shapeOutput
+input	#kurtosisInput	2.999
+read	#shapeOutput
+input	#kurtosisInput	5.678
+read	#shapeOutput
+input	#kurtosisInput	0.5
+read	#shapeOutput
+# invalid values
+input	#kurtosisInput	abc
+read	#shapeOutput
+attr	#shapeGeneratedProse	class
+disabled	#copyShapeProseBtn
+input	#skewnessInput	Infinity
+read	#shapeOutput
+disabled	#copyShapeProseBtn
+click	#copyShapeProseBtn
+clip
+input	#kurtosisInput	  	 
+read	#shapeOutput
+input	#skewnessInput	  	 
+read	#shapeOutput
+disabled	#copyShapeProseBtn
+# excess kurtosis mode
+click	.metric-option[data-metric="excess"]
+class	.metric-option[data-metric="excess"]
+class	.metric-option[data-metric="kurtosis"]
+attr	.metric-option[data-metric="excess"]	aria-pressed
+attr	.metric-option[data-metric="kurtosis"]	aria-pressed
+read	#kurtosisInputLabel
+attr	#kurtosisInput	placeholder
+read	#kurtosisGuideText
+read	#shapeOutput
+input	#kurtosisInput	0
+read	#shapeOutput
+input	#kurtosisInput	-0.6
+read	#shapeOutput
+input	#kurtosisInput	1.25
+read	#shapeOutput
+input	#kurtosisInput	x
+read	#shapeOutput
+click	#loadShapeSampleBtn
+val	#kurtosisInput
+read	#shapeOutput
+click	#copyShapeProseBtn
+clip
+# kurtosis only
+input	#skewnessInput	  	 
+read	#shapeOutput
+disabled	#copyShapeProseBtn
+# back to kurtosis mode re-renders
+click	.metric-option[data-metric="kurtosis"]
+read	#kurtosisInputLabel
+attr	#kurtosisInput	placeholder
+read	#kurtosisGuideText
+read	#shapeOutput
+click	#loadShapeSampleBtn
+val	#kurtosisInput
+open	summarize
+open	shape
+read	#shapeOutput
+canon
+click	#copyShapeProseBtn
+clip
+class	#shapeBench .panel:last-child
+input	#skewnessInput	-0.2
+class	#shapeBench .panel:last-child

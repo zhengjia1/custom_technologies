@@ -1,0 +1,93 @@
+# Universal detector routes lpSolve models into the operation.
+open	universal
+click	#loadLpSampleBtn
+open	universal
+input	#inputText	Minimise 4X1 + 6X2\nSubject to\nProtein: 2X1 + 3X2 >= 12\nFat: X1 + 2X2 <= 10
+class	#lpBench
+class	#lpSensitivityAnalysis
+val	#lpSmartInput
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+read	#sensitivityInterpretation
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+click	#loadSensitivitySampleBtn
+canon
+click	#copyLpCodeBtn
+click	#dismissPlotAxisRangeAlert
+click	#copyLpAsciiBtn
+click	#sensitivityInterpretation [data-sensitivity-copy="solution"]
+click	#dismissVariableRenameAlert
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus
+count	#sensitivityInterpretation [data-sensitivity-copy]
+count	#sensitivityInterpretation [data-sensitivity-copy][disabled]
+count	#sensitivityInterpretation .sensitivity-prose-card.is-copy-complete
+open	universal
+input	#inputText	| Maximise objective | Z = 3X1 + 5X2 |\n|---|---|\n| Plant 1 | X1 <= 4 |\n| Plant 2 | 2X2 <= 12 |\n| Plant 3 | 3X1 + 2X2 <= 18 |
+class	#lpBench
+class	#lpSensitivityAnalysis
+val	#lpSmartInput
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+read	#sensitivityInterpretation
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+count	#lpBench .is-copy-complete
+count	#lpBench .lp-collapsible.is-collapsed
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+attr	#lpBench .code-panel .lp-collapse-toggle	aria-expanded
+count	#lpConstraintRows .lp-constraint-row
+read	#lpParseStatus

@@ -1,0 +1,682 @@
+# Every plot type: form labels, derived title, code (basic mode)
+open	ggplot
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+# mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	region_name
+input	#plotY	sales_total, profit_margin
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# Grouped barplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	daily_screen_time_hours
+input	#plotGroup	age_group
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# grouped mean bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	store_type
+input	#plotY	weekly_sales
+input	#plotGroup	season
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# frequency bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# pie chart
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	pie chart
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	payment_method
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# side-by-side bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# stacked bar plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# mosaic plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# contingency plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# histogram
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	boxplot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	unit_price
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# grouped boxplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped boxplot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	branch
+input	#plotY	rating
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# scatterplot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	scatterplot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	unit_price
+input	#plotY	gross_income
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# line plot
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	line plot
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	year
+input	#plotY	revenue
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# Pareto analysis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Pareto analysis
+key	#plotWorkflowSearch	Escape
+read	#plotXLabel
+class	#plotYField
+class	#plotAgainstText
+read	#plotYLabel
+class	#plotGroupField
+read	#plotGroupLead
+read	#plotGroupLabel
+class	#plotStyleField
+class	#plotBinsField
+class	#plotThresholdField
+read	#plotGuidanceTitle
+read	#plotGuidance
+read	#plotCodeType
+disabled	#plotXTransform
+disabled	#plotYTransform
+class	#plotXTransformField
+class	#plotYTransformField
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+val	#plotWorkflow
+val	#plotStyle
+canon
+read	#ggplotCode
+input	#plotX	sales
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	sales data
+input	#plotTitle	My "quoted" title\\path
+canon
+read	#ggplotCode
+input	#plotDataset	
+canon
+read	#ggplotCode
+input	#plotDataset	dataset

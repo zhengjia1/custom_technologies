@@ -1,0 +1,138 @@
+open	stepwise
+class	#stepwiseBench
+read	#stepwiseSubtitle
+read	#stepwiseTermsLabel
+attr	#stepwiseExclude	placeholder
+read	#stepwiseModelLabel
+read	#stepwiseGuideTitle
+read	#stepwiseGuide
+val	#stepwiseModelName
+class	[data-stepwise-direction="forward"]
+attr	[data-stepwise-direction="forward"]	aria-pressed
+class	[data-stepwise-direction="backward"]
+attr	[data-stepwise-direction="backward"]	aria-pressed
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	#copyStepwiseCodeBtn
+clip
+click	#loadStepwiseSampleBtn
+toast
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	#copyStepwiseCodeBtn
+clip
+toast
+input	#stepwiseExclude	
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseExclude	 ID ,, my col, `odd`name 
+input	#stepwiseDataset	my data
+input	#stepwiseOutcome	log salary
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseDataset	   
+input	#stepwiseModelName	
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseModelName	fullmodel
+click	[data-stepwise-direction="forward"]
+read	#stepwiseSubtitle
+read	#stepwiseTermsLabel
+attr	#stepwiseExclude	placeholder
+read	#stepwiseModelLabel
+read	#stepwiseGuideTitle
+read	#stepwiseGuide
+val	#stepwiseModelName
+class	[data-stepwise-direction="forward"]
+attr	[data-stepwise-direction="forward"]	aria-pressed
+class	[data-stepwise-direction="backward"]
+attr	[data-stepwise-direction="backward"]	aria-pressed
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseExclude	
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseExclude	x1, x 2, .5y
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseModelName	
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	#loadStepwiseSampleBtn
+toast
+val	#stepwiseDataset
+val	#stepwiseOutcome
+val	#stepwiseExclude
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	#copyStepwiseCodeBtn
+clip
+toast
+input	#stepwiseOutcome	
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+input	#stepwiseOutcome	y
+input	#stepwiseModelName	m1
+click	[data-stepwise-direction="backward"]
+read	#stepwiseSubtitle
+read	#stepwiseTermsLabel
+attr	#stepwiseExclude	placeholder
+read	#stepwiseModelLabel
+read	#stepwiseGuideTitle
+read	#stepwiseGuide
+val	#stepwiseModelName
+class	[data-stepwise-direction="forward"]
+attr	[data-stepwise-direction="forward"]	aria-pressed
+class	[data-stepwise-direction="backward"]
+attr	[data-stepwise-direction="backward"]	aria-pressed
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	[data-stepwise-direction="backward"]
+read	#stepwiseSubtitle
+read	#stepwiseTermsLabel
+attr	#stepwiseExclude	placeholder
+read	#stepwiseModelLabel
+read	#stepwiseGuideTitle
+read	#stepwiseGuide
+val	#stepwiseModelName
+class	[data-stepwise-direction="forward"]
+attr	[data-stepwise-direction="forward"]	aria-pressed
+class	[data-stepwise-direction="backward"]
+attr	[data-stepwise-direction="backward"]	aria-pressed
+input	#stepwiseModelName	 model 
+click	[data-stepwise-direction="forward"]
+val	#stepwiseModelName
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	[data-stepwise-direction="backward"]
+val	#stepwiseModelName
+click	#loadStepwiseSampleBtn
+toast
+canon
+read	#stepwiseCode
+disabled	#copyStepwiseCodeBtn
+click	#stepwiseDirection
+read	#stepwiseSubtitle
+read	#stepwiseTermsLabel
+attr	#stepwiseExclude	placeholder
+read	#stepwiseModelLabel
+read	#stepwiseGuideTitle
+read	#stepwiseGuide
+val	#stepwiseModelName
+class	[data-stepwise-direction="forward"]
+attr	[data-stepwise-direction="forward"]	aria-pressed
+class	[data-stepwise-direction="backward"]
+attr	[data-stepwise-direction="backward"]	aria-pressed

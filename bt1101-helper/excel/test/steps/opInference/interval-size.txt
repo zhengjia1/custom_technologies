@@ -1,0 +1,373 @@
+# Sample-size calculations for means and proportions, then pasted R sample sizes
+open	interval
+select	#intervalStdev	1
+click	#confirmKnownSdBtn
+change	#intervalCalcType	sample-size
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalLabel	column1
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	0.5
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalSd	4
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#copyIntervalProseBtn
+clip
+click	#copyIntervalCodeBtn
+clip
+input	#confidenceLevel	99
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#confidenceLevel	90
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#confidenceLevel	97.5
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#confidenceLevel	95
+input	#intervalMargin	0
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	-1
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	0.123
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalSd	0
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalSd	12.75
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalLabel	
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#loadIntervalSampleBtn
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#loadIntervalResultSampleBtn
+toast
+val	#intervalResultInput
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#copyIntervalPastedProseBtn
+clip
+input	#intervalResultInput	[1] 245.3
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalResultInput	ceiling(...)\n[1] 1e3
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalResultInput	no numbers
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalResultInput	
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	
+input	#intervalResultInput	[1] 246
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	0.5
+# proportion sample size
+change	#intervalParameter	proportion
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalMargin	0.05
+input	#intervalProportion	0.64
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#copyIntervalCodeBtn
+clip
+input	#intervalProportion	0.5
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalProportion	0
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalProportion	1
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalProportion	1.5
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+input	#intervalProportion	
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#loadIntervalResultSampleBtn
+val	#intervalResultInput
+val	#intervalMargin
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+click	#copyIntervalPastedProseBtn
+clip
+change	#intervalParameter	mean
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+change	#intervalCalcType	confidence
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn

@@ -1,0 +1,71 @@
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+open	kfold
+class	#kfoldBench
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+click	#copyKfoldCodeBtn
+clip
+click	#loadKfoldSampleBtn
+toast
+val	#kfoldDataset
+val	#kfoldOutcome
+val	#kfoldPredictors
+val	#kfoldK
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+click	#copyKfoldCodeBtn
+clip
+toast
+input	#kfoldK	1
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	2.5
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	abc
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	 10 
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	2.0
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldK	1e1
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldPredictors	 , 
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldPredictors	age, weekly hours,  income
+input	#kfoldDataset	
+input	#kfoldOutcome	Total Spend
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldOutcome	  
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+input	#kfoldOutcome	y
+input	#kfoldDataset	df_1
+canon
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+click	#copyKfoldCodeBtn
+clip
+toast

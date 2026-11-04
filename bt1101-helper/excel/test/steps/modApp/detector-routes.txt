@@ -1,0 +1,79 @@
+# Universal detector: navigating routes (GLM, regression, confusion, PCA, lpSolve, ANOVA)
+open	universal
+select	#universalSampleSelect	6
+toast
+read	#activeTitle
+class	#advancedRegressionBench
+class	#standardBench
+class	#tutorialList .operation[data-id="glm"]
+class	.universal-entry
+val	#glmOutput
+class	#referencePanel
+open	universal
+read	#activeTitle
+class	#advancedRegressionBench
+read	#outputBody
+select	#universalSampleSelect	7
+toast
+read	#activeTitle
+class	#tutorialList .operation[data-id="multi-regression"]
+val	#multiRegressionOutput
+open	universal
+select	#universalSampleSelect	8
+toast
+read	#activeTitle
+val	#confusionOutput
+class	#confusionInterpretationPanel
+open	universal
+select	#universalSampleSelect	9
+toast
+read	#activeTitle
+class	#pcaBench
+val	#pcaSummaryOutput
+class	#pcaVariancePanel
+open	universal
+select	#universalSampleSelect	10
+toast
+read	#activeTitle
+class	#lpBench
+class	#lpSensitivityAnalysis
+val	#lpSmartInput
+open	universal
+read	#activeTitle
+# PCA loadings route
+input	#inputText	Rotation (n x k) = (3 x 3):\n          PC1    PC2   PC3\nx1   0.58  -0.40  0.71\nx2   0.57   0.82  0.00\nx3   0.58  -0.41 -0.70\nprcomp output
+toast
+read	#activeTitle
+val	#pcaLoadingsOutput
+val	#pcaSummaryOutput
+open	universal
+# Welch ANOVA route
+input	#inputText	# A tibble: 1 x 7\n  .y.    n statistic   DFn   DFd        p method     \n* <chr> <int>     <dbl> <dbl> <dbl>    <dbl> <chr>      \n1 Sales   120      12.4     3  63.2 1.73e-06 Welch ANOVA
+toast
+read	#activeTitle
+class	#anovaBench
+val	#anovaWelchOutput
+val	#anovaGamesHowellOutput
+class	#anovaWelchPanel
+open	universal
+# Games-Howell route
+input	#inputText	games_howell_test output\n.y. group1 group2 estimate conf.low conf.high p.adj\nSales A B 1.2 0.4 2.0 0.002
+toast
+read	#activeTitle
+val	#anovaWelchOutput
+val	#anovaGamesHowellOutput
+open	universal
+# kmeans-like and unrecognised output
+input	#inputText	hello world, nothing to see
+read	#outputBody
+attr	#generatedProse	class
+read	#activeTitle
+input	#inputText	Rotation\nsome text
+read	#activeTitle
+read	#outputBody
+open	universal
+input	#inputText	lpSolve status: Success
+read	#outputBody
+input	#inputText	Call: lm(y ~ x)\nCoefficients:\n(Intercept) x\n 1.2 0.5
+read	#outputBody
+read	#activeTitle

@@ -1,0 +1,386 @@
+# Plot-type combobox
+open	ggplot
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+canon
+read	#ggplotCode
+click	#plotWorkflowSearch
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+read	#plotWorkflowMenu
+attr	#plotWorkflowMenu	class
+count	#plotWorkflowMenu .plot-workflow-heading
+read	#plotWorkflowMenu .plot-workflow-group:nth-child(2) .plot-workflow-heading
+input	#plotWorkflowSearch	
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+key	#plotWorkflowSearch	Tab
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowDown
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowDown
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowUp
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowUp
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowUp
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Enter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+input	#plotWorkflowSearch	bar
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+read	#plotWorkflowMenu
+key	#plotWorkflowSearch	Tab
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowDown
+key	#plotWorkflowSearch	ArrowDown
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Enter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+val	#plotStyle
+attr	#plotTitle	placeholder
+input	#plotWorkflowSearch	hist
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Tab
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+attr	#plotTitle	placeholder
+input	#plotWorkflowSearch	MOSAIC
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Tab
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+val	#plotStyle
+input	#plotWorkflowSearch	  pareto 
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Tab	s
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+input	#plotWorkflowSearch	zzz
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+read	#plotWorkflowMenu
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+disabled	#copyGgplotCodeBtn
+disabled	#loadGgplotSampleBtn
+key	#plotWorkflowSearch	Tab
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowDown
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Enter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+input	#plotWorkflowSearch	plot
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Enter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Escape
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	ArrowUp
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	Enter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+key	#plotWorkflowSearch	a
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+click	#plotWorkflowSearch
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+click	#plotWorkflowOption-scatter
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+attr	#plotTitle	placeholder
+click	#plotWorkflowSearch
+click	#plotWorkflowMenu .plot-workflow-heading
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+click	#plotWorkflowOption-contingency-stacked
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+val	#plotStyle
+click	#plotWorkflowSearch
+click	#plotX
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+input	#plotWorkflowSearch	box
+click	#plotWorkflowMenu
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+click	#copyGgplotCodeBtn
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+value	#plotWorkflowSearch	Line Plot
+change	#plotWorkflowSearch
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+attr	#plotTitle	placeholder
+value	#plotWorkflowSearch	line
+change	#plotWorkflowSearch
+class	#plotWorkflowMenu
+attr	#plotWorkflowSearch	aria-expanded
+attr	#plotWorkflowSearch	aria-activedescendant
+attr	#plotWorkflowSearch	aria-invalid
+val	#plotWorkflowSearch
+val	#plotWorkflow
+count	#plotWorkflowMenu .plot-workflow-option
+count	#plotWorkflowMenu .plot-workflow-option.is-active
+canon
+read	#ggplotCode

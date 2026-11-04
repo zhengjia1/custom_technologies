@@ -1,0 +1,252 @@
+open	lpsolve
+input	#sensRawOutput	> lp_sol$solution\n   X1       X2       X3\n 0.0000000 4.0000000 1.0000000\n> lp_sol$objval\n[1] 2.2\n> lp_sol$status\n[1] 0\n> lp_sol$duals\n[1] 0.0000000 0.0800000 0.0000000 -0.0500000 0.0000000 0.0000000\n> lp_sol$sens.coef.from\n[1] -1e+30  0.30  0.45\n> lp_sol$sens.coef.to\n[1] 0.2 0.8 1e+30\n> lp_sol$sens.rhs.from\n[1] -1e+30 52 -1e+30\n> lp_sol$sens.rhs.to\n[1] 1e+30 66.66667 1e+30
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+click	#loadLpSampleBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	> lp_sol$solution\n   X1       X2       X3\n 0.0000000 4.0000000 1.0000000\n> lp_sol$objval\n[1] 2.2\n> lp_sol$status\n[1] 0\n> lp_sol$duals\n[1] 0.0000000 0.0800000 0.0000000 -0.0500000 0.0000000 0.0000000\n> lp_sol$sens.coef.from\n[1] -1e+30  0.30  0.45\n> lp_sol$sens.coef.to\n[1] 0.2 0.8 1e+30\n> lp_sol$sens.rhs.from\n[1] -1e+30 52 -1e+30\n> lp_sol$sens.rhs.to\n[1] 1e+30 66.66667 1e+30
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	## X1 X2 X3\n## 0 4.0001 1\n## [1] 2.2\n## [1] 0\n## [1] 0.0000000 0.0800000 0.0000000 -0.0500000 0.0000000 0.0000000\n## [1] 0.1 0.30  0.45\n## [1] 0.2 0.8 1\nNULL\nNULL
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	"X1", "X2", "X3"\n7 2.2 0\n[1] 100\n[1] 0\n[1] 0 0 0 -0.1 0 0\n[1] 0.1 0.2 0.3\n[1] 0.3 0.4 0.5
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	X1 X2 X3\n7 2.2 0\n[1] 100\n[1] 0\n[1] 0.01 0.02 -0.1 0 0\n[1] 0.1 0.2 0.3\n[1] 0.3 0.4 0.5
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	X1 X2 X3\n7 2.2 0\n[1] 100\n[1] 0
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	   
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRawOutput	> lp_sol$solution\n   X1       X2       X3\n 0.0000000 4.0000000 1.0000000\n> lp_sol$objval\n[1] 2.2\n> lp_sol$status\n[1] 0\n> lp_sol$duals\n[1] 0.0000000 0.0800000 0.0000000 -0.0500000 0.0000000 0.0000000\n> lp_sol$sens.coef.from\n[1] -1e+30  0.30  0.45\n> lp_sol$sens.coef.to\n[1] 0.2 0.8 1e+30\n> lp_sol$sens.rhs.from\n[1] -1e+30 52 -1e+30\n> lp_sol$sens.rhs.to\n[1] 1e+30 66.66667 1e+30
+input	#sensSolution	0, 4.00002, 0.99999
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensSolution	0, 4.004, 1
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRhsFrom	1, 2
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensRhsFrom	
+input	#sensRhsTo	
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensObjectiveValue	
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensObjectiveValue	2766.6667
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensDuals	0, 0, 0, 0, 0, 0
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#sensDuals	1.5, -0.25, 0, -0.5, 0, 0.125
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-name	Non-negativity X1
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+change	#lpDirection	min
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+change	#lpDirection	max
+click	#resetLpBtn
+input	#sensRawOutput	> lp_sol$solution\n   X1       X2       X3\n 0.0000000 4.0000000 1.0000000\n> lp_sol$objval\n[1] 2.2\n> lp_sol$status\n[1] 0\n> lp_sol$duals\n[1] 0.0000000 0.0800000 0.0000000 -0.0500000 0.0000000 0.0000000\n> lp_sol$sens.coef.from\n[1] -1e+30  0.30  0.45\n> lp_sol$sens.coef.to\n[1] 0.2 0.8 1e+30\n> lp_sol$sens.rhs.from\n[1] -1e+30 52 -1e+30\n> lp_sol$sens.rhs.to\n[1] 1e+30 66.66667 1e+30
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn

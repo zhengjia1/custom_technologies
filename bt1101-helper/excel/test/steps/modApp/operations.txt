@@ -1,0 +1,720 @@
+# Every sidebar operation through setActive: titles, active classes, benches and reference texts
+open	ggplot
+read	#activeTitle
+class	#tutorialList .operation[data-id="ggplot"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	summarize
+read	#activeTitle
+class	#tutorialList .operation[data-id="summarize"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	shape
+read	#activeTitle
+class	#tutorialList .operation[data-id="shape"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	wide-table
+read	#activeTitle
+class	#tutorialList .operation[data-id="wide-table"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	interval
+read	#activeTitle
+class	#tutorialList .operation[data-id="interval"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	one-sample
+read	#activeTitle
+class	#tutorialList .operation[data-id="one-sample"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	two-sample
+read	#activeTitle
+class	#tutorialList .operation[data-id="two-sample"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	anova-many
+read	#activeTitle
+class	#tutorialList .operation[data-id="anova-many"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	lm-predict
+read	#activeTitle
+class	#tutorialList .operation[data-id="lm-predict"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	multi-regression
+read	#activeTitle
+class	#tutorialList .operation[data-id="multi-regression"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	model-significance
+read	#activeTitle
+class	#tutorialList .operation[data-id="model-significance"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	model-comparison
+read	#activeTitle
+class	#tutorialList .operation[data-id="model-comparison"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	dummy
+read	#activeTitle
+class	#tutorialList .operation[data-id="dummy"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	interaction
+read	#activeTitle
+class	#tutorialList .operation[data-id="interaction"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	glm
+read	#activeTitle
+class	#tutorialList .operation[data-id="glm"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	confusion
+read	#activeTitle
+class	#tutorialList .operation[data-id="confusion"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	pca
+read	#activeTitle
+class	#tutorialList .operation[data-id="pca"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	stepwise
+read	#activeTitle
+class	#tutorialList .operation[data-id="stepwise"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	kmeans
+read	#activeTitle
+class	#tutorialList .operation[data-id="kmeans"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	kfold
+read	#activeTitle
+class	#tutorialList .operation[data-id="kfold"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	lpsolve
+read	#activeTitle
+class	#tutorialList .operation[data-id="lpsolve"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	shapiro
+read	#activeTitle
+class	#tutorialList .operation[data-id="shapiro"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	pearson
+read	#activeTitle
+class	#tutorialList .operation[data-id="pearson"]
+count	.operation.active
+class	#standardBench
+class	#summarizeBench
+class	#shapeBench
+class	#wideTableBench
+class	#intervalBench
+class	#oneSampleBench
+class	#twoSampleBench
+class	#anovaBench
+class	#corrMultipleBench
+class	#simpleRegressionBench
+class	#advancedRegressionBench
+class	#stepwiseBench
+class	#kfoldBench
+class	#pcaBench
+class	#kmeansBench
+class	#lpBench
+class	#ggplotBench
+class	#lpSensitivityAnalysis
+class	#referencePanel
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#singleSampleBtn
+class	#universalSampleSelect
+count	#universalSampleSelect option
+open	universal
+read	#activeTitle
+class	.universal-entry
+count	.operation.active
+class	#referencePanel
+count	#universalSampleSelect option

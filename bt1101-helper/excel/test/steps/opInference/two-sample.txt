@@ -1,0 +1,151 @@
+# Two-sample mean (independent / paired) and variance (F test): code, samples, parsing, prose
+open	two-sample
+canon
+read	#activeTitle
+read	#twoSampleTestTitle
+read	#twoResponse1Label
+read	#twoResponse2Field
+read	#twoSampleHypotheses
+read	#twoSampleCode
+read	#twoSampleInterpretation
+class	#twoSamplePairedField
+class	#twoSampleAlternativeField
+click	#copyTwoSampleCodeBtn
+clip
+toast
+# independent, all alternatives
+click	#loadTwoSampleOutputBtn
+canon
+toast
+val	#twoSampleOutputText
+read	#twoSampleInterpretation
+click	#copyTwoSampleProseBtn
+clip
+toast
+change	#twoSampleAlternative	greater
+canon
+read	#twoSampleHypotheses
+read	#twoSampleCode
+read	#twoSampleInterpretation
+click	#loadTwoSampleOutputBtn
+canon
+val	#twoSampleOutputText
+read	#twoSampleInterpretation
+change	#twoSampleAlternative	less
+canon
+read	#twoSampleHypotheses
+read	#twoSampleCode
+click	#loadTwoSampleOutputBtn
+canon
+val	#twoSampleOutputText
+read	#twoSampleInterpretation
+click	#copyTwoSampleProseBtn
+clip
+# paired
+click	#twoSamplePaired
+canon
+read	#twoSampleTestTitle
+read	#twoResponse1Label
+read	#twoResponse2Field
+read	#twoSampleHypotheses
+read	#twoSampleCode
+read	#twoSampleInterpretation
+click	#loadTwoSampleOutputBtn
+canon
+val	#twoSampleOutputText
+read	#twoSampleInterpretation
+change	#twoSampleAlternative	greater
+canon
+read	#twoSampleHypotheses
+read	#twoSampleCode
+click	#loadTwoSampleOutputBtn
+canon
+read	#twoSampleInterpretation
+change	#twoSampleAlternative	two.sided
+canon
+read	#twoSampleHypotheses
+read	#twoSampleCode
+click	#loadTwoSampleOutputBtn
+canon
+read	#twoSampleInterpretation
+click	#copyTwoSampleProseBtn
+clip
+# renamed columns and dataset
+input	#twoSampleDataset	my data
+input	#twoSampleResponse1	before score
+input	#twoSampleResponse2	after_score
+canon
+read	#twoSampleCode
+read	#twoSampleInterpretation
+click	#loadTwoSampleOutputBtn
+canon
+val	#twoSampleOutputText
+input	#twoSampleDataset	
+input	#twoSampleResponse1	
+input	#twoSampleResponse2	
+canon
+read	#twoSampleCode
+read	#twoSampleInterpretation
+# variance (F test)
+click	#twoSamplePaired
+change	#twoSampleParameter	variance
+canon
+read	#twoSampleTestTitle
+read	#twoResponse1Label
+read	#twoResponse2Field
+class	#twoSamplePairedField
+class	#twoSampleAlternativeField
+read	#twoSampleHypotheses
+read	#twoSampleCode
+click	#loadTwoSampleOutputBtn
+canon
+val	#twoSampleOutputText
+read	#twoSampleInterpretation
+click	#copyTwoSampleProseBtn
+clip
+change	#twoSampleAlternative	less
+canon
+read	#twoSampleHypotheses
+read	#twoSampleCode
+click	#twoSamplePaired
+canon
+read	#twoSampleTestTitle
+read	#twoSampleCode
+click	#twoSamplePaired
+# printed bounds (alpha is fixed at 0.05)
+input	#twoSampleOutputText	F = 2.5, num df = 10, denom df = 12, p-value = 0.012
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	F = 0.5, num df = 10, denom df = 12, p-value < 0.06
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	F = 0.5, num df = 10, denom df = 12, p-value <= 0.05
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	F = 0.5, num df = 10, denom df = 12, p-value > 0.04
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	F = 0.5, num df = 10, denom df = 12, p-value >= 0.05
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p-value < 2.2e-16
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p-value = 0.05
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p-value = 0.0500004
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p-value = 1e999
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p-value = 2
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	p_value = 0.01
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	## t = -12.345678\n## p value = 3e-4
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	nothing to see
+read	#twoSampleInterpretation
+input	#twoSampleOutputText	
+read	#twoSampleInterpretation
+click	#pasteTwoSampleBtn
+toast
+change	#twoSampleParameter	mean
+canon
+read	#twoSampleTestTitle
+class	#twoSamplePairedField
+read	#twoSampleHypotheses
+read	#twoSampleCode

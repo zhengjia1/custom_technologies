@@ -1,0 +1,170 @@
+# Advanced regression forms: every mode's fields, guide, code, panels, inputs and copy
+open	multi-regression
+read	#activeTitle
+class	#advancedRegressionBench
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+read	#advancedRegressionCodeTitle
+canon
+read	#advancedRegressionCode
+class	#advancedRegressionPredictionPanel
+class	#advancedRegressionConfidencePanel
+read	#advancedRegressionPredictionCode
+read	#advancedRegressionConfidenceCode
+class	#modelComparisonInterpretationPanel
+class	#multiRegressionInterpretationPanel
+class	#coefficientIntervalPanel
+class	#glmInterpretationPanel
+class	#confusionInterpretationPanel
+read	#multiRegressionProse
+read	#coefficientIntervalProse
+disabled	#copyMultiRegressionProseBtn
+disabled	#copyCoefficientIntervalBtn
+input	#advDataset	house data
+input	#advY	sale price
+input	#advPredictors	 size_sqft , , age.years,`rooms`,
+canon
+read	#advancedRegressionCode
+read	#advancedRegressionPredictionCode
+read	#advancedRegressionConfidenceCode
+click	#copyAdvancedRegressionCodeBtn
+clip
+toast
+click	#copyAdvancedRegressionPredictionCodeBtn
+clip
+toast
+click	#copyAdvancedRegressionConfidenceCodeBtn
+clip
+toast
+input	#advPredictors
+canon
+read	#advancedRegressionCode
+read	#advancedRegressionConfidenceCode
+input	#advPredictors	 ,
+canon
+read	#advancedRegressionCode
+read	#advancedRegressionPredictionCode
+read	#advancedRegressionConfidenceCode
+click	#loadAdvancedRegressionSampleBtn
+toast
+val	#advY
+val	#advPredictors
+canon
+read	#advancedRegressionCode
+open	model-significance
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+read	#advancedRegressionCodeTitle
+canon
+read	#advancedRegressionCode
+class	#advancedRegressionPredictionPanel
+class	#advancedRegressionConfidencePanel
+class	#multiRegressionInterpretationPanel
+class	#coefficientIntervalPanel
+input	#advY	y
+input	#advPredictors	a, b, c
+canon
+read	#advancedRegressionCode
+open	model-comparison
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+class	#modelComparisonInterpretationPanel
+input	#advRestricted
+input	#advFull
+canon
+read	#advancedRegressionCode
+input	#advRestricted	x1
+input	#advFull	x1, x2 ,x3
+input	#advDataset
+input	#advY
+canon
+read	#advancedRegressionCode
+click	#copyAdvancedRegressionCodeBtn
+clip
+toast
+open	dummy
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+input	#advLevels	Low, "Mid", High
+input	#advReference
+canon
+read	#advancedRegressionCode
+input	#advReference	High
+input	#advOther	x 1, x2
+input	#advCategorical	age group
+canon
+read	#advancedRegressionCode
+input	#advOther
+input	#advLevels
+canon
+read	#advancedRegressionCode
+open	interaction
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+input	#advX	price
+input	#advModerator	ad spend
+input	#advY	units_sold
+canon
+read	#advancedRegressionCode
+input	#advX
+input	#advModerator
+canon
+read	#advancedRegressionCode
+open	glm
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+class	#glmInterpretationPanel
+read	#glmProse
+disabled	#copyGlmProseBtn
+input	#advResponse	default status
+input	#advPositive	Defaulted "yes"
+input	#advPredictors	income, balance
+canon
+read	#advancedRegressionCode
+input	#advPositive
+input	#advPredictors
+canon
+read	#advancedRegressionCode
+open	confusion
+read	#advancedRegressionTitle
+read	#advancedRegressionSubtitle
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+class	#confusionInterpretationPanel
+read	#confusionProse
+disabled	#copyConfusionProseBtn
+input	#advOutcome	churned
+input	#advModel	my_glm
+input	#advThreshold	0.5
+canon
+read	#advancedRegressionCode
+input	#advThreshold
+input	#advModel
+canon
+read	#advancedRegressionCode
+click	#loadAdvancedRegressionSampleBtn
+toast
+val	#advThreshold
+canon
+read	#advancedRegressionCode
+open	multi-regression
+read	#advancedRegressionForm
+canon
+read	#advancedRegressionCode
+class	#confusionInterpretationPanel
+class	#multiRegressionInterpretationPanel

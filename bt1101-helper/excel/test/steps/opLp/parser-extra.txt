@@ -1,0 +1,443 @@
+# Smart parser: further formulation formats.
+open	lpsolve
+click	#resetLpBtn
+input	#lpSmartInput	\\text{Maximise } P = 3 \\times X_{1} + 2\\cdot X_{2}\nSubject to\n\\text{Steel}: 2X_{1} + X_{2} \\le 100\n\\text{Paint}: X_{1} \\,+\\, 3X_{2} \\leq{} 90\n\\text{Demand}: X_{1} \\ge 10\n\\text{Floor}: X_{2} \\geq{} 5\nX_{1}, X_{2} \\ge 0
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Minimize cost = 4x_1 + 3x_2 − x_3\nsubject to\nc1: x_1 + x_2 + x_3 ≥ 10\nc2: 2x_1 – x_2 ≤ 8\nc3: x_2 — x_3 = 1
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise Z = 5A + 4B\nSubject to\n**Labour hours**: 6A + 4B <= 24\n`Material`: A + 2B <= 6\n_Mix_: -A + B <= 1\nNon negativity: 1A + 0B >= 0
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 2X1 + 3X2 + X3\nSubject to\nCap: X1 + X2 + X3 <= 10\nX3 >= 0\nMinimum X2: 2X2 >= 0\nAt least: X1 >= 1\nNonnegativity: X1 + X2 >= 0
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise\n12X1 + 9X2 +\n  7X3 = Profit\nSubject to\nA: X1 + X2 + X3 <= 30\nB: 2X1 + X2 <= 40
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Max: 3X1 + 2X2\nSubject to\nA: X1 + X2 <= 4
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Min 3X1 + 2X2\nst\nA: X1 + X2 >= 4
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Minimise 2X1 + 5X2\nSubject to\nA: X1 + X2 >= budget\nB: X1 + 3X2 >= 9
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 4X1 + 5X2 + 3X3\nSubject to\nW: 2X1 + 3X2 + X3 <= 5\nX2 and X3 are binary
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 4X1 + 5X2 + 3X3\nSubject to\nW: 2X1 + 3X2 + X3 <= 5\nbinary: all
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 4X1 + 5X2\nSubject to\nW: 2X1 + 3X2 <= 5\nBinary variables
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 4X1 + 5X2\nSubject to\nW: 2X1 + 3X2 <= 5\nInteger: X1, X2
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Minimise 4X1 + 5X2\nSubject to\nW: 2X1 + 3X2 >= 5\nNon-negativity and integer constraints
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	| Minimise | 3X1 + 4X2 |\n|---|---|\n| Demand | X1 + X2 >= 10 |\n| Ratio | X1 - 2X2 <= 0 |
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	| Model component | Mathematical expression |\n|:---|---:|\n| Minimise objective | 3X1 + 4X2 = Z |\n| Demand | 1X1 + 1X2 >= 10 |\n| Ratio | 1X1 + -2X2 <= 0 |\n| Non-negativity: X1 | X1 >= 0 |\n| Non-negativity: X2 | X2 >= 0 |
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	+--------------------+--------------------+\n| Model component    | Mathematical expression |\n+--------------------+--------------------+\n| Maximise objective | 0.15X1 + 0.4X2 = Z |\n+--------------------+--------------------+\n| Budget             | 15X1 + 30X2 ≤ 200   |\n+--------------------+--------------------+\n| Diet               | 1X1 + 0X2 ≥ 2      |\n+--------------------+--------------------+\n| Non-negativity: X1 | X1 ≥ 0             |\n+--------------------+--------------------+
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	| Maximise total return | R = 0.08Stocks + 0.05Bonds |\n|---|---|\n| Subject to | |\n| Total funds | Stocks + Bonds <= 100000 |\n| Risk limit (stocks) | Stocks <= 0.6(Stocks + Bonds) |\n| Minimum bonds | Bonds >= 20000 |
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Minimise Z = 2.5 prod.a + 1.25 prod.b\nSubject to\nNeed: prod.a + prod.b >= 8\nprod.a, prod.b >= 0
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise $Z = 7X_1 + 5X_2$\nSubject to\nLabour: $3X_1 + 4X_2 \\leq 2400$\nMachine: $2X_1 + X_2 \\leq 1000$\n
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 2X1 + 3X2\nSubject to\nA: X1 + X2 <= 4\nB: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999X1 - 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999X1 + X2 >= 0\nC: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999X2 >= 0
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
+click	#resetLpBtn
+input	#lpSmartInput	Maximise profit\nSubject to\nA: X1 + X2 <= 4\nB: X1 <= 3
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+read	#lpConstraintRows
+read	#lpConstraintError
+read	#lpTablePreview
+canon
+read	#lpCode
+disabled	#copyLpCodeBtn
+disabled	#copyLpAsciiBtn
+read	#lpParseStatus
+click	#copyLpAsciiBtn
+clip
