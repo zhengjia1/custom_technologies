@@ -1,0 +1,108 @@
+# Shapiro-Wilk and Pearson operations (non-universal), parser branches and invalid inputs
+open	shapiro
+read	#activeTitle
+class	#tutorialList .operation[data-id="shapiro"]
+class	.universal-entry
+class	#universalSampleSelect
+disabled	#universalSampleSelect
+count	#universalSampleSelect option
+class	#singleSampleBtn
+disabled	#singleSampleBtn
+attr	#singleSampleBtn	title
+read	#sampleCode
+read	#sampleInput
+read	#sampleProse
+attr	#inputText	placeholder
+read	#outputBody
+class	#referencePanel
+click	#copyBtn
+toast
+click	#singleSampleBtn
+toast
+val	#inputText
+read	#outputBody
+input	#inputText	data: x\nW = 0.95, p-value = 0.3
+read	#outputBody
+attr	#generatedProse	class
+input	#inputText	W = 0.95, p-value = 0.05
+read	#outputBody
+input	#inputText	##   Shapiro-Wilk normality test\n## data:    dataset$score\n## W = 0.95,   p-value <= 0.1
+read	#outputBody
+attr	#generatedProse	class
+input	#inputText	data: y\nW = 0.9
+read	#outputBody
+input	#inputText	p-value > 0.2
+read	#outputBody
+input	#inputText	p-value = 1.2
+read	#outputBody
+input	#inputText	p-value = 0.0499999
+read	#outputBody
+click	#resetBtn
+val	#inputText
+read	#outputBody
+click	#pasteBtn
+toast
+open	pearson
+read	#activeTitle
+attr	#singleSampleBtn	title
+read	#sampleProse
+click	#singleSampleBtn
+read	#outputBody
+input	#inputText	Pearson's product-moment correlation\ndata:  as.numeric(dataset$`hours studied`) and dataset$score\nt = -6.2, df = 98, p-value = 1.3e-08\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n -0.66 -0.38\nsample estimates:\n       cor\n-0.5309\n
+read	#outputBody
+input	#inputText	data: a and b\nt = 1.1, df = 10, p-value = 0.002\nsample estimates:\ncor\n0.2
+read	#outputBody
+input	#inputText	data: a and b\nt = 1.1, df = 10, p-value = 0.0001\nsample estimates:\ncor\n0.95
+read	#outputBody
+input	#inputText	p-value = 0.002\nsample estimates: cor 0
+read	#outputBody
+input	#inputText	data: a and b\nt = 1.1, df = 10, p-value = 0.02
+read	#outputBody
+attr	#generatedProse	class
+input	#inputText	cor.test\nsample estimates: cor 0.4
+read	#outputBody
+input	#inputText	cor.test p-value < 0.06 sample estimates: cor 0.4
+read	#outputBody
+canon
+click	#copyBtn
+clip
+toast
+input	#inputText	
+read	#outputBody
+read	#activeTitle
+# universal: one-sample and two-sample variants
+open	universal
+input	#inputText	One Sample t-test\n\ndata:  dataset$Amount\nt = 2.5, df = 99, p-value = 0.007\nalternative hypothesis: true mean is greater than 20\n
+read	#outputBody
+input	#inputText	1-sample proportions test with continuity correction\n\ndata:  45 out of 100, null probability 0.5\nX-squared = 0.81, df = 1, p-value = 0.3681\nalternative hypothesis: true p is not equal to 0.5
+read	#outputBody
+input	#inputText	One Sample t-test\ndata: x\nt = 2.5, df = 99, p-value = 0.05
+read	#outputBody
+input	#inputText	One Sample t-test\ndata: x\nt = 2.5, df = 99
+read	#outputBody
+input	#inputText	F test to compare two variances\n\ndata:  Amount by Product\nF = 1.8, num df = 49, denom df = 49, p-value = 0.04\nalternative hypothesis: true ratio of variances is not equal to 1
+read	#outputBody
+input	#inputText	Two Sample t-test\n\ndata:  x by g\nt = -1.2, df = 98, p-value = 0.23\nalternative hypothesis: true difference in means is less than 0
+read	#outputBody
+input	#inputText	Welch Two Sample t-test\ndata: x by g
+read	#outputBody
+input	#inputText	Two Sample t-test p-value < 0.5
+read	#outputBody
+input	#inputText	     lPIAmount95 uPIAmount95\n[1,]  12.5  30.25
+toast
+read	#activeTitle
+val	#intervalCalcType
+val	#confidenceLevel
+open	universal
+input	#inputText	prediction interval for the proportion of successes\n     lower upper\n[1,] 0.31 0.52
+toast
+val	#intervalCalcType
+val	#intervalParameter
+val	#intervalLabel
+open	universal
+input	#inputText	uCIx99 then nothing numeric
+toast
+read	#activeTitle
+val	#intervalResultInput
+open	universal
+read	#activeTitle

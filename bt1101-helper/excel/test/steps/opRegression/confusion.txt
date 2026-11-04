@@ -1,0 +1,54 @@
+# Confusion matrix: sample, recomputation, inconsistent reported values, info hovers, copy
+open	confusion
+class	#confusionInterpretationPanel
+read	#confusionProse
+click	#loadConfusionOutputBtn
+toast
+val	#confusionOutput
+canon
+read	#confusionProse
+count	#confusionProse .metric-info
+attr	#confusionProse .metric-info	aria-label
+read	#confusionProse .metric-tooltip
+disabled	#copyConfusionProseBtn
+click	#copyConfusionProseBtn
+clip
+toast
+click	#confusionProse [data-copy-confusion="4"]
+clip
+toast
+# No reported metrics: recomputed from the grid; zero precision denominator
+input	#confusionOutput	          Reference\nPrediction   0   1\n         0 150  30\n         1   0   0
+canon
+read	#confusionProse
+count	#confusionProse [data-copy-confusion]
+# Reported metrics that match with different decimals
+input	#confusionOutput	Prediction Neg Pos\nNeg 7 3\nPos 2 8\nAccuracy : 0.75\nSensitivity : 0.7273\nSpecificity:0.7\n
+canon
+read	#confusionProse
+# Inconsistent reported values
+input	#confusionOutput	Prediction No Yes\nNo 42 6\nYes 8 44\nSensitivity : 0.900
+read	#confusionProse
+disabled	#copyConfusionProseBtn
+input	#confusionOutput	Prediction No Yes\nNo 42 6\nYes 8 44\nSpecificity : 0.85
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 42 6\nYes 8 44\nAccuracy : 0.8
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 42 6\nYes 8 44\nAccuracy : 1.5
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 5 0\nYes 5 0\nSensitivity : 0.5
+read	#confusionProse
+# Invalid grids
+input	#confusionOutput	Reference\nNo Yes\n1 2
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 1 2
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 1.5 2\nYes 3 4
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo -1 2\nYes 3 4
+read	#confusionProse
+input	#confusionOutput	Prediction No Yes\nNo 0 0\nYes 0 0
+read	#confusionProse
+input	#confusionOutput
+read	#confusionProse
+disabled	#copyConfusionProseBtn

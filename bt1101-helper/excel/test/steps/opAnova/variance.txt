@@ -1,0 +1,177 @@
+# ANOVA Step 2: variance test parsing, routing to Step 3a / 3b, staged copy completion
+open	anova-many
+canon
+read	#anovaVarianceCode
+# Bartlett sample (4 groups) -> p < 2.2e-16 -> Welch route
+click	#loadAnovaVarianceOutputBtn
+canon
+toast
+val	#anovaVarianceOutput
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+disabled	#copyAnovaVarianceProseBtn
+class	#anovaStandardPanel
+attr	#anovaStandardPanel	aria-disabled
+disabled	#anovaStandardPanel .lp-collapse-toggle
+class	#anovaWelchPanel
+attr	#anovaWelchPanel	aria-disabled
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaStandardProseBtn
+disabled	#loadAnovaStandardOutputBtn
+disabled	#copyAnovaWelchCodeBtn
+disabled	#copyAnovaWelchProseBtn
+disabled	#loadAnovaWelchOutputsBtn
+# staged copy: code alone does not complete the card
+click	#copyAnovaVarianceCodeBtn
+clip
+toast
+class	#anovaVarianceCodeBox
+class	#anovaVarianceProseBox
+class	#anovaVariancePanel
+click	#copyAnovaVarianceCodeBtn
+class	#anovaVariancePanel
+click	#copyAnovaVarianceProseBtn
+clip
+toast
+class	#anovaVarianceProseBox
+class	#anovaVariancePanel
+count	#anovaVariancePanel .completion-badge
+# editing the output resets only the prose part
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\ndata:  Amount by Region\nBartlett's K-squared = 3.1, df = 3, p-value = 0.3765
+canon
+class	#anovaVarianceCodeBox
+class	#anovaVarianceProseBox
+class	#anovaVariancePanel
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+attr	#anovaWelchPanel	aria-disabled
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaWelchCodeBtn
+disabled	#loadAnovaWelchOutputsBtn
+disabled	#loadAnovaStandardOutputBtn
+click	#copyAnovaVarianceProseBtn
+clip
+class	#anovaVariancePanel
+# p exactly at alpha -> not below -> fail to reject
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\nBartlett's K-squared = 7.8, df = 3, p-value = 0.05
+canon
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+# p just below alpha -> reject
+input	#anovaVarianceOutput	## Bartlett test of homogeneity of variances\n## Bartlett's K-squared = 7.9, df = 3, p-value = 0.0499
+canon
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+# bounds
+input	#anovaVarianceOutput	Bartlett test\np-value < 0.1
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+disabled	#copyAnovaVarianceProseBtn
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaWelchCodeBtn
+input	#anovaVarianceOutput	Bartlett test\np-value > 0.1
+canon
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	Bartlett test\np-value <= 0.01
+canon
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	Bartlett test\np-value >= 0.05
+canon
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	Bartlett test\npvalue=1.2e-3
+canon
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	Bartlett test\np - value = .5
+canon
+read	#anovaVarianceInterpretation
+# errors
+input	#anovaVarianceOutput	Bartlett test with no p value here
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	Levene test\np-value = 0.2
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+disabled	#copyAnovaStandardCodeBtn
+input	#anovaVarianceOutput	F test to compare two variances\nF = 1.0681, num df = 116, denom df = 73, p-value = 0.7686
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	  	 
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+# two groups -> var.test
+input	#anovaGroupCount	2
+canon
+read	#anovaVarianceCode
+class	#anovaVarianceCodeBox
+click	#loadAnovaVarianceOutputBtn
+canon
+toast
+val	#anovaVarianceOutput
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+input	#anovaVarianceOutput	## Bartlett test of homogeneity of variances\n## p-value = 0.3
+read	#anovaVarianceInterpretation
+input	#anovaVarianceOutput	ratio of variances\np-value = 0.001
+canon
+read	#anovaVarianceInterpretation
+class	#anovaWelchPanel
+# invalid alpha with output present
+input	#anovaAlpha	1.5
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaWelchCodeBtn
+disabled	#copyAnovaVarianceCodeBtn
+input	#anovaAlpha	0.0005
+canon
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+input	#anovaAlpha	0.1
+canon
+read	#anovaVarianceInterpretation
+# invalid group count with output present
+input	#anovaGroupCount	0
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+read	#anovaVarianceCode
+# Step 0 names flow into the sample output without overwriting Step 0
+input	#anovaGroupCount	3
+input	#anovaDataset	my data
+input	#anovaResponse	Total Spend
+input	#anovaGroup	store type
+click	#loadAnovaVarianceOutputBtn
+canon
+val	#anovaVarianceOutput
+read	#anovaVarianceInterpretation
+val	#anovaDataset
+val	#anovaResponse
+val	#anovaGroup
+input	#anovaGroupCount	2
+click	#loadAnovaVarianceOutputBtn
+canon
+val	#anovaVarianceOutput
+read	#anovaVarianceInterpretation
+# completion then code change resets everything
+click	#copyAnovaVarianceCodeBtn
+click	#copyAnovaVarianceProseBtn
+class	#anovaVariancePanel
+input	#anovaGroupCount	5
+class	#anovaVariancePanel
+class	#anovaVarianceCodeBox
+class	#anovaVarianceProseBox
+read	#anovaVarianceInterpretation
+# load the setup sample: clears the variance output
+click	#loadAnovaVarianceOutputBtn
+click	#loadAnovaSampleBtn
+val	#anovaVarianceOutput
+read	#anovaVarianceInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel

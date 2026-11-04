@@ -1,0 +1,379 @@
+## Source of test/steps/modVariants/*.txt: "@@ name" starts a file; " | " separates fields
+## (converted to tabs by node test/variants/make-steps.js).
+@@ pca
+# PCA: the code sections share one mega-group control; prose blocks have their own; completion clears on option change.
+open | pca
+count | #pcaBench .answer-variant-control
+count | #pcaCodeSections .answer-variant-control
+count | #pcaBench .answer-variant-control + #copyPcaCodeBtn
+attr | #pcaCodeSections [data-copy-pca-section="0"] | data-answer-variant-owner
+val | #pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select
+read | #pcaCodeSections > section:nth-child(1) pre
+read | #pcaCodeSections > section:nth-child(2) pre
+read | #pcaCodeSections > section:nth-child(3) pre
+read | #pcaCode
+click | #loadPcaSampleBtn
+val | #pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select
+read | #pcaCodeSections > section:nth-child(1) pre
+read | #pcaCodeSections > section:nth-child(2) pre
+read | #pcaCodeSections > section:nth-child(4) pre
+read | #pcaCodeSections > section:nth-child(6) pre
+click | #pcaCodeSections [data-copy-pca-section="1"]
+clip
+click | #copyPcaCodeBtn
+clip
+count | #pcaBench .completion-badge
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select | 3
+read | #pcaCodeSections > section:nth-child(1) pre
+read | #pcaCodeSections > section:nth-child(2) pre
+count | #pcaBench .completion-badge
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select | 4
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select | 3
+read | #pcaCodeSections > section:nth-child(1) pre
+read | #pcaCodeSections > section:nth-child(2) pre
+click | #pcaCodeSections [data-copy-pca-section="2"]
+clip
+click | #loadPcaVarianceSampleBtn
+read | #pcaVarianceProse
+count | #pcaBench .answer-variant-control
+val | #pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select
+click | #copyPcaVarianceBtn
+clip
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select | 2
+read | #pcaVarianceProse
+click | #copyPcaVarianceBtn
+clip
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select | 1
+read | #pcaVarianceProse
+click | #loadPcaLinearSampleBtn
+read | #pcaLinearProse
+val | #pcaBench .answer-variant-control[data-copy-for="copyPcaLinearBtn"] select
+click | #pcaLinearProse [data-copy-pca-linear="0"]
+clip
+click | #copyPcaLinearBtn
+clip
+change | #pcaBench .answer-variant-control[data-copy-for="copyPcaLinearBtn"] select | 5
+read | #pcaLinearProse
+click | #copyPcaLinearBtn
+clip
+click | #loadPcaLoadingsSampleBtn
+read | #pcaLoadingsProse
+click | #copyPcaLoadingsBtn
+clip
+@@ lp
+# lpSolve: code options, ASCII table without a control, sensitivity prose mega group with section copies.
+open | lpsolve
+click | #loadLpSampleBtn
+count | #lpBench .answer-variant-control
+count | .answer-variant-control[data-copy-for="copyLpAsciiBtn"]
+val | #lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select
+read | #lpCode
+click | #copyLpCodeBtn
+clip
+click | #copyLpAsciiBtn
+clip
+change | #lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select | 2
+read | #lpCode
+change | #lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select | 6
+read | #lpCode
+change | #lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select | 2
+read | #lpCode
+click | #loadSensitivitySampleBtn
+count | #lpBench .answer-variant-control
+count | #sensitivityInterpretation .answer-variant-control
+val | #lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select
+read | #sensitivityInterpretation
+click | #sensitivityInterpretation [data-sensitivity-copy="shadow"]
+clip
+class | #sensitivityInterpretation .sensitivity-prose-card:nth-child(2)
+read | #sensitivityInterpretation [data-sensitivity-copy="shadow"]
+count | #lpBench .completion-badge
+change | #lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select | 4
+class | #sensitivityInterpretation .sensitivity-prose-card:nth-child(2)
+read | #sensitivityInterpretation [data-sensitivity-copy="shadow"]
+disabled | #sensitivityInterpretation [data-sensitivity-copy="shadow"]
+read | #sensitivityInterpretation
+click | #copySensitivityProseBtn
+clip
+count | #lpBench .completion-badge
+class | #sensitivityInterpretationPanel
+change | #lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select | 1
+count | #lpBench .completion-badge
+class | #sensitivityInterpretationPanel
+read | #sensitivityInterpretation
+click | #copyLpCodeBtn
+clip
+count | #lpBench .completion-badge
+change | #lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select | 3
+count | #lpBench .completion-badge
+read | #lpCode
+@@ anova
+# ANOVA: staged mixed groups share one control per step; option change clears both code and prose copies.
+open | anova-many
+click | #loadAnovaSampleBtn
+count | #anovaBench .answer-variant-control
+val | #anovaBench .answer-variant-control[data-copy-for="copyAnovaNormalityCodeBtn"] select
+read | #anovaNormalityCode
+read | #anovaVarianceCode
+click | #loadAnovaVarianceOutputBtn
+val | #anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select
+read | #anovaVarianceCode
+read | #anovaVarianceInterpretation
+click | #copyAnovaVarianceCodeBtn
+clip
+class | #anovaVarianceCodeBox
+class | #anovaVariancePanel
+click | #copyAnovaVarianceProseBtn
+clip
+class | #anovaVarianceProseBox
+class | #anovaVariancePanel
+change | #anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select | 2
+class | #anovaVarianceCodeBox
+class | #anovaVarianceProseBox
+class | #anovaVariancePanel
+read | #anovaVarianceCode
+read | #anovaVarianceInterpretation
+change | #anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select | 5
+change | #anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select | 2
+read | #anovaVarianceCode
+read | #anovaVarianceInterpretation
+click | #copyAnovaVarianceProseBtn
+clip
+click | #loadAnovaWelchOutputsBtn
+read | #anovaWelchCode
+read | #anovaWelchInterpretation
+val | #anovaBench .answer-variant-control[data-copy-for="copyAnovaWelchCodeBtn"] select
+click | #copyAnovaWelchCodeBtn
+clip
+click | #copyAnovaWelchProseBtn
+clip
+class | #anovaWelchPanel
+change | #anovaBench .answer-variant-control[data-copy-for="copyAnovaWelchCodeBtn"] select | 1
+class | #anovaWelchPanel
+class | #anovaWelchCodeBox
+read | #anovaWelchCode
+read | #anovaWelchInterpretation
+input | #anovaResponse | Spend
+read | #anovaWelchCode
+read | #anovaNormalityCode
+@@ plot
+# Plotting: recipe changes re-randomise; chart-code copies warn when axis intervals are off.
+open | ggplot
+val | #ggplotBench .answer-variant-select
+read | #ggplotCode
+click | #loadGgplotSampleBtn
+val | #ggplotBench .answer-variant-select
+read | #ggplotCode
+click | #copyGgplotCodeBtn
+clip
+class | #plotAxisRangeAlert
+key | #plotAxisRangeAlert | Escape
+class | #plotAxisRangeAlert
+change | #ggplotBench .answer-variant-select | 2
+read | #ggplotCode
+change | #ggplotBench .answer-variant-select | 3
+change | #ggplotBench .answer-variant-select | 2
+read | #ggplotCode
+input | #plotWorkflowSearch | Histogram
+change | #plotWorkflowSearch
+val | #plotWorkflow
+val | #ggplotBench .answer-variant-select
+read | #ggplotCode
+click | #copyGgplotCodeBtn
+clip
+class | #plotAxisRangeAlert
+click | #dismissPlotAxisRangeAlert
+change | #plotStyle | stacked
+val | #ggplotBench .answer-variant-select
+input | #plotWorkflowSearch | Scatterplot
+change | #plotWorkflowSearch
+val | #ggplotBench .answer-variant-select
+read | #ggplotCode
+click | #ggplotBench .plot-axis-interval-toggle
+read | #ggplotCode
+click | #copyGgplotCodeBtn
+clip
+class | #plotAxisRangeAlert
+click | #ggplotBench .plot-axis-interval-toggle
+input | #plotWorkflowSearch | Pareto
+change | #plotWorkflowSearch
+click | #loadGgplotSampleBtn
+read | #ggplotCode
+click | #copyGgplotCodeBtn
+clip
+class | #plotAxisRangeAlert
+input | #plotWorkflowSearch | Pie chart
+change | #plotWorkflowSearch
+click | #loadGgplotSampleBtn
+change | #ggplotBench .answer-variant-select | 4
+read | #ggplotCode
+change | #ggplotBench .answer-variant-select | 5
+read | #ggplotCode
+@@ universal
+# Universal detector and standard workbench prose: copy uses the visible option.
+count | #standardBench .answer-variant-control
+attr | #standardBench .answer-variant-control | data-copy-for
+select | #universalSampleSelect | 1
+read | #outputBody
+click | #copyBtn
+clip
+select | #universalSampleSelect | 2
+read | #outputBody
+click | #copyBtn
+clip
+open | shapiro
+click | #singleSampleBtn
+read | #outputBody
+click | #copyBtn
+clip
+open | pearson
+click | #singleSampleBtn
+read | #outputBody
+click | #copyBtn
+clip
+open | summarize
+input | #columnFields .column-input | column1
+read | #summaryCode
+val | #summarizeBench .answer-variant-select
+click | #copySummaryCodeBtn
+clip
+input | #columnFields .column-row:nth-child(2) .column-input | column2
+read | #summaryCode
+val | #summarizeBench .answer-variant-select
+open | shape
+click | #loadShapeSampleBtn
+count | #shapeBench .answer-variant-control
+open | wide-table
+click | #loadWideSampleBtn
+read | #wideTableCode
+val | #wideTableBench .answer-variant-select
+@@ interval
+# Interval mixed group (code + prose share one control). Needs opInference2.RenderIntervalResult to run without error 13.
+open | interval
+click | #loadIntervalSampleBtn
+count | #intervalBench .answer-variant-control
+val | #intervalBench .answer-variant-select
+read | #intervalBench .interval-code
+click | #copyIntervalCodeBtn
+clip
+click | #loadIntervalResultSampleBtn
+read | #intervalBench .interval-code
+click | #copyIntervalProseBtn
+clip
+change | #intervalBench .answer-variant-select | 3
+read | #intervalBench .interval-code
+click | #copyIntervalProseBtn
+clip
+click | #copyIntervalCodeBtn
+clip
+@@ kfold
+# Answer-option control: placement, random initial option, regeneration, copy, canonical restore.
+count | .answer-variant-control
+count | .answer-variant-select
+open | kfold
+count | #kfoldBench .answer-variant-control
+count | #kfoldBench .answer-variant-control + #copyKfoldCodeBtn
+attr | #kfoldBench .answer-variant-control | data-copy-for
+class | #kfoldBench .answer-variant-control
+val | #kfoldBench .answer-variant-select
+attr | #kfoldBench .answer-variant-select | data-option
+attr | #kfoldBench .answer-variant-select | aria-label
+attr | #kfoldBench .answer-variant-select | title
+read | #kfoldBench .answer-variant-select
+read | #kfoldCode
+click | #loadKfoldSampleBtn
+val | #kfoldBench .answer-variant-select
+read | #kfoldCode
+click | #copyKfoldCodeBtn
+clip
+click | #copyKfoldCodeBtn
+clip
+change | #kfoldBench .answer-variant-select | 2
+read | #kfoldCode
+click | #copyKfoldCodeBtn
+clip
+change | #kfoldBench .answer-variant-select | 3
+read | #kfoldCode
+change | #kfoldBench .answer-variant-select | 2
+read | #kfoldCode
+click | #copyKfoldCodeBtn
+clip
+change | #kfoldBench .answer-variant-select | 1
+read | #kfoldCode
+click | #copyKfoldCodeBtn
+clip
+change | #kfoldBench .answer-variant-select | 6
+read | #kfoldCode
+input | #kfoldK | 7
+read | #kfoldCode
+val | #kfoldBench .answer-variant-select
+change | #kfoldBench .answer-variant-select | 5
+read | #kfoldCode
+change | #kfoldBench .answer-variant-select | 4
+change | #kfoldBench .answer-variant-select | 5
+read | #kfoldCode
+input | #kfoldOutcome | 
+read | #kfoldCode
+disabled | #copyKfoldCodeBtn
+disabled | #kfoldBench .answer-variant-select
+input | #kfoldOutcome | column1
+read | #kfoldCode
+disabled | #kfoldBench .answer-variant-select
+@@ visits
+# Operation visits: untouched operations re-randomise; edited ones keep their selection and code.
+open | kmeans
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+open | kfold
+val | #kfoldBench .answer-variant-select
+read | #kfoldCode
+open | kmeans
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+click | #loadKmeansSampleBtn
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+change | #kmeansBench .answer-variant-select | 4
+read | #kmeansCode
+attr | #tutorialList .operation[data-id="kmeans"] | data-user-edited
+attr | #tutorialList .operation[data-id="kmeans"] | data-answer-selections
+open | stepwise
+val | #stepwiseBench .answer-variant-select
+read | #stepwiseCode
+attr | #tutorialList .operation[data-id="kmeans"] | data-answer-selections
+open | kmeans
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+click | #copyKmeansCodeBtn
+clip
+class | #plotAxisRangeAlert
+click | #dismissPlotAxisRangeAlert
+class | #plotAxisRangeAlert
+click | #kmeansBench .plot-axis-interval-toggle
+read | #kmeansCode
+click | #copyKmeansCodeBtn
+clip
+class | #plotAxisRangeAlert
+open | stepwise
+val | #stepwiseBench .answer-variant-select
+read | #stepwiseCode
+open | kfold
+val | #kfoldBench .answer-variant-select
+read | #kfoldCode
+# An edited operation keeps its selection and exact code across visits.
+open | kmeans
+input | #kmeansK | 4
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+attr | #tutorialList .operation[data-id="kmeans"] | data-user-edited
+open | kfold
+val | #kfoldBench .answer-variant-select
+open | kmeans
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode
+change | #kmeansBench .answer-variant-select | 2
+read | #kmeansCode
+open | pca
+open | kmeans
+val | #kmeansBench .answer-variant-select
+read | #kmeansCode

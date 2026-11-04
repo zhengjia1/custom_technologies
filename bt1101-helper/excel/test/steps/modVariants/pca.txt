@@ -1,0 +1,59 @@
+# PCA: the code sections share one mega-group control; prose blocks have their own; completion clears on option change.
+open	pca
+count	#pcaBench .answer-variant-control
+count	#pcaCodeSections .answer-variant-control
+count	#pcaBench .answer-variant-control + #copyPcaCodeBtn
+attr	#pcaCodeSections [data-copy-pca-section="0"]	data-answer-variant-owner
+val	#pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select
+read	#pcaCodeSections > section:nth-child(1) pre
+read	#pcaCodeSections > section:nth-child(2) pre
+read	#pcaCodeSections > section:nth-child(3) pre
+read	#pcaCode
+click	#loadPcaSampleBtn
+val	#pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select
+read	#pcaCodeSections > section:nth-child(1) pre
+read	#pcaCodeSections > section:nth-child(2) pre
+read	#pcaCodeSections > section:nth-child(4) pre
+read	#pcaCodeSections > section:nth-child(6) pre
+click	#pcaCodeSections [data-copy-pca-section="1"]
+clip
+click	#copyPcaCodeBtn
+clip
+count	#pcaBench .completion-badge
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select	3
+read	#pcaCodeSections > section:nth-child(1) pre
+read	#pcaCodeSections > section:nth-child(2) pre
+count	#pcaBench .completion-badge
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select	4
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaCodeBtn"] select	3
+read	#pcaCodeSections > section:nth-child(1) pre
+read	#pcaCodeSections > section:nth-child(2) pre
+click	#pcaCodeSections [data-copy-pca-section="2"]
+clip
+click	#loadPcaVarianceSampleBtn
+read	#pcaVarianceProse
+count	#pcaBench .answer-variant-control
+val	#pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select
+click	#copyPcaVarianceBtn
+clip
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select	2
+read	#pcaVarianceProse
+click	#copyPcaVarianceBtn
+clip
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaVarianceBtn"] select	1
+read	#pcaVarianceProse
+click	#loadPcaLinearSampleBtn
+read	#pcaLinearProse
+val	#pcaBench .answer-variant-control[data-copy-for="copyPcaLinearBtn"] select
+click	#pcaLinearProse [data-copy-pca-linear="0"]
+clip
+click	#copyPcaLinearBtn
+clip
+change	#pcaBench .answer-variant-control[data-copy-for="copyPcaLinearBtn"] select	5
+read	#pcaLinearProse
+click	#copyPcaLinearBtn
+clip
+click	#loadPcaLoadingsSampleBtn
+read	#pcaLoadingsProse
+click	#copyPcaLoadingsBtn
+clip

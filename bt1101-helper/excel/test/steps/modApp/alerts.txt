@@ -1,0 +1,59 @@
+# Warning modals: chart axis-range warning on copy, placeholder-variable warning, k-means scaling
+open	ggplot
+click	#loadGgplotSampleBtn
+class	#plotAxisRangeAlert
+canon
+click	#copyGgplotCodeBtn
+clip
+class	#plotAxisRangeAlert
+class	body
+read	#plotAxisRangeFootnote
+key	#plotAxisRangeAlert	Tab
+class	#plotAxisRangeAlert
+key	body	z
+val	#searchInput
+key	#plotAxisRangeAlert	Escape
+class	#plotAxisRangeAlert
+class	body
+click	#copyGgplotCodeBtn
+class	#plotAxisRangeAlert
+click	#dismissPlotAxisRangeAlert
+class	#plotAxisRangeAlert
+class	body
+# with "Calculate axis intervals" on, copying chart code shows no warning
+click	#ggplotBench .plot-axis-interval-toggle
+canon
+click	#copyGgplotCodeBtn
+class	#plotAxisRangeAlert
+click	#ggplotBench .plot-axis-interval-toggle
+# placeholder decision-variable warning (lpSolve sensitivity prose)
+open	lpsolve
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+canon
+click	#copySensitivityProseBtn
+toast
+class	#variableRenameAlert
+class	body
+key	#variableRenameAlert	Escape
+class	#variableRenameAlert
+key	#variableRenameAlert	Tab
+click	#dismissVariableRenameAlert
+class	#variableRenameAlert
+class	body
+# k-means scaling: Escape is swallowed, keep scaling restores the switch
+open	kmeans
+click	#kmeansScale
+class	#kmeansScaleAlert
+key	#kmeansScaleAlert	Escape
+class	#kmeansScaleAlert
+key	#kmeansScaleAlert	Tab	s
+click	#keepKmeansScalingBtn
+checked	#kmeansScale
+class	#kmeansScaleAlert
+read	#kmeansScaleAlertTitle
+read	#regressionUnitsAlertTitle
+read	#knownPopulationSdDescription
+read	#variableRenameDescription
+attr	#plotAxisRangeAlert	aria-describedby
+read	#activeTitle

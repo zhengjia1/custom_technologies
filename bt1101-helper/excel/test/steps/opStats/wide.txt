@@ -1,0 +1,62 @@
+# Narrow-to-wide table generator
+open	wide-table
+canon
+read	#activeTitle
+read	#wideMapping
+read	#wideTableCode
+disabled	#copyWideCodeBtn
+click	#copyWideCodeBtn
+clip
+input	#wideDatasetInput	sales
+read	#wideTableCode
+read	#wideMapping
+input	#wideRowInput	region
+input	#wideColumnInput	quarter
+read	#wideMapping
+read	#wideTableCode
+disabled	#copyWideCodeBtn
+input	#wideValueInput	revenue
+canon
+read	#wideTableCode
+disabled	#copyWideCodeBtn
+click	#copyWideCodeBtn
+clip
+toast
+# caption and special names
+input	#wideCaptionInput	Mean "revenue" by region \\ quarter
+canon
+read	#wideTableCode
+input	#wideRowInput	  sales region
+input	#wideColumnInput	<Q>&amp;
+canon
+read	#wideTableCode
+read	#wideMapping
+input	#wideCaptionInput	  	 
+canon
+read	#wideTableCode
+# missing a field again
+input	#wideValueInput	  	 
+read	#wideTableCode
+read	#wideMapping
+disabled	#copyWideCodeBtn
+# sample
+click	#loadWideSampleBtn
+canon
+val	#wideDatasetInput
+val	#wideCaptionInput
+read	#wideTableCode
+read	#wideMapping
+toast
+click	#copyWideCodeBtn
+clip
+open	summarize
+open	wide-table
+canon
+read	#wideTableCode
+class	#wideTableBench .code-panel
+input	#wideRowInput	area
+class	#wideTableBench .code-panel
+canon
+click	#copyWideCodeBtn
+clip
+class	#wideTableBench .code-panel

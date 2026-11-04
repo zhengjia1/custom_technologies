@@ -1,0 +1,92 @@
+# Recipe search ranking, typing-to-search, Enter on an exact match, clear search
+read	#resultCount
+class	#rankedSearchResults
+key	body	g
+val	#searchInput
+read	#rankedSearchResults
+read	#resultCount
+class	.universal-entry
+class	#tutorialList
+class	#rankedSearchResults
+read	#librarySectionLabel
+class	#noResults
+key	body	l
+key	body	m
+val	#searchInput
+read	#rankedSearchResults
+attr	#rankedSearchResults .ranked-search-result	data-search-exact
+attr	#rankedSearchResults .ranked-search-result	data-id
+attr	#rankedSearchResults .ranked-search-result	data-tutorial
+key	#searchInput	Enter
+read	#activeTitle
+class	#rankedSearchResults .ranked-search-result
+# typing inside a text field does not start a search
+key	#inputText	x
+val	#searchInput
+key	body	X	c
+val	#searchInput
+key	body	1
+val	#searchInput
+input	#searchInput	shapro
+read	#rankedSearchResults
+read	#resultCount
+attr	#rankedSearchResults .ranked-search-result	data-search-exact
+input	#searchInput	xqzv
+read	#rankedSearchResults
+read	#resultCount
+read	#noResults
+class	#noResults
+attr	#rankedSearchResults .ranked-search-result	data-search-exact
+key	#searchInput	Enter
+read	#activeTitle
+input	#searchInput	pc
+read	#rankedSearchResults
+read	#resultCount
+input	#searchInput	cor.test
+read	#rankedSearchResults
+input	#searchInput	universal
+read	#rankedSearchResults
+attr	#rankedSearchResults .ranked-search-result	data-tutorial
+key	#searchInput	Enter
+read	#activeTitle
+class	.universal-entry
+input	#searchInput	t test
+read	#rankedSearchResults
+read	#resultCount
+input	#searchInput	confusion matrix
+read	#rankedSearchResults
+attr	#rankedSearchResults .ranked-search-result	data-search-exact
+click	#rankedSearchResults .ranked-search-result
+read	#activeTitle
+class	#tutorialList .operation[data-id="confusion"]
+input	#searchInput	k means clustering
+read	#rankedSearchResults
+input	#searchInput	regresion
+read	#rankedSearchResults
+read	#resultCount
+input	#searchInput	   
+read	#rankedSearchResults
+read	#resultCount
+class	#tutorialList
+click	#clearSearch
+val	#searchInput
+read	#resultCount
+class	#rankedSearchResults
+read	#librarySectionLabel
+# a letter while a warning modal is open is ignored
+open	kmeans
+click	#kmeansScale
+class	#kmeansScaleAlert
+class	body
+key	body	q
+val	#searchInput
+key	#kmeansScaleAlert	Tab
+key	#kmeansScaleAlert	Escape
+class	#kmeansScaleAlert
+click	#keepKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+class	body
+key	body	q
+val	#searchInput
+read	#resultCount

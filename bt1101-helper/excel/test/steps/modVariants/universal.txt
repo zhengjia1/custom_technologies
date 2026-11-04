@@ -1,0 +1,37 @@
+# Universal detector and standard workbench prose: copy uses the visible option.
+count	#standardBench .answer-variant-control
+attr	#standardBench .answer-variant-control	data-copy-for
+select	#universalSampleSelect	1
+read	#outputBody
+click	#copyBtn
+clip
+select	#universalSampleSelect	2
+read	#outputBody
+click	#copyBtn
+clip
+open	shapiro
+click	#singleSampleBtn
+read	#outputBody
+click	#copyBtn
+clip
+open	pearson
+click	#singleSampleBtn
+read	#outputBody
+click	#copyBtn
+clip
+open	summarize
+input	#columnFields .column-input	column1
+read	#summaryCode
+val	#summarizeBench .answer-variant-select
+click	#copySummaryCodeBtn
+clip
+input	#columnFields .column-row:nth-child(2) .column-input	column2
+read	#summaryCode
+val	#summarizeBench .answer-variant-select
+open	shape
+click	#loadShapeSampleBtn
+count	#shapeBench .answer-variant-control
+open	wide-table
+click	#loadWideSampleBtn
+read	#wideTableCode
+val	#wideTableBench .answer-variant-select

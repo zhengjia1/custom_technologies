@@ -1,0 +1,52 @@
+# Answer-option control: placement, random initial option, regeneration, copy, canonical restore.
+count	.answer-variant-control
+count	.answer-variant-select
+open	kfold
+count	#kfoldBench .answer-variant-control
+count	#kfoldBench .answer-variant-control + #copyKfoldCodeBtn
+attr	#kfoldBench .answer-variant-control	data-copy-for
+class	#kfoldBench .answer-variant-control
+val	#kfoldBench .answer-variant-select
+attr	#kfoldBench .answer-variant-select	data-option
+attr	#kfoldBench .answer-variant-select	aria-label
+attr	#kfoldBench .answer-variant-select	title
+read	#kfoldBench .answer-variant-select
+read	#kfoldCode
+click	#loadKfoldSampleBtn
+val	#kfoldBench .answer-variant-select
+read	#kfoldCode
+click	#copyKfoldCodeBtn
+clip
+click	#copyKfoldCodeBtn
+clip
+change	#kfoldBench .answer-variant-select	2
+read	#kfoldCode
+click	#copyKfoldCodeBtn
+clip
+change	#kfoldBench .answer-variant-select	3
+read	#kfoldCode
+change	#kfoldBench .answer-variant-select	2
+read	#kfoldCode
+click	#copyKfoldCodeBtn
+clip
+change	#kfoldBench .answer-variant-select	1
+read	#kfoldCode
+click	#copyKfoldCodeBtn
+clip
+change	#kfoldBench .answer-variant-select	6
+read	#kfoldCode
+input	#kfoldK	7
+read	#kfoldCode
+val	#kfoldBench .answer-variant-select
+change	#kfoldBench .answer-variant-select	5
+read	#kfoldCode
+change	#kfoldBench .answer-variant-select	4
+change	#kfoldBench .answer-variant-select	5
+read	#kfoldCode
+input	#kfoldOutcome	
+read	#kfoldCode
+disabled	#copyKfoldCodeBtn
+disabled	#kfoldBench .answer-variant-select
+input	#kfoldOutcome	column1
+read	#kfoldCode
+disabled	#kfoldBench .answer-variant-select

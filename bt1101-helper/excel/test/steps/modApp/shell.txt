@@ -1,0 +1,98 @@
+# Theme toggle, number steppers, axis-interval toggles, sidebar resizer, mobile library, update check
+attr	html	data-theme
+attr	#themeToggle	aria-pressed
+read	#themeToggle .theme-toggle-icon
+click	#themeToggle
+attr	html	data-theme
+attr	#themeToggle	aria-pressed
+read	#themeToggle .theme-toggle-icon
+click	#themeToggle
+attr	html	data-theme
+read	#themeToggle .theme-toggle-icon
+# steppers
+count	.number-stepper
+count	.number-step-button
+attr	#kfoldBench .number-step-button	aria-label
+read	#kfoldBench .number-step-buttons
+count	.lp-rhs
+open	kfold
+val	#kfoldK
+click	#kfoldBench .number-step-buttons button:last-child
+val	#kfoldK
+read	#kfoldCode
+click	#kfoldBench .number-step-buttons button:first-child
+click	#kfoldBench .number-step-buttons button:first-child
+val	#kfoldK
+read	#kfoldCode
+open	kmeans
+val	#kmeansK
+click	#kmeansK + .number-step-buttons button:last-child
+val	#kmeansK
+attr	#kmeansSeed	data-horizontal-stepper
+# axis-interval toggles are synchronised across plotting, regression and k-means
+count	.plot-axis-interval-toggle
+read	#ggplotBench .kmeans-scale-toggle
+checked	#kmeansBench .plot-axis-interval-toggle
+click	#kmeansBench .plot-axis-interval-toggle
+checked	#kmeansBench .plot-axis-interval-toggle
+checked	#ggplotBench .plot-axis-interval-toggle
+checked	#simpleRegressionBench .plot-axis-interval-toggle
+read	#kmeansCode
+click	#ggplotBench .plot-axis-interval-toggle
+checked	#kmeansBench .plot-axis-interval-toggle
+checked	#simpleRegressionBench .plot-axis-interval-toggle
+read	#kmeansCode
+# k-means scaling modal: disable path
+click	#kmeansScale
+class	#kmeansScaleAlert
+click	#disableKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+read	#kmeansCode
+# sidebar resizer
+attr	#sidebarResizer	aria-valuenow
+attr	#sidebarResizer	aria-valuemin
+attr	#sidebarResizer	aria-valuemax
+key	#sidebarResizer	ArrowRight
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	ArrowRight	s
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	End
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	ArrowRight
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	Home
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	ArrowLeft	s
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	ArrowLeft
+key	#sidebarResizer	ArrowLeft
+attr	#sidebarResizer	aria-valuenow
+key	#sidebarResizer	ArrowUp
+attr	#sidebarResizer	aria-valuenow
+# mobile library button
+attr	#mobileLibraryBtn	aria-expanded
+click	#mobileLibraryBtn
+attr	#mobileLibraryBtn	aria-expanded
+class	#library
+click	#mobileLibraryBtn
+attr	#mobileLibraryBtn	aria-expanded
+class	#library
+# update check retry (offline)
+click	#checkForUpdatesBtn
+read	#updateCheckMessage
+class	#updateCheck
+disabled	#checkForUpdatesBtn
+# collapsible cards
+count	.lp-collapsible
+count	.lp-collapse-toggle
+attr	#pcaVariancePanel .lp-collapse-toggle	aria-label
+open	pca
+click	#pcaVariancePanel .lp-collapse-toggle
+class	#pcaVariancePanel
+attr	#pcaVariancePanel .lp-collapse-toggle	aria-expanded
+attr	#pcaVariancePanel .lp-collapse-toggle	aria-label
+click	#pcaVariancePanel .lp-collapse-toggle
+class	#pcaVariancePanel
+attr	#pcaVariancePanel .lp-collapse-toggle	aria-label
+read	#activeTitle

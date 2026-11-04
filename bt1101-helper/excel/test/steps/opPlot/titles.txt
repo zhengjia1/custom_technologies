@@ -1,0 +1,499 @@
+# Custom vs derived titles, captions, quoting
+open	ggplot
+# frequency bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# histogram basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# contingency plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# grouped mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# Grouped barplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# mean bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+input	#plotBins	10
+canon
+read	#ggplotCode
+input	#plotBins	Scott
+canon
+read	#ggplotCode
+input	#plotBins	
+canon
+read	#ggplotCode
+input	#plotBins	 12 
+canon
+read	#ggplotCode
+input	#plotBins	1.5
+canon
+read	#ggplotCode
+input	#plotBins	c(0, 10, 20)
+canon
+read	#ggplotCode
+input	#plotBins	Sturges
+click	#ggplotBench .plot-axis-interval-toggle
+# frequency bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	frequency bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# histogram axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# contingency plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# grouped mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	grouped mean bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# Grouped barplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+# mean bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mean bar plot
+key	#plotWorkflowSearch	Escape
+attr	#plotTitle	placeholder
+input	#plotX	my column
+input	#plotY	2nd value, `odd`name
+input	#plotGroup	group.var_2
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotX	__lead__under_scores
+input	#plotY	x(paren)_value
+input	#plotGroup	a,b_c
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotTitle	  Custom Title  
+canon
+read	#ggplotCode
+input	#plotTitle	   
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+input	#plotDataset	my.data
+canon
+read	#ggplotCode
+input	#plotDataset	2data
+canon
+read	#ggplotCode
+input	#plotDataset	.2x
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+input	#plotX	unit_price
+input	#plotBins	10
+canon
+read	#ggplotCode
+input	#plotBins	Scott
+canon
+read	#ggplotCode
+input	#plotBins	
+canon
+read	#ggplotCode
+input	#plotBins	 12 
+canon
+read	#ggplotCode
+input	#plotBins	1.5
+canon
+read	#ggplotCode
+input	#plotBins	c(0, 10, 20)
+canon
+read	#ggplotCode
+input	#plotBins	Sturges

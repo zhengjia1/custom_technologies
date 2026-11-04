@@ -1,0 +1,134 @@
+open	lpsolve
+click	#loadLpSampleBtn
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	Maximise profit
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	Subject to\nA: X1 + X2 <= 4
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	Maximise Z\nSubject to\nA: X1 + X2 <= 4
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	   
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	Minimise 2X1 + 3X2\nSubject to\nA: X1 + X2 >= 4
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpSmartInput	Maximise 2X1 + 3X2 subject to nothing useful
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn

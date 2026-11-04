@@ -1,0 +1,46 @@
+# lpSolve: code options, ASCII table without a control, sensitivity prose mega group with section copies.
+open	lpsolve
+click	#loadLpSampleBtn
+count	#lpBench .answer-variant-control
+count	.answer-variant-control[data-copy-for="copyLpAsciiBtn"]
+val	#lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select
+read	#lpCode
+click	#copyLpCodeBtn
+clip
+click	#copyLpAsciiBtn
+clip
+change	#lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select	2
+read	#lpCode
+change	#lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select	6
+read	#lpCode
+change	#lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select	2
+read	#lpCode
+click	#loadSensitivitySampleBtn
+count	#lpBench .answer-variant-control
+count	#sensitivityInterpretation .answer-variant-control
+val	#lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select
+read	#sensitivityInterpretation
+click	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+clip
+class	#sensitivityInterpretation .sensitivity-prose-card:nth-child(2)
+read	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+count	#lpBench .completion-badge
+change	#lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select	4
+class	#sensitivityInterpretation .sensitivity-prose-card:nth-child(2)
+read	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+disabled	#sensitivityInterpretation [data-sensitivity-copy="shadow"]
+read	#sensitivityInterpretation
+click	#copySensitivityProseBtn
+clip
+count	#lpBench .completion-badge
+class	#sensitivityInterpretationPanel
+change	#lpBench .answer-variant-control[data-copy-for="copySensitivityProseBtn"] select	1
+count	#lpBench .completion-badge
+class	#sensitivityInterpretationPanel
+read	#sensitivityInterpretation
+click	#copyLpCodeBtn
+clip
+count	#lpBench .completion-badge
+change	#lpBench .answer-variant-control[data-copy-for="copyLpCodeBtn"] select	3
+count	#lpBench .completion-badge
+read	#lpCode

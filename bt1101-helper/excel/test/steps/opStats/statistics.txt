@@ -1,0 +1,93 @@
+# Summarize for stats: statistic toggles in single- and multi-column modes
+open	summarize
+canon
+# toggling with no column keeps the waiting message
+click	#summaryStatisticFields input[value="min"]
+checked	#summaryStatisticFields input[value="min"]
+read	#summaryCode
+disabled	#copySummaryCodeBtn
+input	#columnFields .column-input	height
+canon
+read	#summaryCode
+# add every optional statistic
+click	#summaryStatisticFields input[value="max"]
+click	#summaryStatisticFields input[value="rows"]
+click	#summaryStatisticFields input[value="missing"]
+click	#summaryStatisticFields input[value="variance"]
+click	#summaryStatisticFields input[value="q1"]
+click	#summaryStatisticFields input[value="q3"]
+click	#summaryStatisticFields input[value="iqr"]
+click	#summaryStatisticFields input[value="sum"]
+count	#summaryStatisticFields input:checked
+canon
+read	#summaryCode
+# remove defaults out of order: order stays stable
+click	#summaryStatisticFields input[value="mean"]
+click	#summaryStatisticFields input[value="kurtosis"]
+click	#summaryStatisticFields input[value="n"]
+canon
+read	#summaryCode
+# multi-column with the same selection
+input	#columnFields .column-row:nth-child(2) .column-input	weight
+canon
+read	#summaryCode
+toast
+click	#copySummaryCodeBtn
+clip
+# uncheck everything -> no statistic message, copy disabled
+click	#summaryStatisticFields input[value="sd"]
+click	#summaryStatisticFields input[value="median"]
+click	#summaryStatisticFields input[value="skew"]
+click	#summaryStatisticFields input[value="min"]
+click	#summaryStatisticFields input[value="max"]
+click	#summaryStatisticFields input[value="rows"]
+click	#summaryStatisticFields input[value="missing"]
+click	#summaryStatisticFields input[value="variance"]
+click	#summaryStatisticFields input[value="q1"]
+click	#summaryStatisticFields input[value="q3"]
+click	#summaryStatisticFields input[value="iqr"]
+count	#summaryStatisticFields input:checked
+canon
+read	#summaryCode
+disabled	#copySummaryCodeBtn
+click	#summaryStatisticFields input[value="sum"]
+count	#summaryStatisticFields input:checked
+read	#summaryCode
+disabled	#copySummaryCodeBtn
+read	#summaryModeLabel
+# one statistic back
+click	#summaryStatisticFields input[value="median"]
+canon
+read	#summaryCode
+disabled	#copySummaryCodeBtn
+# selections survive leaving and returning, and single/multi transitions
+open	shape
+open	summarize
+canon
+count	#summaryStatisticFields input:checked
+checked	#summaryStatisticFields input[value="median"]
+read	#summaryCode
+click	#columnFields .column-row:nth-child(2) .remove-column
+canon
+read	#summaryCode
+toast
+# change event dispatched directly on the container re-renders
+change	#summaryStatisticFields
+canon
+read	#summaryCode
+# copying completes the code panel; changing a statistic clears completion and refreshes
+canon
+click	#copySummaryCodeBtn
+clip
+class	#summarizeBench .code-panel
+click	#summaryStatisticFields input[value="q3"]
+class	#summarizeBench .code-panel
+canon
+read	#summaryCode
+click	#copySummaryCodeBtn
+class	#summarizeBench .code-panel
+input	#summaryDataset	other
+class	#summarizeBench .code-panel
+canon
+click	#copySummaryCodeBtn
+clip

@@ -1,0 +1,167 @@
+# ANOVA Step 0 / Step 1: setup fields, generated code, normality toggle, sample, copy
+open	anova-many
+canon
+read	#activeTitle
+read	#anovaNormalityCode
+read	#anovaVarianceCode
+read	#anovaStandardCode
+read	#anovaWelchCode
+class	#anovaSetupPanel
+class	#anovaNormalityPanel
+attr	#anovaNormalityPanel	aria-disabled
+disabled	#anovaNormalityPanel .lp-collapse-toggle
+attr	#anovaNormalityPanel .lp-collapse-toggle	aria-expanded
+attr	#anovaNormalityPanel .lp-collapse-toggle	aria-label
+disabled	#copyAnovaNormalityCodeBtn
+disabled	#copyAnovaVarianceCodeBtn
+disabled	#copyAnovaVarianceProseBtn
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaWelchCodeBtn
+disabled	#copyAnovaStandardProseBtn
+disabled	#copyAnovaWelchProseBtn
+disabled	#loadAnovaStandardOutputBtn
+disabled	#loadAnovaWelchOutputsBtn
+read	#anovaVarianceInterpretation
+read	#anovaStandardInterpretation
+read	#anovaWelchInterpretation
+class	#anovaStandardPanel
+class	#anovaWelchPanel
+count	#anovaBench .lp-collapse-toggle
+count	#anovaSetupPanel .panel-actions #loadAnovaSampleBtn
+# normality not assumed -> Step 1 available and expanded
+click	#anovaNormalityAssumed
+checked	#anovaNormalityAssumed
+class	#anovaNormalityPanel
+attr	#anovaNormalityPanel	aria-disabled
+disabled	#anovaNormalityPanel .lp-collapse-toggle
+disabled	#copyAnovaNormalityCodeBtn
+attr	#anovaNormalityPanel .lp-collapse-toggle	aria-expanded
+canon
+click	#copyAnovaNormalityCodeBtn
+clip
+toast
+class	#anovaNormalityPanel
+read	#anovaNormalityPanel .panel-actions
+# re-rendering while not assumed keeps it collapsed/complete
+input	#anovaDataset	survey data
+canon
+read	#anovaNormalityCode
+class	#anovaNormalityPanel
+class	#anovaSetupPanel
+# manual expand via the toggle
+click	#anovaNormalityPanel .lp-collapse-toggle
+class	#anovaNormalityPanel
+attr	#anovaNormalityPanel .lp-collapse-toggle	aria-label
+click	#anovaNormalityPanel .lp-collapse-toggle
+class	#anovaNormalityPanel
+# assume normality again -> greyed, collapsed, completion cleared
+click	#anovaNormalityAssumed
+class	#anovaNormalityPanel
+count	#anovaNormalityPanel .completion-badge
+disabled	#copyAnovaNormalityCodeBtn
+click	#copyAnovaNormalityCodeBtn
+clip
+# not assumed again -> expanded
+click	#anovaNormalityAssumed
+class	#anovaNormalityPanel
+# names: empty fields fall back to placeholders, odd names are quoted
+input	#anovaDataset	\t
+input	#anovaResponse	\t
+input	#anovaGroup	\t
+canon
+read	#anovaNormalityCode
+read	#anovaVarianceCode
+read	#anovaStandardCode
+read	#anovaWelchCode
+input	#anovaDataset	2024 data
+input	#anovaResponse	Total Amount
+input	#anovaGroup	region`s
+canon
+read	#anovaNormalityCode
+read	#anovaVarianceCode
+read	#anovaStandardCode
+read	#anovaWelchCode
+# group count drives the variance test
+input	#anovaGroupCount	2
+canon
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+input	#anovaGroupCount	2.5
+canon
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+disabled	#copyAnovaVarianceCodeBtn
+input	#anovaGroupCount	1
+read	#anovaVarianceInterpretation
+disabled	#copyAnovaVarianceCodeBtn
+input	#anovaGroupCount	abc
+read	#anovaVarianceInterpretation
+read	#anovaVarianceCode
+input	#anovaGroupCount	\t
+read	#anovaVarianceInterpretation
+input	#anovaGroupCount	 2
+canon
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+class	#anovaVarianceInterpretation
+input	#anovaGroupCount	7
+canon
+read	#anovaVarianceCode
+# alpha validity
+input	#anovaAlpha	0
+disabled	#copyAnovaNormalityCodeBtn
+disabled	#copyAnovaVarianceCodeBtn
+disabled	#copyAnovaStandardCodeBtn
+disabled	#copyAnovaWelchCodeBtn
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+read	#anovaStandardInterpretation
+input	#anovaAlpha	1
+disabled	#copyAnovaVarianceCodeBtn
+input	#anovaAlpha	x
+disabled	#copyAnovaVarianceCodeBtn
+read	#anovaWelchInterpretation
+input	#anovaAlpha	0.01
+disabled	#copyAnovaNormalityCodeBtn
+disabled	#copyAnovaVarianceCodeBtn
+disabled	#copyAnovaStandardCodeBtn
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+# sample setup
+click	#loadAnovaSampleBtn
+canon
+toast
+val	#anovaDataset
+val	#anovaResponse
+val	#anovaGroup
+val	#anovaGroupCount
+val	#anovaAlpha
+checked	#anovaNormalityAssumed
+read	#anovaNormalityCode
+read	#anovaVarianceCode
+read	#anovaStandardCode
+read	#anovaWelchCode
+class	#anovaNormalityPanel
+click	#copyAnovaVarianceCodeBtn
+clip
+toast
+class	#anovaVarianceCodeBox
+class	#anovaVariancePanel
+click	#copyAnovaStandardCodeBtn
+clip
+class	#anovaStandardCodeBox
+click	#copyAnovaWelchCodeBtn
+clip
+class	#anovaWelchCodeBox
+# changing names that alter every code block resets the code parts
+input	#anovaResponse	Spend
+canon
+class	#anovaVarianceCodeBox
+class	#anovaStandardCodeBox
+class	#anovaWelchCodeBox
+read	#anovaStandardCode
+open	universal
+open	anova-many
+read	#anovaStandardCode
+val	#anovaResponse

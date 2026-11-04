@@ -1,0 +1,289 @@
+# Contingency arrangements and grouped barplot
+open	ggplot
+# side-by-side bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# stacked bar plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# mosaic plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# contingency plot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# grouped barplot basic
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+input	#plotX	Amount
+canon
+read	#ggplotCode
+input	#plotGroup	Product
+canon
+read	#ggplotCode
+input	#plotGroup	product type
+canon
+read	#ggplotCode
+input	#plotDataset	ST
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+select	#plotStyle	2
+val	#plotWorkflowSearch
+select	#plotStyle	0
+click	#ggplotBench .plot-axis-interval-toggle
+# side-by-side bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	side-by-side bar plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# stacked bar plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	stacked bar plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# mosaic plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	mosaic plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# contingency plot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	contingency plot
+key	#plotWorkflowSearch	Escape
+val	#plotStyle
+val	#plotWorkflow
+input	#plotX	gender
+input	#plotGroup	product_line
+canon
+read	#ggplotCode
+attr	#plotTitle	placeholder
+select	#plotStyle	0
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	1
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+select	#plotStyle	2
+val	#plotWorkflowSearch
+attr	#plotTitle	placeholder
+canon
+read	#ggplotCode
+# grouped barplot axis
+input	#plotX	
+input	#plotY	
+input	#plotGroup	
+input	#plotTitle	
+input	#plotWorkflowSearch	Grouped barplot
+key	#plotWorkflowSearch	Escape
+canon
+read	#ggplotCode
+input	#plotX	Amount
+canon
+read	#ggplotCode
+input	#plotGroup	Product
+canon
+read	#ggplotCode
+input	#plotGroup	product type
+canon
+read	#ggplotCode
+input	#plotDataset	ST
+canon
+read	#ggplotCode
+input	#plotDataset	dataset
+input	#plotWorkflowSearch	histogram
+key	#plotWorkflowSearch	Escape
+select	#plotStyle	2
+val	#plotWorkflowSearch
+select	#plotStyle	0

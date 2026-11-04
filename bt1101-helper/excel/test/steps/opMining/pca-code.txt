@@ -1,0 +1,497 @@
+open	pca
+class	#pcaBench
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+read	#pcaVarianceProse
+read	#pcaLoadingsProse
+read	#pcaLinearProse
+click	#copyPcaCodeBtn
+clip
+toast
+click	[data-copy-pca-section="4"]
+clip
+toast
+click	[data-copy-pca-section="0"]
+clip
+toast
+click	[data-copy-pca-section="7"]
+clip
+click	#pcaCodeSections > section:nth-child(2) h3
+clip
+select	#pcaModelType	1
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaOutcome	GDP growth
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+click	[data-copy-pca-section="7"]
+clip
+toast
+click	#copyPcaCodeBtn
+clip
+toast
+select	#pcaModelType	2
+input	#pcaOutcome	Churn
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+click	[data-copy-pca-section="7"]
+clip
+toast
+input	#pcaThreshold	1.5
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaThreshold	abc
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaThreshold	-0.1
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaThreshold	0.75
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaThreshold	1
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaThreshold	
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaOutcome	 
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+select	#pcaModelType	0
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaCount	5
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaCount	0
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaCount	2.5
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaCount	4
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaVariables	OnlyOne
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+click	#copyPcaCodeBtn
+clip
+input	#pcaVariables	x 1, y"q, z\\w
+input	#pcaDataset	my data
+input	#pcaCount	3
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+input	#pcaDataset	
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock
+click	#loadPcaSampleBtn
+toast
+val	#pcaDataset
+val	#pcaVariables
+val	#pcaCount
+val	#pcaModelType
+val	#pcaThreshold
+canon
+read	#pcaCodeSections > section:nth-child(1) pre
+disabled	[data-copy-pca-section="0"]
+read	#pcaCodeSections > section:nth-child(2) pre
+disabled	[data-copy-pca-section="1"]
+read	#pcaCodeSections > section:nth-child(3) pre
+disabled	[data-copy-pca-section="2"]
+read	#pcaCodeSections > section:nth-child(4) pre
+disabled	[data-copy-pca-section="3"]
+read	#pcaCodeSections > section:nth-child(5) pre
+disabled	[data-copy-pca-section="4"]
+read	#pcaCodeSections > section:nth-child(6) pre
+disabled	[data-copy-pca-section="5"]
+read	#pcaCodeSections > section:nth-child(7) pre
+disabled	[data-copy-pca-section="6"]
+read	#pcaCodeSections > section:nth-child(8) pre
+disabled	[data-copy-pca-section="7"]
+read	#pcaCode
+disabled	#copyPcaCodeBtn
+class	#pcaOutcomeField
+class	#pcaThresholdField
+class	#pcaDownstreamCodeBlock

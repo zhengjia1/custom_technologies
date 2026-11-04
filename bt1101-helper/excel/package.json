@@ -1,0 +1,9 @@
+{
+  "name": "bt1101-prose-lab-excel",
+  "private": true,
+  "description": "Builds the desktop Excel (Windows) edition of BT1101 Prose Lab from ../index.html. Uses the development dependencies installed in ../pdf.",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "excelVersion": "021126_2300"
+}

@@ -1,0 +1,44 @@
+# Coefficient confidence intervals
+open	multi-regression
+read	#coefficientIntervalProse
+click	#loadCoefficientIntervalBtn
+toast
+val	#advY
+val	#coefficientIntervalOutput
+canon
+read	#coefficientIntervalProse
+disabled	#copyCoefficientIntervalBtn
+click	#copyCoefficientIntervalBtn
+clip
+toast
+class	#regressionUnitsAlert
+click	#coefficientIntervalProse [data-copy-coefficient-interval="0"]
+clip
+toast
+# Several rows: above, below, across, intercept skipped, reversed endpoints, 90%
+input	#coefficientIntervalOutput	                   5 %      95 %\n(Intercept)  10.123  20.456\nage           0.0012   0.0456\n`educ level`  -2.5    -0.75\nincome       -0.3     0.2\ntotwrk        3.5e-02  1.2e-03\nnot a row
+canon
+read	#coefficientIntervalProse
+count	#coefficientIntervalProse [data-copy-coefficient-interval]
+click	#coefficientIntervalProse [data-copy-coefficient-interval="3"]
+clip
+toast
+# Non-integer confidence level and dependent variable from the form
+input	#advY
+input	#coefficientIntervalOutput	        1.25 %   98.75 %\nx   1.5   2.5
+canon
+read	#coefficientIntervalProse
+input	#advY	hours_slept
+canon
+read	#coefficientIntervalProse
+# Invalid inputs
+input	#coefficientIntervalOutput	lower upper\nx 1 2
+read	#coefficientIntervalProse
+disabled	#copyCoefficientIntervalBtn
+input	#coefficientIntervalOutput	2.5 % and % 97.5\nx 1 2
+read	#coefficientIntervalProse
+input	#coefficientIntervalOutput	2.5 % 97.5 %\n(Intercept) 1 2\nIntercept 3 4
+read	#coefficientIntervalProse
+input	#coefficientIntervalOutput
+read	#coefficientIntervalProse
+disabled	#copyCoefficientIntervalBtn

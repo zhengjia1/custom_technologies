@@ -1,0 +1,140 @@
+read	#kmeansCode
+open	kmeans
+class	#kmeansBench
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+checked	#kmeansBench .plot-axis-interval-toggle
+click	#copyKmeansCodeBtn
+clip
+click	#loadKmeansSampleBtn
+toast
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#copyKmeansCodeBtn
+clip
+toast
+click	#kmeansBench .plot-axis-interval-toggle
+checked	#kmeansBench .plot-axis-interval-toggle
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#copyKmeansCodeBtn
+clip
+toast
+click	#kmeansScale
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#keepKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#kmeansScale
+class	#kmeansScaleAlert
+checked	#kmeansScale
+click	#disableKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#copyKmeansCodeBtn
+clip
+click	#kmeansBench .plot-axis-interval-toggle
+checked	#kmeansBench .plot-axis-interval-toggle
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#kmeansScale
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#kmeansScale
+click	#disableKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+click	#loadKmeansSampleBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansK	11
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansK	10
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansK	0
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansK	3
+input	#kmeansMaxK	1
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansMaxK	2.5
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansMaxK	4
+input	#kmeansNstart	0
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansNstart	25
+input	#kmeansSeed	1.5
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansSeed	-42
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansSeed	
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansSeed	abc
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansSeed	2024
+input	#kmeansFeatures	income
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansFeatures	annual income, spending_score , , age
+input	#kmeansDataset	mall customers
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+input	#kmeansDataset	
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#kmeansBench .plot-axis-interval-toggle
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#kmeansScale
+click	#disableKmeansScalingBtn
+class	#kmeansScaleAlert
+checked	#kmeansScale
+canon
+read	#kmeansCode
+disabled	#copyKmeansCodeBtn
+click	#copyKmeansCodeBtn
+clip
+toast

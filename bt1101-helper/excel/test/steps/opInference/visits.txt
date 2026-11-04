@@ -1,0 +1,206 @@
+# Known-SD modal dismissal by keyboard, revisiting the operations, remaining "Use sample" branches
+open	interval
+input	#intervalLabel	score
+select	#intervalStdev	1
+class	#knownPopulationSdAlert
+key	#knownPopulationSdAlert	Escape
+class	#knownPopulationSdAlert
+val	#intervalStdev
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+select	#intervalStdev	1
+key	#knownPopulationSdAlert	Tab
+key	#knownPopulationSdAlert	Enter
+click	#confirmKnownSdBtn
+val	#intervalStdev
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+open	one-sample
+canon
+read	#oneSampleCode
+open	interval
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+open	two-sample
+canon
+read	#twoSampleCode
+open	interval
+change	#intervalCalcType	sample-size
+change	#intervalParameter	proportion
+click	#loadIntervalSampleBtn
+val	#intervalMargin
+val	#intervalProportion
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+open	universal
+open	interval
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+change	#intervalCalcType	prediction
+open	one-sample
+open	interval
+val	#intervalParameter
+val	#intervalStdev
+disabled	#intervalStdev
+disabled	#intervalParameter option[value="proportion"]
+disabled	#intervalStdev option[value="known"]
+read	#intervalNote
+attr	#intervalResultInput	placeholder
+class	#estimateField
+class	#sampleSizeField
+class	#proportionField
+class	#proportionDefinitionField
+class	#populationLabelField
+class	#successValueField
+class	#conditionOperatorField
+class	#conditionThresholdField
+class	#intervalExcludeMissingField
+class	#marginField
+class	#stdevField
+class	#stdevChoiceWrap
+read	#sampleSizeField
+read	#proportionField
+read	#stdevField
+canon
+read	#intervalOutput
+disabled	#copyIntervalProseBtn
+class	#copyIntervalProseBtn
+disabled	#copyIntervalCodeBtn
+read	#intervalResultProse
+class	#intervalResultProse
+disabled	#copyIntervalPastedProseBtn
+# one-sample / two-sample state survives a visit
+open	one-sample
+change	#oneSampleParameter	proportion
+click	#loadOneSampleSetupBtn
+click	#loadOneSampleOutputBtn
+open	two-sample
+change	#twoSampleParameter	variance
+click	#loadTwoSampleOutputBtn
+open	one-sample
+canon
+read	#oneSampleCode
+read	#oneSampleInterpretation
+open	two-sample
+canon
+read	#twoSampleTestTitle
+read	#twoSampleCode
+read	#twoSampleInterpretation

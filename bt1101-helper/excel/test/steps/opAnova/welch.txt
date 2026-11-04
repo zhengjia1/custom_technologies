@@ -1,0 +1,150 @@
+# ANOVA Step 3b: Welch ANOVA + Games-Howell parsing, staged copy completion and resets
+open	anova-many
+canon
+read	#anovaWelchInterpretation
+# route to Step 3b with the Bartlett sample
+click	#loadAnovaVarianceOutputBtn
+canon
+class	#anovaWelchPanel
+class	#anovaStandardPanel
+# sample outputs (Step 0 names substituted)
+click	#loadAnovaWelchOutputsBtn
+canon
+toast
+val	#anovaWelchOutput
+val	#anovaGamesHowellOutput
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+disabled	#copyAnovaWelchProseBtn
+# staged completion
+click	#copyAnovaWelchCodeBtn
+clip
+class	#anovaWelchCodeBox
+class	#anovaWelchPanel
+click	#copyAnovaWelchProseBtn
+clip
+toast
+class	#anovaWelchProseBox
+class	#anovaWelchPanel
+count	#anovaWelchPanel .completion-badge
+# editing the Games-Howell output resets the prose part
+input	#anovaGamesHowellOutput	games_howell_test output\n.y. group1 group2 estimate conf.low conf.high p.adj\nSales A B 1.2 0.4 2.0 0.002\nSales A C 0.2 -0.4 0.8 0.51\nSales B C -1.0 -1.6 -0.4 0.0004
+canon
+class	#anovaWelchCodeBox
+class	#anovaWelchProseBox
+class	#anovaWelchPanel
+read	#anovaWelchInterpretation
+# Welch not significant
+input	#anovaWelchOutput	# A tibble: 1 x 7\n  .y.    n statistic   DFn   DFd        p method\n* <chr> <int>     <dbl> <dbl> <dbl>    <dbl> <chr>\n1 Sales   120      1.24     3  63.2 0.302 Welch ANOVA
+canon
+read	#anovaWelchInterpretation
+class	#anovaWelchProseBox
+# exponent split by a space, bound p-values
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 12.4 3 63.2 1.73e- 06 Welch ANOVA
+canon
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 12.4 3 63.2 < 0.001 Welch ANOVA
+canon
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 12.4 3 63.2 < 0.1 Welch ANOVA
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+disabled	#copyAnovaWelchProseBtn
+# malformed Welch outputs
+input	#anovaWelchOutput	welch_anova_test(Sales ~ Region)
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA but no result row
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA\n1 3 0.01 Welch ANOVA
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 abc 3 63.2 0.01 Welch ANOVA
+read	#anovaWelchInterpretation
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 12.4 3 63.2 p0.01 Welch ANOVA
+read	#anovaWelchInterpretation
+# significant Welch with Games-Howell problems
+input	#anovaWelchOutput	Welch ANOVA\n1 Sales 120 12.4 3 63.2 0.0001 Welch ANOVA
+input	#anovaGamesHowellOutput		
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	some unrelated table
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	Games-Howell\n1 Sales A B abc 0.1 2.3 0.03 *
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	Games Howell\n1 Sales A B 1.1 0.1 2.3 1.5 *
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	Games Howell\nnothing readable here
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	Games Howell\n1 Sales A B 1.1 0.1 2.3 <0.1 *\n2 Sales A C 1.1 0.1 2.3 0.01 *
+read	#anovaWelchInterpretation
+# no significant pairs
+input	#anovaGamesHowellOutput	Games-Howell\n1 Sales A B 1.1 -0.1 2.3 0.08 ns\n2 Sales A C 0.1 -0.5 0.7 0.9 ns
+canon
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+# kable pipe table, escaped markdown, exponent split, tab-delimited, console decorations
+input	#anovaGamesHowellOutput	|.y.    |group1 |group2 | estimate| conf.low| conf.high|  p.adj|p.adj.signif |\n|:------|:------|:------|--------:|--------:|---------:|------:|:------------|\n|Sales\\_total  |A      |B      |    1.200|    0.100|     2.300| 0.0300|*            |\n|Sales\\_total  |A      |C      |    0.200|   -0.900|     1.300| 0.9000|ns           |\n|Sales\\_total  |B      |C      |    0.200|   -0.900|     1.300| 1.2e- 5|****           |
+canon
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	.y.\tgroup1\tgroup2\testimate\tconf.low\tconf.high\tp.adj\nSales\tNorth\tSouth\t1.2\t0.4\t2.0\t0.002\nSales\tNorth\tWest\t0.2\t-0.4\t0.8\t0.51
+canon
+read	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput	> games_howell_test(Sales ~ Region)\n## # A tibble: 2 x 8\n##   .y.   group1 group2 estimate conf.low conf.high p.adj p.adj.signif\n## * <chr> <chr>  <chr>     <dbl>    <dbl>     <dbl> <dbl> <chr>\n## 1 Sales East   North     0.8   -0.79      2.40 0.558 ns\n## 2 Sales East   South     2.8    1.2       4.4  1.54e-8 ****\n<br>\n... with 1 more row\nℹ Use print(n = 1, 2, 3, 4, 5, 6, 7 8)
+canon
+read	#anovaWelchInterpretation
+# Games-Howell without the Welch result
+input	#anovaWelchOutput		
+canon
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+disabled	#copyAnovaWelchProseBtn
+input	#anovaGamesHowellOutput	Games Howell\nnothing readable here
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+input	#anovaGamesHowellOutput		
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+# alpha variations
+click	#loadAnovaWelchOutputsBtn
+input	#anovaAlpha	0.001
+canon
+read	#anovaWelchInterpretation
+input	#anovaAlpha	abc
+read	#anovaWelchInterpretation
+class	#anovaWelchInterpretation
+input	#anovaAlpha	0.05
+# group count appears in the Welch hypotheses
+input	#anovaGroupCount	3
+canon
+read	#anovaWelchInterpretation
+# response names with spaces flow into the sample outputs
+input	#anovaResponse	Total Spend
+click	#loadAnovaWelchOutputsBtn
+canon
+val	#anovaWelchOutput
+read	#anovaWelchInterpretation
+val	#anovaResponse
+# route to the standard branch: Step 3b unavailable, prose copy disabled
+click	#copyAnovaWelchCodeBtn
+click	#copyAnovaWelchProseBtn
+class	#anovaWelchPanel
+input	#anovaVarianceOutput	Bartlett test of homogeneity of variances\np-value = 0.9
+canon
+class	#anovaWelchPanel
+class	#anovaWelchCodeBox
+class	#anovaWelchProseBox
+disabled	#copyAnovaWelchProseBtn
+disabled	#copyAnovaWelchCodeBtn
+disabled	#loadAnovaWelchOutputsBtn
+read	#anovaWelchInterpretation
+click	#copyAnovaWelchProseBtn
+clip
+# universal detector loads Games-Howell output into Step 3b
+open	universal
+input	#inputText	games_howell_test output\n.y. group1 group2 estimate conf.low conf.high p.adj\nSales A B 1.2 0.4 2.0 0.002
+toast
+read	#activeTitle
+val	#anovaWelchOutput
+val	#anovaGamesHowellOutput
+read	#anovaWelchInterpretation
+class	#anovaWelchPanel
+class	#anovaWelchProseBox

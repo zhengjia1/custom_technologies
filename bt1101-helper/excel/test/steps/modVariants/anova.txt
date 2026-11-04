@@ -1,0 +1,48 @@
+# ANOVA: staged mixed groups share one control per step; option change clears both code and prose copies.
+open	anova-many
+click	#loadAnovaSampleBtn
+count	#anovaBench .answer-variant-control
+val	#anovaBench .answer-variant-control[data-copy-for="copyAnovaNormalityCodeBtn"] select
+read	#anovaNormalityCode
+read	#anovaVarianceCode
+click	#loadAnovaVarianceOutputBtn
+val	#anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+click	#copyAnovaVarianceCodeBtn
+clip
+class	#anovaVarianceCodeBox
+class	#anovaVariancePanel
+click	#copyAnovaVarianceProseBtn
+clip
+class	#anovaVarianceProseBox
+class	#anovaVariancePanel
+change	#anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select	2
+class	#anovaVarianceCodeBox
+class	#anovaVarianceProseBox
+class	#anovaVariancePanel
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+change	#anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select	5
+change	#anovaBench .answer-variant-control[data-copy-for="copyAnovaVarianceCodeBtn"] select	2
+read	#anovaVarianceCode
+read	#anovaVarianceInterpretation
+click	#copyAnovaVarianceProseBtn
+clip
+click	#loadAnovaWelchOutputsBtn
+read	#anovaWelchCode
+read	#anovaWelchInterpretation
+val	#anovaBench .answer-variant-control[data-copy-for="copyAnovaWelchCodeBtn"] select
+click	#copyAnovaWelchCodeBtn
+clip
+click	#copyAnovaWelchProseBtn
+clip
+class	#anovaWelchPanel
+change	#anovaBench .answer-variant-control[data-copy-for="copyAnovaWelchCodeBtn"] select	1
+class	#anovaWelchPanel
+class	#anovaWelchCodeBox
+read	#anovaWelchCode
+read	#anovaWelchInterpretation
+input	#anovaResponse	Spend
+read	#anovaWelchCode
+read	#anovaNormalityCode

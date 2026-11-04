@@ -1,0 +1,44 @@
+# Binary GLM interpretation
+open	glm
+read	#glmProse
+click	#loadGlmOutputBtn
+toast
+val	#advDataset
+val	#advResponse
+val	#advPredictors
+canon
+read	#advancedRegressionCode
+val	#glmOutput
+read	#glmProse
+disabled	#copyGlmProseBtn
+click	#copyGlmProseBtn
+clip
+toast
+class	#regressionUnitsAlert
+click	#glmProse [data-copy-glm="2"]
+clip
+toast
+# Plain output (no ## prefixes), zero estimate, odds ratio > 1, p bounds, large estimate
+input	#glmOutput	Call:\nglm(formula = Default_status ~ balance + student + income + zero, family = binomial, data = credit)\n\nCoefficients:\n              Estimate Std. Error z value Pr(>|z|)    \n(Intercept) -1.087e+01  4.923e-01 -22.080  < 2e-16 ***\nbalance      5.737e-03  2.319e-04  24.738  < 2e-16 ***\nstudent     -6.468e-01  2.363e-01  -2.738  0.00619 ** \nincome       3.033e-06  8.203e-06   0.370  0.71152    \nzero         0           1         0       1\n\n    Null deviance: 2920.6  on 9999  degrees of freedom
+canon
+read	#glmProse
+count	#glmProse [data-copy-glm]
+# Quoted family, camel-case outcome
+input	#glmOutput	glm(formula = isFraudStatus ~ amount, family = 'binomial', data = tx)\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\namount       1.5        0.5        3.0     0.0027\n
+canon
+read	#glmProse
+# Invalid inputs
+input	#glmOutput	glm(formula = y ~ x, family = gaussian, data = d)\nCoefficients:\n
+read	#glmProse
+disabled	#copyGlmProseBtn
+input	#glmOutput	nothing here
+read	#glmProse
+input	#glmOutput	glm(formula = y ~ x, family = binomial, data = d)\nno table
+read	#glmProse
+input	#glmOutput	glm(formula = y ~ x, family = binomial, data = d)\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\n(Intercept)  1  1  1  0.3\n
+read	#glmProse
+input	#glmOutput	glm(formula = y ~ x, family = binomial, data = d)\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\nx  1  1  1  > 0.01\n
+read	#glmProse
+input	#glmOutput
+read	#glmProse
+disabled	#copyGlmProseBtn

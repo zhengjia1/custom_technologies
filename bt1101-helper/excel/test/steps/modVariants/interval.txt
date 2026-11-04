@@ -1,0 +1,18 @@
+# Interval mixed group (code + prose share one control). Needs opInference2.RenderIntervalResult to run without error 13.
+open	interval
+click	#loadIntervalSampleBtn
+count	#intervalBench .answer-variant-control
+val	#intervalBench .answer-variant-select
+read	#intervalBench .interval-code
+click	#copyIntervalCodeBtn
+clip
+click	#loadIntervalResultSampleBtn
+read	#intervalBench .interval-code
+click	#copyIntervalProseBtn
+clip
+change	#intervalBench .answer-variant-select	3
+read	#intervalBench .interval-code
+click	#copyIntervalProseBtn
+clip
+click	#copyIntervalCodeBtn
+clip

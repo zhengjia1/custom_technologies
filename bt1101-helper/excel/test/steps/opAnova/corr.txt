@@ -1,0 +1,41 @@
+# Multiple correlations: psych::corr.test() code generator (no sidebar entry in the website;
+# its bench is driven directly)
+canon
+val	#corrMultipleDataset
+val	#corrMultipleColumns
+read	#corrMultipleCode
+disabled	#copyCorrMultipleCodeBtn
+click	#copyCorrMultipleCodeBtn
+clip
+input	#corrMultipleColumns	height
+read	#corrMultipleCode
+disabled	#copyCorrMultipleCodeBtn
+input	#corrMultipleColumns	height, , weight
+canon
+read	#corrMultipleCode
+disabled	#copyCorrMultipleCodeBtn
+click	#copyCorrMultipleCodeBtn
+clip
+toast
+input	#corrMultipleColumns	 total spend ,age,  2nd score,a`b
+canon
+read	#corrMultipleCode
+input	#corrMultipleDataset	survey 2024
+canon
+read	#corrMultipleCode
+input	#corrMultipleDataset	  	 
+canon
+read	#corrMultipleCode
+input	#corrMultipleColumns	,,,
+read	#corrMultipleCode
+disabled	#copyCorrMultipleCodeBtn
+click	#loadCorrMultipleSampleBtn
+canon
+toast
+val	#corrMultipleDataset
+val	#corrMultipleColumns
+read	#corrMultipleCode
+click	#copyCorrMultipleCodeBtn
+clip
+canon
+read	#corrMultipleCode

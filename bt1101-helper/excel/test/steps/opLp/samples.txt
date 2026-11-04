@@ -1,0 +1,373 @@
+open	lpsolve
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+click	#loadLpSampleBtn
+toast
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+click	#copyLpAsciiBtn
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadSensitivitySampleBtn
+toast
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+canon
+click	#copyLpCodeBtn
+clip
+toast
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadLpParserSampleBtn
+toast
+val	#lpSmartInput
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+class	#lpBench .panel:nth-child(1)
+class	#lpBench .code-panel
+class	#lpBench .lp-table-panel
+class	#sensitivityInterpretationPanel
+count	#lpBench .completion-badge
+attr	#sensitivityInterpretationPanel .lp-collapse-toggle	aria-expanded
+click	#loadSensitivitySampleBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+click	#resetLpBtn
+toast
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+val	#lpSmartInput
+val	#sensRawOutput
+click	#loadSensitivitySampleBtn
+toast
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+click	#loadLpSampleBtn
+click	#loadSensitivitySampleBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+change	#lpVariableType	integer
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn
+change	#lpVariableType	binary
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpBinary	1, 3
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpBinary	
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+change	#lpVariableType	continuous
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+click	#lpSensitivity
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+change	#lpDirection	min
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+canon
+read	#sensParseStatus
+class	#sensParseStatus
+val	#sensSolution
+val	#sensObjectiveValue
+val	#sensDuals
+val	#sensCoefFrom
+val	#sensCoefTo
+val	#sensRhsFrom
+val	#sensRhsTo
+read	#sensitivityInterpretation
+disabled	#copySensitivityProseBtn

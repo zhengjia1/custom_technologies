@@ -1,0 +1,74 @@
+# Universal detector: initial state, sample dropdown and the self-contained parsers
+read	#activeTitle
+read	#outputBody
+count	#universalSampleSelect option
+read	#universalSampleSelect
+val	#universalSampleSelect
+class	#universalSampleSelect
+class	#singleSampleBtn
+disabled	#singleSampleBtn
+attr	#universalSampleSelect	title
+class	.universal-entry
+class	#standardBench
+class	#referencePanel
+attr	#inputText	placeholder
+attr	html	data-theme
+read	#updateCheckMessage
+class	#updateCheck
+disabled	#checkForUpdatesBtn
+count	#tutorialList .operation
+read	#tutorialList
+attr	#tutorialList .operation[data-id="pca"]	data-search
+attr	#tutorialList .operation[data-id="shapiro"]	data-tutorial
+read	#resultCount
+read	#librarySectionLabel
+count	.variable-rename-alert
+attr	#sensObjectiveValue	placeholder
+# Shapiro sample
+select	#universalSampleSelect	1
+val	#inputText
+val	#universalSampleSelect
+toast
+read	#outputBody
+attr	#generatedProse	class
+read	#activeTitle
+canon
+click	#copyBtn
+clip
+toast
+# Pearson sample (non-significant: exact mandated ending)
+select	#universalSampleSelect	2
+toast
+read	#outputBody
+canon
+click	#copyBtn
+clip
+# interval sample routes to the interval operation
+select	#universalSampleSelect	3
+toast
+read	#activeTitle
+class	#intervalBench
+class	#standardBench
+val	#intervalCalcType
+val	#intervalParameter
+val	#confidenceLevel
+val	#intervalLabel
+val	#intervalResultInput
+class	.universal-entry
+class	#tutorialList .operation[data-id="interval"]
+open	universal
+read	#activeTitle
+read	#outputBody
+class	#intervalBench
+class	#standardBench
+# one-sample sample
+select	#universalSampleSelect	4
+toast
+read	#outputBody
+read	#activeTitle
+# two-sample sample
+select	#universalSampleSelect	5
+toast
+read	#outputBody
+attr	#generatedProse	class
+read	#activeTitle

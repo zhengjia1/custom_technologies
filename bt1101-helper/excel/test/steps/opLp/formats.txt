@@ -1,0 +1,393 @@
+open	lpsolve
+click	#resetLpBtn
+input	#lpSmartInput	| Minimize total effort using | Effort = 6 $X_1$ + 7$X_2$ + |\n| decision variables $X_1$, $X_2$, $X_3$, | 9 $X_3$ + 8 $X_4$ + |\n| $X_4$, $X_5$, $X_6$ | 10 $X_5$ + 20 $X_6$ |\n|---|---|\n| Subject to | |\n| Credit Requirement | $2X_1+4X_2+3X_3+3X_4+4X_5+5X_6\\geq12$ |\n| Weekly effort | $6X_1+7X_2+9X_3+8X_4+10X_5+20X_6\\leq30$ |\n| CS2 Prereq | $X_3-X_4\\geq0$ |\n| BT2 prereq | $(X_1+X_5)-X_2\\geq0$ |\n| DT prereq | $(X_1+X_3)-2X_6\\geq0$ |\n| Binary, Integer, Non-negativity Constraints | X1, X2, X3 all binary, integers |
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	| Maximise objective | Z = 3X1 + 5X2 |\n|---|---|\n| Plant 1 | X1 <= 4 |\n| Plant 2 | 2X2 <= 12 |\n| Plant 3 | 3X1 + 2X2 <= 18 |
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	| Model component | Mathematical expression |\n|---|---|\n| Maximise objective | 1000X1 + 1200X2 = Z |\n| Contract for cars | 1X1 + 0X2 >= 20 |\n| Labour | 3X1 + 4X2 <= 400 |\n| Non-negativity: X1 | X1 >= 0 |\n| Non-negativity: X2 | X2 >= 0 |
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	| Model component | Mathematical expression |\n|---|---|\n| Maximise | 1000X1 + 1200X2 = Z |\n| Subject to | |\n| Contract for cars | 1X1 + 0X2 >= 20 |\n| Labour | 3X1 + 4X2 <= 400 |\n| Non-negativity | 1X1 + 0X2 >= 0 |
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	+--------------------+------------------------+\n| Model component    | Mathematical expression |\n+--------------------+------------------------+\n| Minimise objective | 2X1 + 3X2 = Z          |\n+--------------------+------------------------+\n| Demand             | X1 + X2 >= 10          |\n+--------------------+------------------------+\n| Ratio              | X1 - 2X2 <= 0          |\n+--------------------+------------------------+\n| Non-negativity: X1 | X1 >= 0                |\n+--------------------+------------------------+
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Maximize Z = 5x + 4y +\n  3z\nSubject to\nWood: 6x + 4y + 2z ≤ 240\nLabour: x + 2y + 1.5z ≤ 100\nMinimum: x ≥ 2\nx, y, z ≥ 0
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	$$\\text{Minimise } C = 4X_{1} + 6X_{2}$$\nSubject to:\n$$\\text{Protein: } 2X_{1} + 3X_{2} \\geq 12$$\n$$\\text{Fat: } 1X_{1} \\cdot 1 + 2X_{2} \\leq 10 \\quad$$\n$$X_{1}, X_{2} \\geq 0$$
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Maximise Profit = 3X_1 − 2X_2 + X_3\nsubject to\nA: X_1 + X_2 + X_3 ⩽ 10\nB: X_1 – X_2 ⩾ 1\nC: X_2 + X_3 = 4
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Minimize total cost\nZ = 20A + 30B\nsubject to\nSupply: A + B >= 50\nCapacity: A <= 40
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 8X1 + 11X2 + 6X3 + 4X4\nSubject to\nBudget: 5X1 + 7X2 + 4X3 + 3X4 <= 14\nX1, X2 binary
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 3a + 2b\nSubject to\nPick: a + b <= 1\nAll variables are binary
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Minimise 7X1 + 9X2\nSubject to\nOutput: 3X1 + 5X2 >= 30\nX1, X2 integers
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Maximise 0.5*X1 + .25*X2\nSubject to\nMix: 1.5*X1 + 2*X2 <= 12.5\nX2 >= 1
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs
+click	#resetLpBtn
+input	#lpSmartInput	Minimise X1 + X2\nSubject to\nFloor: X1 >= 3\nX2 >= 0\nSum: X1 + X2 >= 5
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs

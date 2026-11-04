@@ -1,0 +1,231 @@
+open	lpsolve
+count	.lp-constraint-row
+disabled	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-remove-constraint
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name	Budget
+count	.lp-constraint-row
+disabled	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-remove-constraint
+disabled	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-remove-constraint
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients	15, 30, 40
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs	200
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-coefficients	7, 5, 8
+count	.lp-constraint-row
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-rhs	60
+select	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator	1
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+select	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-operator	2
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-name	Diet
+input	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-coefficients	1, 0, 0
+input	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-rhs	7.50
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+click	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-remove-constraint
+count	.lp-constraint-row
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+val	#lpConstraintRows .lp-constraint-row:nth-child(2) .lp-name
+disabled	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-remove-constraint
+click	#lpConstraintRows .lp-constraint-row:nth-child(3) .lp-remove-constraint
+count	.lp-constraint-row
+click	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-remove-constraint
+count	.lp-constraint-row
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+click	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-remove-constraint
+count	.lp-constraint-row
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-rhs	
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-name	
+input	#lpConstraintRows .lp-constraint-row:nth-child(1) .lp-coefficients	
+count	.lp-constraint-row
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn
+click	#resetLpBtn
+toast
+canon
+read	#lpParseStatus
+class	#lpParseStatus
+val	#lpDirection
+val	#lpVariableType
+val	#lpVariables
+val	#lpObjective
+val	#lpBinary
+checked	#lpSensitivity
+disabled	#lpSensitivity
+class	#lpBinaryField
+class	#lpSensitivityField
+count	.lp-constraint-row
+read	#lpConstraintError
+read	#lpCode
+disabled	#copyLpCodeBtn
+read	#lpTablePreview
+disabled	#copyLpAsciiBtn

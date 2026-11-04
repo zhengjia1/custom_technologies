@@ -1,0 +1,98 @@
+# One-variable regression: empty state, sample, transforms, axis-interval toggle, copy
+open	lm-predict
+class	#simpleRegressionBench
+read	#regressionMapping
+read	#regressionCode
+disabled	#copyRegressionCodeBtn
+checked	#simpleRegressionBench .plot-axis-interval-toggle
+click	#copyRegressionCodeBtn
+clip
+input	#regressionY	sales
+read	#regressionMapping
+read	#regressionCode
+disabled	#copyRegressionCodeBtn
+input	#regressionX	ad_spend
+canon
+read	#regressionMapping
+read	#regressionCode
+disabled	#copyRegressionCodeBtn
+change	#regressionTransform	sqrt
+canon
+read	#regressionMapping
+read	#regressionCode
+change	#regressionTransform	inverse
+canon
+read	#regressionMapping
+read	#regressionCode
+change	#regressionTransform	log
+canon
+read	#regressionMapping
+read	#regressionCode
+change	#regressionTransform	log10
+canon
+read	#regressionMapping
+read	#regressionCode
+click	#copyRegressionCodeBtn
+clip
+toast
+# Axis-interval mode on
+click	#simpleRegressionBench .plot-axis-interval-toggle
+checked	#simpleRegressionBench .plot-axis-interval-toggle
+canon
+read	#regressionCode
+change	#regressionTransform	none
+canon
+read	#regressionCode
+change	#regressionTransform	sqrt
+canon
+read	#regressionCode
+change	#regressionTransform	inverse
+canon
+read	#regressionCode
+change	#regressionTransform	log
+canon
+read	#regressionCode
+change	#regressionTransform	log10
+canon
+read	#regressionCode
+click	#copyRegressionCodeBtn
+clip
+toast
+# Unusual names: spaces, quotes, dots, empty dataset
+input	#regressionDataset
+input	#regressionY	weekly "sleep" hours
+input	#regressionX	2nd.var name
+canon
+read	#regressionMapping
+read	#regressionCode
+change	#regressionTransform	none
+canon
+read	#regressionCode
+click	#simpleRegressionBench .plot-axis-interval-toggle
+checked	#simpleRegressionBench .plot-axis-interval-toggle
+canon
+read	#regressionCode
+change	#regressionTransform	log
+canon
+read	#regressionCode
+input	#regressionDataset	my data
+input	#regressionY	daily_screen_time_hours
+input	#regressionX
+canon
+read	#regressionMapping
+read	#regressionCode
+disabled	#copyRegressionCodeBtn
+# Sample resets the form
+click	#loadRegressionSampleBtn
+toast
+val	#regressionDataset
+val	#regressionX
+val	#regressionY
+val	#regressionTransform
+canon
+read	#regressionMapping
+read	#regressionCode
+disabled	#copyRegressionCodeBtn
+click	#copyRegressionCodeBtn
+clip
+toast
