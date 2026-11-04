@@ -1,2 +1,4 @@
 node_modules/
+# Build intermediates; .build/layouts-cache.json is kept locally so builds skip the layout search.
 .build/
+*.log

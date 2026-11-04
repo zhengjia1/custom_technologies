@@ -22,7 +22,7 @@ const BUILD = path.join(ROOT, ".build");
 const INDEX = path.join(ROOT, "..", "index.html");
 // node build.js [ddmmyy_hhmm] [--theme=dark]
 const THEME = (process.argv.find(arg => arg.startsWith("--theme=")) || "--theme=light").slice(8) === "dark" ? "dark" : "light";
-const OUTPUT = path.join(ROOT, "..", THEME === "dark" ? "Proselab_darkmode.pdf" : "BT1101 Prose Lab.pdf");
+const OUTPUT = path.join(ROOT, "..", THEME === "dark" ? "BT1101 Prose Lab (Dark Mode).pdf" : "BT1101 Prose Lab.pdf");
 const BROWSERS = ["C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe", "C:/Program Files/Google/Chrome/Application/chrome.exe", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge", "/usr/bin/google-chrome", "/usr/bin/chromium"];
 const VIEWPORT_WIDTH = 1280;
 const NO_SCRIPT_MESSAGE = "JavaScript is not running. Open this file in Adobe Acrobat Reader on a computer, with JavaScript enabled.";

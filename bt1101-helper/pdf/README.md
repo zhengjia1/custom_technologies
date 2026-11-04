@@ -28,7 +28,7 @@ Differences a PDF cannot avoid: pages do not reflow, so fields that appear only 
 ```bash
 npm install
 npm run build            # version from package.json "pdfVersion" (ddmmyy_hhmm)
-npm run build:dark       # dark theme, written to ../Proselab_darkmode.pdf
+npm run build:dark       # dark theme, written to "../BT1101 Prose Lab (Dark Mode).pdf"
 node build.js 021126_2300 --theme=dark
 npm test
 ```
