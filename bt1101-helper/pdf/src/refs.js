@@ -137,6 +137,8 @@ export function visibleText(element, extraSkip) {
     if (block) newline(paragraph ? 2 : 1);
     if (tag === "pre") pre.push(node);
     if (tag === "td" || tag === "th") { if (node.previousElementSibling) text += " | "; }
+    // Fields cannot lower text, so a subscript is written as the website's ASCII copy writes it (X_i).
+    if (tag === "sub") text += "_";
     for (let i = 0; i < node.childNodes.length; i++) walk(node.childNodes[i]);
     if (tag === "pre") pre.pop();
     if (block) newline(paragraph ? 2 : 1);

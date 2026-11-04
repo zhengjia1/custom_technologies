@@ -1,4 +1,4 @@
-<!-- BT1101 Prose Lab version: v301026_1430h -->
+<!-- BT1101 Prose Lab version: v041126_1200h -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -607,7 +607,7 @@
     <header class="topbar">
       <div class="doc-titlebar">
         <span class="doc-icon" aria-hidden="true"></span>
-        <div class="doc-title-stack"><span class="doc-name">Untitled document</span><span class="app-version">v301026_1430h</span></div>
+        <div class="doc-title-stack"><span class="doc-name">Untitled document</span><span class="app-version">v041126_1200h</span></div>
       </div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" title="Toggle dark mode"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span></button>
     </header>
@@ -2101,7 +2101,7 @@
     })));
     answerVariantObserver.observe(document.body, { childList: true, subtree: true });
 
-    const appVersion = "301026_1430";
+    const appVersion = "041126_1200";
     const updateEndpoint = "https://zhengjia.dev/bt1101";
     const tutorialList = $("#tutorialList");
     let updateCheckState = "checking";
@@ -3917,6 +3917,59 @@ F-statistic: 9.292 on 2 and 47 DF, p-value: 0.0003978`;
       return sides[score(sides[1]) > score(sides[0]) ? 1 : 0].replace(/\+\s*$/, "").trim();
     }
 
+    // Indexed names such as X1, X2 share a prefix, so a group of them can be written X_i, i = 1, …, n.
+    function lpIndexedVariables(names) {
+      const parts = names.map(name => /^([A-Za-z][A-Za-z.]*?)_?(\d+)$/.exec(name));
+      if (!parts.length || parts.some(part => !part) || parts.some(part => part[1] !== parts[0][1])) return null;
+      return { prefix: parts[0][1], indices: parts.map(part => Number(part[2])) };
+    }
+
+    function lpIndexList(indices, ellipsis) {
+      const consecutive = indices.length >= 3 && indices.every((index, position) => position === 0 || index === indices[position - 1] + 1);
+      return consecutive ? `${indices[0]}, ${ellipsis}, ${indices[indices.length - 1]}` : indices.join(", ");
+    }
+
+    // One row for binary and non-negative variables: "X_i ∈ {0, 1}, i = 1, …, 6", followed by
+    // "; X_i ≥ 0, i = …" for any variables that are not binary.
+    function lpVariableDomainExpression(variables, binaryNames, ascii) {
+      const group = (names, domain) => {
+        if (!names.length) return "";
+        const indexed = names.length > 1 && lpIndexedVariables(names);
+        if (!indexed) return `${names.join(", ")} ${domain}`;
+        const index = lpIndexList(indexed.indices, ascii ? "..." : "…");
+        return ascii ? `${indexed.prefix}_i ${domain}, i = ${index}` : `${escapeHtml(indexed.prefix)}<sub>i</sub> ${domain}, i = ${index}`;
+      };
+      const escapeNames = names => (ascii ? names : names.map(escapeHtml));
+      const binary = group(escapeNames(binaryNames), ascii ? "in {0, 1}" : "∈ {0, 1}");
+      const nonNegative = group(escapeNames(variables.filter(name => !binaryNames.includes(name))), ascii ? ">= 0" : "≥ 0");
+      return [binary, nonNegative].filter(Boolean).join("; ");
+    }
+
+    // Reads "X_i ∈ {0, 1}, i = 1, …, 6" (or "X_i in {0,1}, i = 1, 3", LaTeX \in \{0,1\}, \ldots)
+    // back into variable names. The source has already been through normaliseLpSource.
+    function isLpBinarySetDeclaration(text) {
+      return /(?:∈|\\in\b|\bin\b)\s*\\?\{\s*0\s*,\s*1\s*\\?\}/.test(text);
+    }
+
+    function lpBinarySetVariables(text, variables) {
+      const found = [];
+      const pattern = /([A-Za-z][A-Za-z.]*?)i\s*(?:∈|\\in\b|\bin\b)\s*\\?\{\s*0\s*,\s*1\s*\\?\}\s*,?\s*(?:for\s+(?:all\s+)?)?i\s*=\s*((?:\s*(?:\d+|…|\.\.\.|\\[lc]?dots)\s*,?)+)/g;
+      for (const match of text.matchAll(pattern)) {
+        const items = match[2].split(",").map(item => item.trim()).filter(Boolean);
+        const indices = [];
+        items.forEach((item, position) => {
+          if (/^\d+$/.test(item)) { indices.push(Number(item)); return; }
+          const from = Number(items[position - 1]), to = Number(items[position + 1]);
+          if (Number.isInteger(from) && Number.isInteger(to)) for (let index = from + 1; index < to; index++) indices.push(index);
+        });
+        indices.forEach(index => {
+          const name = variables.find(variable => { const part = /^([A-Za-z][A-Za-z.]*?)_?(\d+)$/.exec(variable); return part && part[1] === match[1] && Number(part[2]) === index; });
+          if (name && !found.includes(name)) found.push(name);
+        });
+      }
+      return variables.filter(name => found.includes(name));
+    }
+
     function isLpNonNegativityDeclaration(name, left, operator, rhs) {
       if (operator !== ">=" || rhs !== 0) return false;
       const variables = lpExpressionVariables(left);
@@ -3961,6 +4014,7 @@ F-statistic: 9.292 on 2 and 47 DF, p-value: 0.0003978`;
       const declarationRows = [];
       for (const cells of candidateRows) {
         const joined = cells.join(" ");
+        if (isLpBinarySetDeclaration(joined)) { declarationRows.push(joined); continue; }
         if (/\b(binary|integers?|non[- ]?negativity)\b/i.test(joined) && !/(<=|>=|=)/.test(cells.slice(1).join(" "))) declarationRows.push(joined);
         const expression = cells.slice(1).join(" ") || cells[0];
         const operatorMatch = expression.match(/(<=|>=|=)/);
@@ -3989,8 +4043,8 @@ F-statistic: 9.292 on 2 and 47 DF, p-value: 0.0003978`;
 
       const declarationText = declarationRows.join(" ");
       const declaredVariables = lpExpressionVariables(declarationText).filter(name => variables.includes(name));
-      let binaryVariables = [];
-      if (/\bbinary\b/i.test(declarationText)) {
+      let binaryVariables = lpBinarySetVariables(declarationText, variables);
+      if (!binaryVariables.length && /\bbinary\b/i.test(declarationText)) {
         binaryVariables = declaredVariables.length ? declaredVariables : /\ball\b[^.]*\bbinary\b|\bbinary\b[^.]*\ball\b/i.test(declarationText) ? [...variables] : [];
       }
       const type = binaryVariables.length ? "binary" : /\bintegers?\b/i.test(declarationText) ? "integer" : "continuous";
@@ -4135,6 +4189,8 @@ F-statistic: 9.292 on 2 and 47 DF, p-value: 0.0003978`;
       const constraintStatus=$("#lpConstraintError");constraintStatus.textContent=constraintErrors.join(" ");
       const constraintsValid=variables.length>0&&rows.length>0&&constraintErrors.length===0&&rows.every(row=>row.rhsText&&Number.isFinite(row.rhs));
       const objectiveValid=variables.length>0&&objective.length===variables.length&&objective.every(Number.isFinite),binaryValid=type!=="binary"||binary.length>0,valid=objectiveValid&&constraintsValid&&binaryValid;
+      // Binary variables named by position; when every variable is binary, lp() takes all.bin = TRUE.
+      const binaryNames=type==="binary"?variables.filter((name,index)=>binary.includes(index+1)):[],allBinary=binaryNames.length>0&&binaryNames.length===variables.length;
       const formatLpNumber=value=>Number.isFinite(Number(value))?String(Number(value)):String(value);
       const equation=(coefficients,operator,rhs)=>coefficients.map((coefficient,index)=>`${formatLpNumber(coefficient)}${variables[index]}`).join(" + ")+` ${operator==="<="?"≤":operator===">="?"≥":"="} ${formatLpNumber(rhs)}`;
       const asciiEquation=(coefficients,operator,rhs)=>coefficients.map((coefficient,index)=>formatLpNumber(coefficient)+variables[index]).join(" + ")+" "+operator+" "+formatLpNumber(rhs);
@@ -4142,14 +4198,14 @@ F-statistic: 9.292 on 2 and 47 DF, p-value: 0.0003978`;
         ["Model component","Mathematical expression"],
         [(direction==="max"?"Maximise":"Minimise")+" objective",asciiEquation(objective,"=","Z")],
         ...rows.map(row=>[row.name,asciiEquation(row.coefficients,row.operator,row.rhs)]),
-        ...variables.map(variable=>["Non-negativity: "+variable,variable+" >= 0"])
+        ...(binaryNames.length?[["Non-negativity / binary variables",lpVariableDomainExpression(variables,binaryNames,true)]]:variables.map(variable=>["Non-negativity: "+variable,variable+" >= 0"]))
       ];
       lpAsciiTableText=valid?buildAsciiTable(asciiRows):"";
       $("#copyLpAsciiBtn").disabled=!valid;
-      let table=`<table class="lp-preview"><thead><tr><th>Model component</th><th>Mathematical expression</th></tr></thead><tbody><tr><td>${direction==="max"?"Maximise":"Minimise"} objective</td><td>${escapeHtml(equation(objective,"=","Z").replace(/ = NaN$/, ""))}</td></tr>`;rows.forEach(row=>table+=`<tr><td>${escapeHtml(row.name)}</td><td>${escapeHtml(row.coefficients.length===variables.length&&row.coefficients.every(Number.isFinite)&&row.rhsText?equation(row.coefficients,row.operator,row.rhs):"Invalid constraint—correct the highlighted coefficient field")}</td></tr>`);variables.forEach(variable=>table+=`<tr><td>Non-negativity: ${escapeHtml(variable)}</td><td>${escapeHtml(variable)} ≥ 0</td></tr>`);table+="</tbody></table>";$("#lpTablePreview").innerHTML=table;
+      let table=`<table class="lp-preview"><thead><tr><th>Model component</th><th>Mathematical expression</th></tr></thead><tbody><tr><td>${direction==="max"?"Maximise":"Minimise"} objective</td><td>${escapeHtml(equation(objective,"=","Z").replace(/ = NaN$/, ""))}</td></tr>`;rows.forEach(row=>table+=`<tr><td>${escapeHtml(row.name)}</td><td>${escapeHtml(row.coefficients.length===variables.length&&row.coefficients.every(Number.isFinite)&&row.rhsText?equation(row.coefficients,row.operator,row.rhs):"Invalid constraint—correct the highlighted coefficient field")}</td></tr>`);if(binaryNames.length)table+=`<tr><td>Non-negativity / binary variables</td><td>${lpVariableDomainExpression(variables,binaryNames,false)}</td></tr>`;else variables.forEach(variable=>table+=`<tr><td>Non-negativity: ${escapeHtml(variable)}</td><td>${escapeHtml(variable)} ≥ 0</td></tr>`);table+="</tbody></table>";$("#lpTablePreview").innerHTML=table;
       if(!valid){const message=constraintErrors.length?constraintErrors.join("\n"):!objectiveValid?`The objective needs exactly ${variables.length} numeric coefficient${variables.length===1?"":"s"}—one for each decision variable.`:!rows.length?"Enter at least one constraint.":!rows.every(row=>row.rhsText&&Number.isFinite(row.rhs))?"Every constraint needs a numeric right-hand-side value.":"Complete the binary-variable positions.";$("#lpCode").textContent=`ERROR: ${message}\n\nR code will not be generated until the model is valid.`;$("#copyLpCodeBtn").disabled=true;return}
       const constraintLines=formatter=>rows.map((row,index)=>`    ${formatter(row)}${index<rows.length-1?",":""} # ${row.name.replace(/[\r\n#]+/g," ").trim()||`Constraint ${index+1}`}`).join("\n");
-      const matrixValues=constraintLines(row=>row.coefficients.map(formatLpNumber).join(", ")),dirs=constraintLines(row=>`"${row.operator}"`),rhs=constraintLines(row=>formatLpNumber(row.rhs)),typeOption=type==="integer"?",\n    all.int = TRUE":type==="binary"?`,\n    binary.vec = c(${binary.join(", ")})`:"";
+      const matrixValues=constraintLines(row=>row.coefficients.map(formatLpNumber).join(", ")),dirs=constraintLines(row=>`"${row.operator}"`),rhs=constraintLines(row=>formatLpNumber(row.rhs)),typeOption=type==="integer"?",\n    all.int = TRUE":type==="binary"?(allBinary?",\n    all.bin = TRUE":`,\n    binary.vec = c(${binary.join(", ")})`):"";
       const sensitivityLines=sensitivity?`\nrange_objcoef <- cbind(lp_sol$sens.coef.from, lp_sol$sens.coef.to)\nlp_sol$duals          # first constraints: shadow prices; then variables: reduced costs\nlp_sol$sens.coef.from # lower objective-coefficient bounds\nlp_sol$sens.coef.to   # upper objective-coefficient bounds\nlp_sol$sens.rhs.from  # lower RHS bounds\nlp_sol$sens.rhs.to    # upper RHS bounds\nslack <- constraint_rhs - constraint_mat %*% lp_sol$solution # 0 means binding for <= constraints`:"";
       $("#lpCode").textContent=`library(lpSolve)\n\n# Decision variables: ${variables.join(", ")}\nobjective_fun <- c(${objective.join(", ")})\n\nconstraint_mat <- matrix(\n  c(\n${matrixValues}\n  ),\n  ncol = ${variables.length},\n  byrow = TRUE\n)\nconstraint_dir <- c(\n${dirs}\n)\nconstraint_rhs <- c(\n${rhs}\n)\n\nlp_sol <- lp(\n  direction = "${direction}",\n  objective_fun,\n  constraint_mat,\n  constraint_dir,\n  constraint_rhs,\n  compute.sens = ${sensitivity?"TRUE":"FALSE"}${typeOption}\n)\n\nnames(lp_sol$solution) <- c(${variables.map(name=>`"${rString(name)}"`).join(", ")})\nlp_sol$solution\nlp_sol$objval\nlp_sol$status # 0: optimal, 2: infeasible, 3: unbounded${sensitivityLines}`;$("#copyLpCodeBtn").disabled=false;
     }
