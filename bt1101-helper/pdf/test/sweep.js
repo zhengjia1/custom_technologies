@@ -84,7 +84,8 @@ function sweep(seed) {
   session.type(textarea.name, "Call:\nlm(formula = y ~ x1 + x2, data = d)\n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept)   1.0000     0.5000   2.000   0.0500\nx1            0.5000     0.1000   5.000 2.0e-05\nx2           -0.2000     0.1000  -2.000   0.0510\n\nResidual standard error: 1 on 47 degrees of freedom\nMultiple R-squared:  0.5,\tAdjusted R-squared:  0.48\nF-statistic: 23.5 on 2 and 47 DF,  p-value: 7.9e-08");
   const regressionPage = session.pageOf("multi-regression");
   if (session.acrobat.doc.pageNum !== regressionPage) problems.push(`detector routed regression output to page ${session.acrobat.doc.pageNum}, expected ${regressionPage}`);
-  const prose = session.fieldsOn(regressionPage).filter(field => field.spec.k === "out" && /holding/i.test(field.value || ""));
+  // The generated coefficient prose, not the static guide (which also says "holding").
+  const prose = session.fieldsOn(regressionPage).filter(field => field.spec.k === "cardbody" && /^slot:#multiRegressionProse/.test(field.spec.r || "") && /\bx1\b[\s\S]*holding/i.test(session.acrobat.fields[field.name].value || ""));
   if (!prose.length) problems.push("regression prose missing after detector routing");
   session.errors().forEach(error => problems.push("bridge error: " + error));
   // Timing lines and skipped polyfills (expected where the engine locks a built-in) are

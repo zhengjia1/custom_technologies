@@ -312,6 +312,9 @@ export function createBridge(options) {
       const spec = registry.fields[name];
       if (!spec) return;
       this.catchUp(name);
+      // Acrobat separates the lines of a multi-line field with "\r"; a browser's textarea
+      // gives the website "\n", which its parsers split on.
+      if (typeof value === "string") value = value.replace(/\r\n?/g, "\n");
       const context = { name, event, spec };
       run(() => {
         const target = element(spec.r);

@@ -113,7 +113,8 @@ function loadPdfScript(seed) {
     page(index) { acrobat.doc.pageNum = index; acrobat.takePendingPage(); api.page(index); followNavigation(); },
     // Opens pages in quick succession, as scrolling does, without letting time pass between them.
     scrollThrough(indexes) { indexes.forEach(index => { acrobat.doc.pageNum = index; api.page(index); }); acrobat.takePendingPage(); followNavigation(); },
-    type(name, value) { const event = { target: acrobat.fields[name] || acrobat.field(name), value, rc: true }; api.commit(event); acrobat.field(name).value = event.value; followNavigation(); },
+    // Acrobat hands a multi-line field's text to scripts with "\r" between lines.
+    type(name, value) { value = String(value).replace(/\r?\n/g, "\r"); const event = { target: acrobat.fields[name] || acrobat.field(name), value, rc: true }; api.commit(event); acrobat.field(name).value = event.value; followNavigation(); },
     // Opens a dropdown's pop-up menu and picks the item with that return value ("@index").
     choose(name, exportValue) { const spec = registry.fields[name]; const picker = acrobat.field(spec && spec.p ? spec.p : name); if (picker.readonly) return false; acrobat.app.nextMenuChoice = exportValue; api.press({ target: picker }); followNavigation(); return true; },
     menuFor(name) { const spec = registry.fields[name]; acrobat.app.nextMenuChoice = null; api.press({ target: acrobat.field(spec.p) }); return acrobat.app.menus[acrobat.app.menus.length - 1] || []; },
